@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.env
+venv/
+env/
+
+# Node / Vite
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+docker-compose.override.yml
+
+# OS / IDE
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
