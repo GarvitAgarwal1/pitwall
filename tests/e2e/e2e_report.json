@@ -1,0 +1,1601 @@
+{
+  "timestamp": "2026-11-09T20:34:16Z",
+  "duration_sec": 39.075,
+  "status": "FAIL",
+  "summary": {
+    "total": 174,
+    "passed": 153,
+    "failed": 21,
+    "skipped": 0
+  },
+  "tier_breakdown": {
+    "Tier 1 (Feature Coverage)": {
+      "total": 130,
+      "passed": 124,
+      "failed": 6
+    },
+    "Tier 2 (Boundaries & Edge Cases)": {
+      "total": 26,
+      "passed": 13,
+      "failed": 13
+    },
+    "Tier 3 (Cross-Feature Combinations)": {
+      "total": 12,
+      "passed": 11,
+      "failed": 1
+    },
+    "Tier 4 (Real-World Scenarios)": {
+      "total": 6,
+      "passed": 5,
+      "failed": 1
+    }
+  },
+  "results": [
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverStandingsFeature::test_driver_standings_current_season_200_and_schema",
+      "name": "TestDriverStandingsFeature.test_driver_standings_current_season_200_and_schema",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 2.5066,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverStandingsFeature::test_driver_standings_historical_2023_season",
+      "name": "TestDriverStandingsFeature.test_driver_standings_historical_2023_season",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0156,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverStandingsFeature::test_driver_standings_historical_2024_season",
+      "name": "TestDriverStandingsFeature.test_driver_standings_historical_2024_season",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.3231,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverStandingsFeature::test_driver_standings_position_order_and_points",
+      "name": "TestDriverStandingsFeature.test_driver_standings_position_order_and_points",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0133,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverStandingsFeature::test_driver_standings_required_fields_presence",
+      "name": "TestDriverStandingsFeature.test_driver_standings_required_fields_presence",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0132,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorStandingsFeature::test_constructor_standings_current_200_and_schema",
+      "name": "TestConstructorStandingsFeature.test_constructor_standings_current_200_and_schema",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0165,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorStandingsFeature::test_constructor_standings_2023_season",
+      "name": "TestConstructorStandingsFeature.test_constructor_standings_2023_season",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.3331,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorStandingsFeature::test_constructor_standings_2024_season",
+      "name": "TestConstructorStandingsFeature.test_constructor_standings_2024_season",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0139,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorStandingsFeature::test_constructor_standings_rank_and_points_monotonic",
+      "name": "TestConstructorStandingsFeature.test_constructor_standings_rank_and_points_monotonic",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.3068,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorStandingsFeature::test_constructor_standings_required_fields",
+      "name": "TestConstructorStandingsFeature.test_constructor_standings_required_fields",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.016,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceCalendarFeature::test_race_calendar_2024_status_200_and_schema",
+      "name": "TestRaceCalendarFeature.test_race_calendar_2024_status_200_and_schema",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.433,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceCalendarFeature::test_race_calendar_2023_season",
+      "name": "TestRaceCalendarFeature.test_race_calendar_2023_season",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0113,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceCalendarFeature::test_race_calendar_round_indexing_monotonic",
+      "name": "TestRaceCalendarFeature.test_race_calendar_round_indexing_monotonic",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0122,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceCalendarFeature::test_race_calendar_circuit_and_locality_present",
+      "name": "TestRaceCalendarFeature.test_race_calendar_circuit_and_locality_present",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.013,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceCalendarFeature::test_race_calendar_sprint_races_flag",
+      "name": "TestRaceCalendarFeature.test_race_calendar_sprint_races_flag",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0124,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceResultsFeature::test_race_results_round_1_schema_and_200",
+      "name": "TestRaceResultsFeature.test_race_results_round_1_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.3149,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceResultsFeature::test_race_results_points_awarded",
+      "name": "TestRaceResultsFeature.test_race_results_points_awarded",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0114,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceResultsFeature::test_race_results_classification_status",
+      "name": "TestRaceResultsFeature.test_race_results_classification_status",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "failed",
+      "duration_sec": 0.0364,
+      "error": "self = <test_tier1_features.TestRaceResultsFeature object at 0x0000023BC599D350>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_results_classification_status(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/results\")\n        assert res.status_code == 200\n        for r in res.json()[\"results\"]:\n>           assert r[\"status\"] in [\"Finished\", \"Retired\", \"+1 Lap\", \"+2 Laps\"]\nE           AssertionError: assert 'Lapped' in ['Finished', 'Retired', '+1 Lap', '+2 Laps']\n\npitwall\\tests\\e2e\\test_tier1_features.py:162: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceResultsFeature::test_race_results_fastest_lap_fields",
+      "name": "TestRaceResultsFeature.test_race_results_fastest_lap_fields",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0123,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceResultsFeature::test_race_results_grid_and_position",
+      "name": "TestRaceResultsFeature.test_race_results_grid_and_position",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0133,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceLapsFeature::test_race_laps_schema_and_200",
+      "name": "TestRaceLapsFeature.test_race_laps_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 2.1222,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceLapsFeature::test_race_laps_driver_filter",
+      "name": "TestRaceLapsFeature.test_race_laps_driver_filter",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0174,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceLapsFeature::test_race_laps_lap_number_filter",
+      "name": "TestRaceLapsFeature.test_race_laps_lap_number_filter",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.502,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceLapsFeature::test_race_laps_sector_splits_presence",
+      "name": "TestRaceLapsFeature.test_race_laps_sector_splits_presence",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "failed",
+      "duration_sec": 0.2288,
+      "error": "self = <test_tier1_features.TestRaceLapsFeature object at 0x0000023BC599DCD0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_laps_sector_splits_presence(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/laps\")\n        assert res.status_code == 200\n        first = res.json()[\"laps\"][0]\n        assert \"duration_sector_1\" in first\n        assert \"duration_sector_2\" in first\n        assert \"duration_sector_3\" in first\n>       assert first[\"lap_duration\"] > 0\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\nE       TypeError: '>' not supported between instances of 'NoneType' and 'int'\n\npitwall\\tests\\e2e\\test_tier1_features.py:211: TypeError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceLapsFeature::test_race_laps_pit_out_flag",
+      "name": "TestRaceLapsFeature.test_race_laps_pit_out_flag",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0961,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceStintsFeature::test_race_stints_schema_and_200",
+      "name": "TestRaceStintsFeature.test_race_stints_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0169,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceStintsFeature::test_race_stints_compounds_valid_enum",
+      "name": "TestRaceStintsFeature.test_race_stints_compounds_valid_enum",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.5077,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceStintsFeature::test_race_stints_driver_filter",
+      "name": "TestRaceStintsFeature.test_race_stints_driver_filter",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0151,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceStintsFeature::test_race_stints_lap_range_valid",
+      "name": "TestRaceStintsFeature.test_race_stints_lap_range_valid",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0127,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceStintsFeature::test_race_stints_tyre_age_tracking",
+      "name": "TestRaceStintsFeature.test_race_stints_tyre_age_tracking",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0115,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePitStopsFeature::test_race_pitstops_schema_and_200",
+      "name": "TestRacePitStopsFeature.test_race_pitstops_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.501,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePitStopsFeature::test_race_pitstops_stop_number_order",
+      "name": "TestRacePitStopsFeature.test_race_pitstops_stop_number_order",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0124,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePitStopsFeature::test_race_pitstops_lap_number_positive",
+      "name": "TestRacePitStopsFeature.test_race_pitstops_lap_number_positive",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0126,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePitStopsFeature::test_race_pitstops_duration_positive",
+      "name": "TestRacePitStopsFeature.test_race_pitstops_duration_positive",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "failed",
+      "duration_sec": 0.0118,
+      "error": "self = <test_tier1_features.TestRacePitStopsFeature object at 0x0000023BC599E3F0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_pitstops_duration_positive(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/pitstops\")\n        assert res.status_code == 200\n        first = res.json()[\"pit_stops\"][0]\n        assert first[\"duration\"] > 0\n>       assert first[\"lane_duration\"] > first[\"duration\"]\nE       assert 30.0 > 30.0\n\npitwall\\tests\\e2e\\test_tier1_features.py:288: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePitStopsFeature::test_race_pitstops_driver_info_present",
+      "name": "TestRacePitStopsFeature.test_race_pitstops_driver_info_present",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0123,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePositionsFeature::test_race_positions_schema_and_200",
+      "name": "TestRacePositionsFeature.test_race_positions_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0222,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePositionsFeature::test_race_positions_driver_range",
+      "name": "TestRacePositionsFeature.test_race_positions_driver_range",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.6108,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePositionsFeature::test_race_positions_monotonic_laps",
+      "name": "TestRacePositionsFeature.test_race_positions_monotonic_laps",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0158,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePositionsFeature::test_race_positions_rank_bounds",
+      "name": "TestRacePositionsFeature.test_race_positions_rank_bounds",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0149,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePositionsFeature::test_race_positions_multi_driver_progression",
+      "name": "TestRacePositionsFeature.test_race_positions_multi_driver_progression",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0191,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceGapsFeature::test_race_gaps_schema_and_200",
+      "name": "TestRaceGapsFeature.test_race_gaps_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0153,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceGapsFeature::test_race_gaps_leader_gap_zero",
+      "name": "TestRaceGapsFeature.test_race_gaps_leader_gap_zero",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 3.058,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceGapsFeature::test_race_gaps_intervals_numeric_or_string",
+      "name": "TestRaceGapsFeature.test_race_gaps_intervals_numeric_or_string",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 1.0331,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceGapsFeature::test_race_gaps_date_iso_format",
+      "name": "TestRaceGapsFeature.test_race_gaps_date_iso_format",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.9621,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceGapsFeature::test_race_gaps_driver_numbers_valid",
+      "name": "TestRaceGapsFeature.test_race_gaps_driver_numbers_valid",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 1.1946,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceWeatherFeature::test_race_weather_schema_and_200",
+      "name": "TestRaceWeatherFeature.test_race_weather_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0167,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceWeatherFeature::test_race_weather_air_temp_range",
+      "name": "TestRaceWeatherFeature.test_race_weather_air_temp_range",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.5106,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceWeatherFeature::test_race_weather_track_temp_range",
+      "name": "TestRaceWeatherFeature.test_race_weather_track_temp_range",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0214,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceWeatherFeature::test_race_weather_wind_direction_degrees",
+      "name": "TestRaceWeatherFeature.test_race_weather_wind_direction_degrees",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.02,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceWeatherFeature::test_race_weather_rainfall_flag_binary",
+      "name": "TestRaceWeatherFeature.test_race_weather_rainfall_flag_binary",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0181,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestQualifyingResultsFeature::test_qualifying_results_schema_and_200",
+      "name": "TestQualifyingResultsFeature.test_qualifying_results_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0135,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestQualifyingResultsFeature::test_qualifying_pole_position_rank_1",
+      "name": "TestQualifyingResultsFeature.test_qualifying_pole_position_rank_1",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.3117,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestQualifyingResultsFeature::test_qualifying_q1_time_present",
+      "name": "TestQualifyingResultsFeature.test_qualifying_q1_time_present",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0102,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestQualifyingResultsFeature::test_qualifying_q2_q3_progression",
+      "name": "TestQualifyingResultsFeature.test_qualifying_q2_q3_progression",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0095,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestQualifyingResultsFeature::test_qualifying_driver_and_team_fields",
+      "name": "TestQualifyingResultsFeature.test_qualifying_driver_and_team_fields",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0117,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLapTelemetryFeature::test_lap_telemetry_schema_and_200",
+      "name": "TestLapTelemetryFeature.test_lap_telemetry_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0301,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLapTelemetryFeature::test_lap_telemetry_speed_bounds",
+      "name": "TestLapTelemetryFeature.test_lap_telemetry_speed_bounds",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 1.3641,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLapTelemetryFeature::test_lap_telemetry_throttle_range_0_to_100",
+      "name": "TestLapTelemetryFeature.test_lap_telemetry_throttle_range_0_to_100",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.033,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLapTelemetryFeature::test_lap_telemetry_brake_range_0_or_100",
+      "name": "TestLapTelemetryFeature.test_lap_telemetry_brake_range_0_or_100",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.024,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLapTelemetryFeature::test_lap_telemetry_gear_and_drs_normalization",
+      "name": "TestLapTelemetryFeature.test_lap_telemetry_gear_and_drs_normalization",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0273,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestTelemetryCompareFeature::test_telemetry_compare_schema_and_200",
+      "name": "TestTelemetryCompareFeature.test_telemetry_compare_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0539,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestTelemetryCompareFeature::test_telemetry_compare_distance_aligned",
+      "name": "TestTelemetryCompareFeature.test_telemetry_compare_distance_aligned",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0551,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestTelemetryCompareFeature::test_telemetry_compare_delta_time_field",
+      "name": "TestTelemetryCompareFeature.test_telemetry_compare_delta_time_field",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0525,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestTelemetryCompareFeature::test_telemetry_compare_driver_lap_times",
+      "name": "TestTelemetryCompareFeature.test_telemetry_compare_driver_lap_times",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0405,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestTelemetryCompareFeature::test_telemetry_compare_trace_metrics",
+      "name": "TestTelemetryCompareFeature.test_telemetry_compare_trace_metrics",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0446,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCareerFeature::test_driver_career_schema_and_200",
+      "name": "TestDriverCareerFeature.test_driver_career_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 1.1533,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCareerFeature::test_driver_career_stats_positive_integers",
+      "name": "TestDriverCareerFeature.test_driver_career_stats_positive_integers",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.513,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCareerFeature::test_driver_career_seasons_summary_list",
+      "name": "TestDriverCareerFeature.test_driver_career_seasons_summary_list",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.4921,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCareerFeature::test_driver_career_teams_list",
+      "name": "TestDriverCareerFeature.test_driver_career_teams_list",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.4857,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCareerFeature::test_driver_career_birth_date_and_nationality",
+      "name": "TestDriverCareerFeature.test_driver_career_birth_date_and_nationality",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.5073,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCompareFeature::test_driver_compare_schema_and_200",
+      "name": "TestDriverCompareFeature.test_driver_compare_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 1.6411,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCompareFeature::test_driver_compare_head_to_head_submodels",
+      "name": "TestDriverCompareFeature.test_driver_compare_head_to_head_submodels",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.8515,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCompareFeature::test_driver_compare_qualifying_winner_label",
+      "name": "TestDriverCompareFeature.test_driver_compare_qualifying_winner_label",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "failed",
+      "duration_sec": 0.7979,
+      "error": "self = <test_tier1_features.TestDriverCompareFeature object at 0x0000023BC5A543E0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_compare_qualifying_winner_label(self, client: TestClient):\n        res = client.get(\"/api/drivers/compare?d1=max_verstappen&d2=norris\")\n        assert res.status_code == 200\n>       assert res.json()[\"qualifying_winner\"] in [\"max_verstappen\", \"norris\", \"TIE\"]\nE       AssertionError: assert 'Max Verstappen' in ['max_verstappen', 'norris', 'TIE']\n\npitwall\\tests\\e2e\\test_tier1_features.py:593: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCompareFeature::test_driver_compare_race_winner_label",
+      "name": "TestDriverCompareFeature.test_driver_compare_race_winner_label",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "failed",
+      "duration_sec": 0.7881,
+      "error": "self = <test_tier1_features.TestDriverCompareFeature object at 0x0000023BC5A54510>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_compare_race_winner_label(self, client: TestClient):\n        res = client.get(\"/api/drivers/compare?d1=max_verstappen&d2=norris\")\n        assert res.status_code == 200\n>       assert res.json()[\"race_finish_winner\"] in [\"max_verstappen\", \"norris\", \"TIE\"]\nE       AssertionError: assert 'Max Verstappen' in ['max_verstappen', 'norris', 'TIE']\n\npitwall\\tests\\e2e\\test_tier1_features.py:598: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCompareFeature::test_driver_compare_season_parameter_optional",
+      "name": "TestDriverCompareFeature.test_driver_compare_season_parameter_optional",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.882,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPitWindowEndpointFeature::test_strategy_pit_window_endpoint_200_and_schema",
+      "name": "TestStrategyPitWindowEndpointFeature.test_strategy_pit_window_endpoint_200_and_schema",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0164,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPitWindowEndpointFeature::test_strategy_pit_window_required_keys",
+      "name": "TestStrategyPitWindowEndpointFeature.test_strategy_pit_window_required_keys",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.5293,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPitWindowEndpointFeature::test_strategy_pit_window_degradation_rate_positive",
+      "name": "TestStrategyPitWindowEndpointFeature.test_strategy_pit_window_degradation_rate_positive",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0147,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPitWindowEndpointFeature::test_strategy_pit_window_bounds_consistency",
+      "name": "TestStrategyPitWindowEndpointFeature.test_strategy_pit_window_bounds_consistency",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0114,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPitWindowEndpointFeature::test_strategy_pit_window_undercut_status_enum",
+      "name": "TestStrategyPitWindowEndpointFeature.test_strategy_pit_window_undercut_status_enum",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0105,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPredictEndpointFeature::test_strategy_predict_endpoint_200_and_schema",
+      "name": "TestStrategyPredictEndpointFeature.test_strategy_predict_endpoint_200_and_schema",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0198,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPredictEndpointFeature::test_strategy_predict_ordering_monotonic",
+      "name": "TestStrategyPredictEndpointFeature.test_strategy_predict_ordering_monotonic",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0178,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPredictEndpointFeature::test_strategy_predict_confidence_scores_bounds",
+      "name": "TestStrategyPredictEndpointFeature.test_strategy_predict_confidence_scores_bounds",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0121,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPredictEndpointFeature::test_strategy_predict_deltas_non_negative",
+      "name": "TestStrategyPredictEndpointFeature.test_strategy_predict_deltas_non_negative",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0141,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestStrategyPredictEndpointFeature::test_strategy_predict_remaining_laps_computed",
+      "name": "TestStrategyPredictEndpointFeature.test_strategy_predict_remaining_laps_computed",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0123,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveTimingFeature::test_live_timing_schema_and_200",
+      "name": "TestLiveTimingFeature.test_live_timing_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0095,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveTimingFeature::test_live_timing_driver_count",
+      "name": "TestLiveTimingFeature.test_live_timing_driver_count",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0073,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveTimingFeature::test_live_timing_leader_gap_string",
+      "name": "TestLiveTimingFeature.test_live_timing_leader_gap_string",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0078,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveTimingFeature::test_live_timing_tyre_compound_and_age",
+      "name": "TestLiveTimingFeature.test_live_timing_tyre_compound_and_age",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0085,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveTimingFeature::test_live_timing_session_status_enum",
+      "name": "TestLiveTimingFeature.test_live_timing_session_status_enum",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0067,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveRaceControlFeature::test_live_race_control_schema_and_200",
+      "name": "TestLiveRaceControlFeature.test_live_race_control_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0084,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveRaceControlFeature::test_live_race_control_safety_car_status_enum",
+      "name": "TestLiveRaceControlFeature.test_live_race_control_safety_car_status_enum",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.5344,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveRaceControlFeature::test_live_race_control_drs_status_enum",
+      "name": "TestLiveRaceControlFeature.test_live_race_control_drs_status_enum",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0103,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveRaceControlFeature::test_live_race_control_messages_list",
+      "name": "TestLiveRaceControlFeature.test_live_race_control_messages_list",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0077,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestLiveRaceControlFeature::test_live_race_control_penalties_list",
+      "name": "TestLiveRaceControlFeature.test_live_race_control_penalties_list",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0106,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitsFeature::test_circuits_list_schema_and_200",
+      "name": "TestCircuitsFeature.test_circuits_list_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0143,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitsFeature::test_circuits_coordinates_lat_long",
+      "name": "TestCircuitsFeature.test_circuits_coordinates_lat_long",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.3264,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitsFeature::test_circuits_length_and_turns_positive",
+      "name": "TestCircuitsFeature.test_circuits_length_and_turns_positive",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0156,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitsFeature::test_circuits_lap_record_fields",
+      "name": "TestCircuitsFeature.test_circuits_lap_record_fields",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.2962,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitsFeature::test_circuits_country_and_locality",
+      "name": "TestCircuitsFeature.test_circuits_country_and_locality",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0078,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitHistoryFeature::test_circuit_history_schema_and_200",
+      "name": "TestCircuitHistoryFeature.test_circuit_history_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.414,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitHistoryFeature::test_circuit_history_past_winners_list",
+      "name": "TestCircuitHistoryFeature.test_circuit_history_past_winners_list",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.3022,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitHistoryFeature::test_circuit_history_past_pole_sitters",
+      "name": "TestCircuitHistoryFeature.test_circuit_history_past_pole_sitters",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.2989,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitHistoryFeature::test_circuit_history_first_held_year",
+      "name": "TestCircuitHistoryFeature.test_circuit_history_first_held_year",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.2902,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestCircuitHistoryFeature::test_circuit_history_races_held_count",
+      "name": "TestCircuitHistoryFeature.test_circuit_history_races_held_count",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.2828,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestNewsFeedFeature::test_news_feed_schema_and_200",
+      "name": "TestNewsFeedFeature.test_news_feed_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.8356,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestNewsFeedFeature::test_news_feed_limit_parameter",
+      "name": "TestNewsFeedFeature.test_news_feed_limit_parameter",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0081,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestNewsFeedFeature::test_news_feed_article_fields",
+      "name": "TestNewsFeedFeature.test_news_feed_article_fields",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0098,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestNewsFeedFeature::test_news_feed_http_links_valid",
+      "name": "TestNewsFeedFeature.test_news_feed_http_links_valid",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0088,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestNewsFeedFeature::test_news_feed_source_attribution",
+      "name": "TestNewsFeedFeature.test_news_feed_source_attribution",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "failed",
+      "duration_sec": 0.01,
+      "error": "self = <test_tier1_features.TestNewsFeedFeature object at 0x0000023BC5A23D10>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_news_feed_source_attribution(self, client: TestClient):\n        res = client.get(\"/api/news\")\n        assert res.status_code == 200\n        for art in res.json()[\"articles\"]:\n>           assert art[\"source\"] in [\"Autosport\", \"Motorsport.com\", \"BBC Sport\", \"RaceFans\"]\nE           AssertionError: assert 'BBC F1' in ['Autosport', 'Motorsport.com', 'BBC Sport', 'RaceFans']\n\npitwall\\tests\\e2e\\test_tier1_features.py:870: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverHistoricalStatsFeature::test_driver_historical_stats_schema_and_200",
+      "name": "TestDriverHistoricalStatsFeature.test_driver_historical_stats_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0066,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverHistoricalStatsFeature::test_driver_historical_stats_sort_by_wins",
+      "name": "TestDriverHistoricalStatsFeature.test_driver_historical_stats_sort_by_wins",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0041,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverHistoricalStatsFeature::test_driver_historical_stats_limit_and_offset",
+      "name": "TestDriverHistoricalStatsFeature.test_driver_historical_stats_limit_and_offset",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0037,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverHistoricalStatsFeature::test_driver_historical_stats_win_percentage_range",
+      "name": "TestDriverHistoricalStatsFeature.test_driver_historical_stats_win_percentage_range",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0054,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverHistoricalStatsFeature::test_driver_historical_stats_championships_count",
+      "name": "TestDriverHistoricalStatsFeature.test_driver_historical_stats_championships_count",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0058,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorHistoricalStatsFeature::test_constructor_historical_stats_schema_and_200",
+      "name": "TestConstructorHistoricalStatsFeature.test_constructor_historical_stats_schema_and_200",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0085,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorHistoricalStatsFeature::test_constructor_historical_stats_sort_by_wins",
+      "name": "TestConstructorHistoricalStatsFeature.test_constructor_historical_stats_sort_by_wins",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0054,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorHistoricalStatsFeature::test_constructor_historical_stats_limit_offset",
+      "name": "TestConstructorHistoricalStatsFeature.test_constructor_historical_stats_limit_offset",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0075,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorHistoricalStatsFeature::test_constructor_historical_stats_win_percentage_range",
+      "name": "TestConstructorHistoricalStatsFeature.test_constructor_historical_stats_win_percentage_range",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0041,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestConstructorHistoricalStatsFeature::test_constructor_historical_stats_championships",
+      "name": "TestConstructorHistoricalStatsFeature.test_constructor_historical_stats_championships",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0084,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestPitWindowAlgorithmUnitFeature::test_pit_window_clean_stint_degradation_calculation",
+      "name": "TestPitWindowAlgorithmUnitFeature.test_pit_window_clean_stint_degradation_calculation",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestPitWindowAlgorithmUnitFeature::test_pit_window_compound_defaults_when_few_laps",
+      "name": "TestPitWindowAlgorithmUnitFeature.test_pit_window_compound_defaults_when_few_laps",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestPitWindowAlgorithmUnitFeature::test_pit_window_undercut_highly_viable_tight_gap",
+      "name": "TestPitWindowAlgorithmUnitFeature.test_pit_window_undercut_highly_viable_tight_gap",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestPitWindowAlgorithmUnitFeature::test_pit_window_undercut_not_viable_large_gap",
+      "name": "TestPitWindowAlgorithmUnitFeature.test_pit_window_undercut_not_viable_large_gap",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestPitWindowAlgorithmUnitFeature::test_pit_window_bounds_earliest_recommended_latest",
+      "name": "TestPitWindowAlgorithmUnitFeature.test_pit_window_bounds_earliest_recommended_latest",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePredictorAlgorithmUnitFeature::test_race_predictor_ordered_predictions",
+      "name": "TestRacePredictorAlgorithmUnitFeature.test_race_predictor_ordered_predictions",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0004,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePredictorAlgorithmUnitFeature::test_race_predictor_confidence_score_range",
+      "name": "TestRacePredictorAlgorithmUnitFeature.test_race_predictor_confidence_score_range",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePredictorAlgorithmUnitFeature::test_race_predictor_fuel_effect_included",
+      "name": "TestRacePredictorAlgorithmUnitFeature.test_race_predictor_fuel_effect_included",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePredictorAlgorithmUnitFeature::test_race_predictor_tyre_age_stint_simulation",
+      "name": "TestRacePredictorAlgorithmUnitFeature.test_race_predictor_tyre_age_stint_simulation",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0004,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePredictorAlgorithmUnitFeature::test_race_predictor_zero_remaining_laps_handled",
+      "name": "TestRacePredictorAlgorithmUnitFeature.test_race_predictor_zero_remaining_laps_handled",
+      "file": "test_tier1_features.py",
+      "tier": "Tier 1",
+      "outcome": "passed",
+      "duration_sec": 0.0004,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestEmptyResponsesAndCollections::test_laps_empty_when_no_driver_matches",
+      "name": "TestEmptyResponsesAndCollections.test_laps_empty_when_no_driver_matches",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.0073,
+      "error": "self = <test_tier2_boundaries.TestEmptyResponsesAndCollections object at 0x0000023BC5A2F890>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_laps_empty_when_no_driver_matches(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/laps?driver_number=999\")\n        assert res.status_code == 200\n        data = res.json()\n        assert \"laps\" in data\n>       assert len(data[\"laps\"]) == 0\nE       AssertionError: assert 20 == 0\nE        +  where 20 = len([{'lap_number': 1, 'driver_number': 999, 'lap_duration': 92.85, 'duration_sector_1': 27.855, ...}, {'lap_number': 2, '..._1': 27.915, ...}, {'lap_number': 6, 'driver_number': 999, 'lap_duration': 93.1, 'duration_sector_1': 27.93, ...}, ...])\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:21: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestEmptyResponsesAndCollections::test_stints_empty_when_nonexistent_driver",
+      "name": "TestEmptyResponsesAndCollections.test_stints_empty_when_nonexistent_driver",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.5038,
+      "error": "self = <test_tier2_boundaries.TestEmptyResponsesAndCollections object at 0x0000023BC5A2FB10>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_stints_empty_when_nonexistent_driver(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/stints?driver_number=999\")\n        assert res.status_code == 200\n        data = res.json()\n        assert \"stints\" in data\n>       assert len(data[\"stints\"]) == 0\nE       AssertionError: assert 2 == 0\nE        +  where 2 = len([{'driver_number': 999, 'driver_name': None, 'stint_number': 1, 'lap_start': 1, ...}, {'driver_number': 999, 'driver_name': None, 'stint_number': 2, 'lap_start': 23, ...}])\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:28: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestEmptyResponsesAndCollections::test_news_limit_zero_returns_empty_articles",
+      "name": "TestEmptyResponsesAndCollections.test_news_limit_zero_returns_empty_articles",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.0101,
+      "error": "self = <test_tier2_boundaries.TestEmptyResponsesAndCollections object at 0x0000023BC5A56060>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_news_limit_zero_returns_empty_articles(self, client: TestClient):\n        res = client.get(\"/api/news?limit=0\")\n        assert res.status_code == 200\n        data = res.json()\n>       assert data[\"count\"] == 0\nE       assert 4 == 0\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:34: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestEmptyResponsesAndCollections::test_stats_offset_beyond_total",
+      "name": "TestEmptyResponsesAndCollections.test_stats_offset_beyond_total",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0053,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_standings_drivers_invalid_season_404",
+      "name": "TestHttp404NotFoundHandling.test_standings_drivers_invalid_season_404",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.0084,
+      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A2FC50>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_standings_drivers_invalid_season_404(self, client: TestClient):\n        res = client.get(\"/api/standings/drivers/1899\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:51: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_standings_constructors_invalid_season_404",
+      "name": "TestHttp404NotFoundHandling.test_standings_constructors_invalid_season_404",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.3041,
+      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A2FD90>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_standings_constructors_invalid_season_404(self, client: TestClient):\n        res = client.get(\"/api/standings/constructors/invalid\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:56: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_races_calendar_invalid_season_404",
+      "name": "TestHttp404NotFoundHandling.test_races_calendar_invalid_season_404",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.0083,
+      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A562C0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_races_calendar_invalid_season_404(self, client: TestClient):\n        res = client.get(\"/api/races/1899\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:61: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_race_results_invalid_round_404",
+      "name": "TestHttp404NotFoundHandling.test_race_results_invalid_round_404",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.299,
+      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A563F0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_results_invalid_round_404(self, client: TestClient):\n        res = client.get(\"/api/races/2024/99/results\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:66: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_driver_career_unknown_driver_404",
+      "name": "TestHttp404NotFoundHandling.test_driver_career_unknown_driver_404",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.6174,
+      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A768D0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_career_unknown_driver_404(self, client: TestClient):\n        res = client.get(\"/api/drivers/ghost/career\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:71: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_circuit_history_unknown_circuit_404",
+      "name": "TestHttp404NotFoundHandling.test_circuit_history_unknown_circuit_404",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.2792,
+      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC59ED590>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_circuit_history_unknown_circuit_404(self, client: TestClient):\n        res = client.get(\"/api/circuits/atlantis/history\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:76: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_lap_telemetry_unknown_session_key_404",
+      "name": "TestHttp404NotFoundHandling.test_lap_telemetry_unknown_session_key_404",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.0108,
+      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC59ED480>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_lap_telemetry_unknown_session_key_404(self, client: TestClient):\n        res = client.get(\"/api/telemetry/999999/1/18\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:81: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestNumericBoundariesAndZeroDivisions::test_pit_window_zero_variance_identical_lap_times",
+      "name": "TestNumericBoundariesAndZeroDivisions.test_pit_window_zero_variance_identical_lap_times",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0008,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestNumericBoundariesAndZeroDivisions::test_pit_window_negative_slope_track_evolution",
+      "name": "TestNumericBoundariesAndZeroDivisions.test_pit_window_negative_slope_track_evolution",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestNumericBoundariesAndZeroDivisions::test_pit_window_single_lap_stint",
+      "name": "TestNumericBoundariesAndZeroDivisions.test_pit_window_single_lap_stint",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestNumericBoundariesAndZeroDivisions::test_pit_window_empty_lap_times_array",
+      "name": "TestNumericBoundariesAndZeroDivisions.test_pit_window_empty_lap_times_array",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0001,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestNumericBoundariesAndZeroDivisions::test_pit_window_extreme_pit_loss_times",
+      "name": "TestNumericBoundariesAndZeroDivisions.test_pit_window_extreme_pit_loss_times",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0001,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestRaceProgressionBoundaries::test_race_predictor_zero_remaining_laps",
+      "name": "TestRaceProgressionBoundaries.test_race_predictor_zero_remaining_laps",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestRaceProgressionBoundaries::test_race_predictor_lap_zero_race_start",
+      "name": "TestRaceProgressionBoundaries.test_race_predictor_lap_zero_race_start",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestRaceProgressionBoundaries::test_race_predictor_single_driver_grid",
+      "name": "TestRaceProgressionBoundaries.test_race_predictor_single_driver_grid",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestRaceProgressionBoundaries::test_race_predictor_empty_grid_returns_empty",
+      "name": "TestRaceProgressionBoundaries.test_race_predictor_empty_grid_returns_empty",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestRaceProgressionBoundaries::test_pit_window_tyre_age_exceeding_cliff",
+      "name": "TestRaceProgressionBoundaries.test_pit_window_tyre_age_exceeding_cliff",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0002,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestExtremeGapsAndIntervals::test_race_gaps_extreme_gap_over_60_seconds",
+      "name": "TestExtremeGapsAndIntervals.test_race_gaps_extreme_gap_over_60_seconds",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.4126,
+      "error": "self = <test_tier2_boundaries.TestExtremeGapsAndIntervals object at 0x0000023BC5A94410>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_gaps_extreme_gap_over_60_seconds(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/gaps\")\n        assert res.status_code == 200\n        intervals = res.json()[\"intervals\"]\n        lapped_car = [i for i in intervals if i[\"interval\"] == \"+1 LAP\"]\n>       assert len(lapped_car) > 0\nE       assert 0 > 0\nE        +  where 0 = len([])\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:209: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestExtremeGapsAndIntervals::test_race_gaps_zero_second_photo_finish",
+      "name": "TestExtremeGapsAndIntervals.test_race_gaps_zero_second_photo_finish",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.5049,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestExtremeGapsAndIntervals::test_pit_window_leading_car_no_gap_ahead",
+      "name": "TestExtremeGapsAndIntervals.test_pit_window_leading_car_no_gap_ahead",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestSpecialCharactersAndSanitization::test_driver_id_with_special_characters_handled",
+      "name": "TestSpecialCharactersAndSanitization.test_driver_id_with_special_characters_handled",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.5661,
+      "error": "self = <test_tier2_boundaries.TestSpecialCharactersAndSanitization object at 0x0000023BC5A94690>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_id_with_special_characters_handled(self, client: TestClient):\n        res = client.get(\"/api/drivers/unknown_driver/career\")\n>       assert res.status_code in [404, 400]\nE       assert 200 in [404, 400]\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:234: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestSpecialCharactersAndSanitization::test_sql_injection_probe_in_season_path",
+      "name": "TestSpecialCharactersAndSanitization.test_sql_injection_probe_in_season_path",
+      "file": "test_tier2_boundaries.py",
+      "tier": "Tier 2",
+      "outcome": "failed",
+      "duration_sec": 0.0069,
+      "error": "self = <test_tier2_boundaries.TestSpecialCharactersAndSanitization object at 0x0000023BC5A947D0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_sql_injection_probe_in_season_path(self, client: TestClient):\n        res = client.get(\"/api/standings/drivers/2024'%20OR%201=1;--\")\n>       assert res.status_code in [404, 400]\nE       assert 200 in [404, 400]\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:238: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestQualifyingToRaceResultsIntegration::test_qualifying_pole_matches_race_grid_p1",
+      "name": "TestQualifyingToRaceResultsIntegration.test_qualifying_pole_matches_race_grid_p1",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0127,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestQualifyingToRaceResultsIntegration::test_qualifying_top_10_grid_consistency",
+      "name": "TestQualifyingToRaceResultsIntegration.test_qualifying_top_10_grid_consistency",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0075,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestRaceResultsToStandingsIntegration::test_race_winner_points_reflected_in_driver_standings",
+      "name": "TestRaceResultsToStandingsIntegration.test_race_winner_points_reflected_in_driver_standings",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0107,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestRaceResultsToStandingsIntegration::test_driver_points_aggregate_to_constructor_standings",
+      "name": "TestRaceResultsToStandingsIntegration.test_driver_points_aggregate_to_constructor_standings",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0132,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestRaceResultsToPositionChangesIntegration::test_final_lap_position_matches_race_result",
+      "name": "TestRaceResultsToPositionChangesIntegration.test_final_lap_position_matches_race_result",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "failed",
+      "duration_sec": 0.0148,
+      "error": "self = <test_tier3_combinations.TestRaceResultsToPositionChangesIntegration object at 0x0000023BC5A94E10>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_final_lap_position_matches_race_result(self, client: TestClient):\n        r_res = client.get(\"/api/races/2024/1/results\")\n        assert r_res.status_code == 200\n        results = r_res.json()[\"results\"]\n        winner = results[0]\n    \n        p_res = client.get(\"/api/races/2024/1/positions\")\n        assert p_res.status_code == 200\n        positions = p_res.json()[\"positions\"]\n    \n        # Check winner is P1 in positions\n        winner_positions = [p for p in positions if p[\"driver_number\"] == winner[\"driver_number\"]]\n        assert len(winner_positions) > 0\n>       assert winner_positions[-1][\"position\"] == winner[\"position\"]\nE       assert 5 == 1\n\npitwall\\tests\\e2e\\test_tier3_combinations.py:99: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestTelemetryCompareToDeltaTimeIntegration::test_telemetry_compare_delta_corresponds_to_lap_times",
+      "name": "TestTelemetryCompareToDeltaTimeIntegration.test_telemetry_compare_delta_corresponds_to_lap_times",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0838,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestTelemetryCompareToDeltaTimeIntegration::test_telemetry_distance_trace_monotonic_alignment",
+      "name": "TestTelemetryCompareToDeltaTimeIntegration.test_telemetry_distance_trace_monotonic_alignment",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0222,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestStintsPitStopsPitWindowPipeline::test_stint_transition_aligns_with_pit_stop_lap",
+      "name": "TestStintsPitStopsPitWindowPipeline.test_stint_transition_aligns_with_pit_stop_lap",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.8369,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestStintsPitStopsPitWindowPipeline::test_stint_compound_feeds_pit_window_detection",
+      "name": "TestStintsPitStopsPitWindowPipeline.test_stint_compound_feeds_pit_window_detection",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0116,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestPitWindowToPredictorIntegration::test_pit_window_recommended_lap_influences_prediction",
+      "name": "TestPitWindowToPredictorIntegration.test_pit_window_recommended_lap_influences_prediction",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0003,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestLiveRaceControlToTimingIntegration::test_live_session_and_race_control_session_key_match",
+      "name": "TestLiveRaceControlToTimingIntegration.test_live_session_and_race_control_session_key_match",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.0115,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestCircuitDirectoryToCalendarIntegration::test_calendar_circuits_resolve_in_circuit_directory",
+      "name": "TestCircuitDirectoryToCalendarIntegration.test_calendar_circuits_resolve_in_circuit_directory",
+      "file": "test_tier3_combinations.py",
+      "tier": "Tier 3",
+      "outcome": "passed",
+      "duration_sec": 0.3133,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier4_scenarios.py::TestGrandPrixWeekendSimulation::test_complete_grand_prix_weekend_flow",
+      "name": "TestGrandPrixWeekendSimulation.test_complete_grand_prix_weekend_flow",
+      "file": "test_tier4_scenarios.py",
+      "tier": "Tier 4",
+      "outcome": "failed",
+      "duration_sec": 0.0348,
+      "error": "self = <test_tier4_scenarios.TestGrandPrixWeekendSimulation object at 0x0000023BC5A95810>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_complete_grand_prix_weekend_flow(self, client: TestClient):\n        # Step 1: Circuit Verification\n        circuit_res = client.get(\"/api/circuits\")\n        assert circuit_res.status_code == 200\n        circuits = circuit_res.json()[\"circuits\"]\n        bahrain = next(c for c in circuits if c[\"circuit_id\"] == \"bahrain\")\n        assert bahrain[\"turns\"] == 15\n        assert bahrain[\"length_km\"] > 5.0\n    \n        # Step 2: Weather Monitoring\n        weather_res = client.get(\"/api/races/2024/1/weather\")\n        assert weather_res.status_code == 200\n        weather_points = weather_res.json()[\"weather_points\"]\n        assert len(weather_points) > 0\n        assert weather_points[0][\"rainfall\"] == 0  # Dry race\n    \n        # Step 3: Saturday Qualifying Shootout\n        quali_res = client.get(\"/api/qualifying/2024/1\")\n        assert quali_res.status_code == 200\n        quali_results = quali_res.json()[\"qualifying_results\"]\n        assert quali_results[0][\"position\"] == 1\n        pole_driver = quali_results[0][\"driver_code\"]\n    \n        # Step 4: Sunday Race Stints Strategy\n        stints_res = client.get(\"/api/races/2024/1/stints?driver_number=1\")\n        assert stints_res.status_code == 200\n        ver_stints = stints_res.json()[\"stints\"]\n        assert len(ver_stints) >= 2  # At least 1 pit stop executed\n>       assert ver_stints[0][\"compound\"] == \"SOFT\"\nE       AssertionError: assert 'HARD' == 'SOFT'\nE         \nE         - SOFT\nE         + HARD\n\npitwall\\tests\\e2e\\test_tier4_scenarios.py:45: AssertionError"
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier4_scenarios.py::TestSafetyCarLifecycleScenario::test_safety_car_incident_lifecycle",
+      "name": "TestSafetyCarLifecycleScenario.test_safety_car_incident_lifecycle",
+      "file": "test_tier4_scenarios.py",
+      "tier": "Tier 4",
+      "outcome": "passed",
+      "duration_sec": 0.0066,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier4_scenarios.py::TestUndercutStrategyBattleScenario::test_undercut_success_scenario",
+      "name": "TestUndercutStrategyBattleScenario.test_undercut_success_scenario",
+      "file": "test_tier4_scenarios.py",
+      "tier": "Tier 4",
+      "outcome": "passed",
+      "duration_sec": 0.0009,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier4_scenarios.py::TestUndercutStrategyBattleScenario::test_undercut_failure_scenario",
+      "name": "TestUndercutStrategyBattleScenario.test_undercut_failure_scenario",
+      "file": "test_tier4_scenarios.py",
+      "tier": "Tier 4",
+      "outcome": "passed",
+      "duration_sec": 0.0004,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier4_scenarios.py::TestMultiDriverTelemetryOverlayScenario::test_multi_driver_telemetry_traces",
+      "name": "TestMultiDriverTelemetryOverlayScenario.test_multi_driver_telemetry_traces",
+      "file": "test_tier4_scenarios.py",
+      "tier": "Tier 4",
+      "outcome": "passed",
+      "duration_sec": 0.0239,
+      "error": null
+    },
+    {
+      "node_id": "pitwall/tests/e2e/test_tier4_scenarios.py::TestLiveTimingReplayEngineScenario::test_live_timing_replay_scrubber_progression",
+      "name": "TestLiveTimingReplayEngineScenario.test_live_timing_replay_scrubber_progression",
+      "file": "test_tier4_scenarios.py",
+      "tier": "Tier 4",
+      "outcome": "passed",
+      "duration_sec": 0.0406,
+      "error": null
+    }
+  ]
+}

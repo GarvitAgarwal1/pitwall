@@ -1,0 +1,128 @@
+{
+  "verdict": "APPROVE",
+  "deterministic": {
+    "total_tests": 22,
+    "passed": 22,
+    "failed": 0,
+    "results": [
+      {
+        "name": "PW_01_SingleLapTime",
+        "status": "PASSED",
+        "duration_ms": 0.08
+      },
+      {
+        "name": "PW_02_ZeroLapTimes",
+        "status": "PASSED",
+        "duration_ms": 0.03
+      },
+      {
+        "name": "PW_03_1000LapTimesStress",
+        "status": "PASSED",
+        "duration_ms": 1.13
+      },
+      {
+        "name": "PW_04_IdenticalLapTimesZeroVariance",
+        "status": "PASSED",
+        "duration_ms": 0.06
+      },
+      {
+        "name": "PW_05_InverseDegradationFasterLaps",
+        "status": "PASSED",
+        "duration_ms": 0.04
+      },
+      {
+        "name": "PW_06_ExtremeDegradationHighWear",
+        "status": "PASSED",
+        "duration_ms": 0.03
+      },
+      {
+        "name": "PW_07_TyreAgeWayPastCliff_Soft60",
+        "status": "PASSED",
+        "duration_ms": 0.02
+      },
+      {
+        "name": "PW_08_TyreAgeWayPastCliff_Hard100",
+        "status": "PASSED",
+        "duration_ms": 0.02
+      },
+      {
+        "name": "PW_09_NegativeGaps",
+        "status": "PASSED",
+        "duration_ms": 0.02
+      },
+      {
+        "name": "PW_10_ZeroRemainingLaps",
+        "status": "PASSED",
+        "duration_ms": 0.01
+      },
+      {
+        "name": "PW_11_InfinitePitLossTime",
+        "status": "PASSED",
+        "duration_ms": 0.02
+      },
+      {
+        "name": "PW_12_NaNPitLossTime",
+        "status": "PASSED",
+        "duration_ms": 0.02
+      },
+      {
+        "name": "PW_13_DirtyCorruptedLapTimes",
+        "status": "PASSED",
+        "duration_ms": 0.03
+      },
+      {
+        "name": "RP_01_SingleDriverRace",
+        "status": "PASSED",
+        "duration_ms": 0.27
+      },
+      {
+        "name": "RP_02_24DriversRace",
+        "status": "PASSED",
+        "duration_ms": 4.89
+      },
+      {
+        "name": "RP_03_AllDriversIdenticalLapsAndGaps",
+        "status": "PASSED",
+        "duration_ms": 0.63
+      },
+      {
+        "name": "RP_04_ExtremeLapDisparity_0_vs_70_Laps",
+        "status": "PASSED",
+        "duration_ms": 0.17
+      },
+      {
+        "name": "RP_05_FinalLapOfRace",
+        "status": "PASSED",
+        "duration_ms": 0.05
+      },
+      {
+        "name": "RP_06_RaceAlreadyCompleted",
+        "status": "PASSED",
+        "duration_ms": 0.04
+      },
+      {
+        "name": "RP_07_Leader2LapsAheadOfField",
+        "status": "PASSED",
+        "duration_ms": 0.22
+      },
+      {
+        "name": "RP_08_CompletelyEmptyLapTimeHistories",
+        "status": "PASSED",
+        "duration_ms": 0.07
+      },
+      {
+        "name": "RP_09_EmptyPositionsReturnsEmpty",
+        "status": "PASSED",
+        "duration_ms": 0.0
+      }
+    ]
+  },
+  "fuzzing": {
+    "iterations": 1000,
+    "elapsed_seconds": 1.595,
+    "pit_window_violations": 0,
+    "race_predictor_violations": 0,
+    "unhandled_exceptions": 0,
+    "pass_rate_pct": 100.0
+  }
+}
