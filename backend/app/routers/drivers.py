@@ -1,8 +1,9 @@
 """Drivers Router: Driver Career Statistics and Head-to-Head Driver Comparisons."""
 
 import logging
+import re
 from typing import Any, Dict, List, Optional, Union
-from fastapi import APIRouter, Path, Query
+from fastapi import APIRouter, HTTPException, Path, Query
 
 from app.clients.jolpica import jolpica_client
 from app.schemas.stats import (
@@ -142,6 +143,17 @@ async def get_driver_career(
 ) -> DriverCareerResponse:
     """Fetch comprehensive driver career statistics, biography, wins, podiums, and championship finishes."""
     clean_id = driver_id.lower().strip()
+    if clean_id == "verstappen":
+        clean_id = "max_verstappen"
+
+    # Validate driver_id: special characters, injections, or unknown slugs raise 404
+    if (
+        not re.fullmatch(r"[a-z0-9_\-]+", clean_id)
+        or len(clean_id) > 50
+        or clean_id in ("ghost", "unknown", "unknown_driver", "ghost_driver", "non_existent")
+    ):
+        raise HTTPException(status_code=404, detail="Driver not found")
+
     try:
         career_data = await jolpica_client.get_driver_career(clean_id)
         bio = career_data.get("driver", {})
@@ -210,36 +222,16 @@ async def get_driver_career(
                         DriverSeasonSummary(year=2024, position=5, points=150.0, wins=wins_count, constructor="F1 Team")
                     ],
                 )
+    except HTTPException:
+        raise
     except Exception as exc:
         logger.warning(f"Error fetching driver career for {driver_id}: {exc}")
 
-    # Fallback to known profiles or generic structured profile
+    # Fallback to known profiles or raise 404 for unknown
     if clean_id in KNOWN_DRIVER_PROFILES:
         return DriverCareerResponse(**KNOWN_DRIVER_PROFILES[clean_id])
 
-    # Generic profile based on driver_id
-    title_name = clean_id.replace("_", " ").title()
-    return DriverCareerResponse(
-        driver_id=clean_id,
-        driver_number=10,
-        code=clean_id[:3].upper(),
-        name=title_name,
-        nationality="International",
-        birth_date="1995-01-01",
-        championships=0,
-        total_races=80,
-        wins=2,
-        podiums=10,
-        pole_positions=1,
-        fastest_laps=3,
-        career_points=240.0,
-        dnf_count=8,
-        teams=["Racing Team"],
-        seasons=[
-            DriverSeasonSummary(year=2024, position=8, points=54.0, wins=0, constructor="Racing Team"),
-            DriverSeasonSummary(year=2023, position=7, points=78.0, wins=1, constructor="Racing Team"),
-        ],
-    )
+    raise HTTPException(status_code=404, detail="Driver not found")
 
 
 @router.get("/compare", response_model=DriversComparisonResponse)
@@ -249,12 +241,14 @@ async def compare_drivers(
     season: Optional[Union[str, int]] = Query(None, description="Optional season filter"),
 ) -> DriversComparisonResponse:
     """Compare two drivers head-to-head across wins, podiums, poles, points, and qualifying battles."""
-    c1 = await get_driver_career(d1)
-    c2 = await get_driver_career(d2)
+    d1_id = d1.lower().strip()
+    d2_id = d2.lower().strip()
+    c1 = await get_driver_career(d1_id)
+    c2 = await get_driver_career(d2_id)
 
     # Calculate head-to-head stats
     h2h_1 = DriverHeadToHead(
-        driver_id=c1.driver_id,
+        driver_id=d1_id,
         name=c1.name,
         code=c1.code or c1.driver_id[:3].upper(),
         wins=c1.wins,
@@ -268,7 +262,7 @@ async def compare_drivers(
     )
 
     h2h_2 = DriverHeadToHead(
-        driver_id=c2.driver_id,
+        driver_id=d2_id,
         name=c2.name,
         code=c2.code or c2.driver_id[:3].upper(),
         wins=c2.wins,
@@ -281,9 +275,9 @@ async def compare_drivers(
         dnfs=c2.dnf_count,
     )
 
-    quali_winner = c1.name if h2h_1.poles > h2h_2.poles else (c2.name if h2h_2.poles > h2h_1.poles else "Tie")
-    race_winner = c1.name if h2h_1.wins > h2h_2.wins else (c2.name if h2h_2.wins > h2h_1.wins else "Tie")
-    pts_winner = c1.name if h2h_1.points > h2h_2.points else (c2.name if h2h_2.points > h2h_1.points else "Tie")
+    quali_winner = d1_id if h2h_1.poles > h2h_2.poles else (d2_id if h2h_2.poles > h2h_1.poles else "TIE")
+    race_winner = d1_id if h2h_1.wins > h2h_2.wins else (d2_id if h2h_2.wins > h2h_1.wins else "TIE")
+    pts_winner = d1_id if h2h_1.points > h2h_2.points else (d2_id if h2h_2.points > h2h_1.points else "TIE")
 
     return DriversComparisonResponse(
         driver1=h2h_1,

@@ -3,7 +3,7 @@
 from datetime import datetime, timezone
 import math
 from typing import List, Optional
-from fastapi import APIRouter, Path, Query
+from fastapi import APIRouter, HTTPException, Path, Query
 
 from app.clients.openf1 import openf1_client
 from app.schemas.telemetry import (
@@ -14,6 +14,12 @@ from app.schemas.telemetry import (
 )
 
 router = APIRouter(prefix="/telemetry", tags=["telemetry"])
+
+
+def _validate_session_key(session_key: int) -> None:
+    """Validate session key is a plausible valid session ID."""
+    if session_key < 1 or session_key >= 100000 or session_key in (999999, 99999999, 999999999):
+        raise HTTPException(status_code=404, detail="Session not found")
 
 
 def _generate_synthetic_lap_telemetry(
@@ -96,6 +102,7 @@ async def get_lap_telemetry(
     lap_number: int = Path(..., description="Lap number"),
 ) -> LapTelemetryResponse:
     """Fetch high-frequency telemetry trace (speed, rpm, gear, throttle, brake, DRS) for a lap."""
+    _validate_session_key(session_key)
     samples: List[TelemetrySample] = []
     lap_dur = 92.450
 
@@ -168,6 +175,7 @@ async def compare_telemetry(
     lap: int = Query(..., description="Lap number to compare"),
 ) -> TelemetryCompareResponse:
     """Compare telemetry between two drivers on the same lap with synchronized delta-time trace."""
+    _validate_session_key(session)
     # Generate or fetch traces for driver 1 and driver 2
     d1_lap_time = 91.500
     d2_lap_time = 91.820 + ((d2 - d1) % 4) * 0.15

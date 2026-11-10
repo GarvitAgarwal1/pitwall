@@ -36,7 +36,7 @@ FALLBACK_NEWS = [
         "link": "https://www.bbc.co.uk/sport/formula1/68912345",
         "description": "Three-time world champion describes crucial tyre management during torrential rain stint.",
         "pub_date": "Sun, 03 Nov 2024 12:00:00 GMT",
-        "source": "BBC F1",
+        "source": "BBC Sport",
         "thumbnail_url": "https://ichef.bbci.co.uk/news/verstappen.jpg",
     },
     {
@@ -53,20 +53,26 @@ FALLBACK_NEWS = [
 @router.get("", response_model=NewsFeedResponse)
 async def get_news(
     limit: int = Query(20, description="Max news articles to return"),
-    source: str = Query("all", description="News source filter: 'all', 'Autosport', 'Motorsport.com', 'BBC F1'"),
+    source: str = Query("all", description="News source filter: 'all', 'Autosport', 'Motorsport.com', 'BBC Sport'"),
 ) -> NewsFeedResponse:
     """Fetch latest aggregated Formula 1 news with thumbnails and publication timestamps."""
+    if limit == 0:
+        return NewsFeedResponse(count=0, articles=[])
+
     articles_list: List[NewsArticleItem] = []
     try:
         raw_news = await rss_client.get_news(limit=limit, source=source)
         for item in raw_news:
+            src = item.get("source", "Motorsport News")
+            if src == "BBC F1":
+                src = "BBC Sport"
             articles_list.append(
                 NewsArticleItem(
                     title=item.get("title", "Untitled Article"),
                     link=item.get("link", ""),
                     description=item.get("description", ""),
                     pub_date=item.get("pub_date") or item.get("pubDate", ""),
-                    source=item.get("source", "Motorsport News"),
+                    source=src,
                     thumbnail_url=item.get("thumbnail_url") or item.get("image_url"),
                 )
             )
@@ -76,6 +82,10 @@ async def get_news(
     if not articles_list:
         articles_list = [NewsArticleItem(**item) for item in FALLBACK_NEWS]
         if source != "all":
-            articles_list = [a for a in articles_list if a.source.lower() == source.lower()]
+            articles_list = [
+                a for a in articles_list
+                if a.source.lower() in (source.lower(), "bbc sport" if source.lower() == "bbc f1" else "")
+            ]
 
-    return NewsFeedResponse(count=len(articles_list), articles=articles_list[:limit])
+    limited = articles_list[:limit]
+    return NewsFeedResponse(count=len(limited), articles=limited)

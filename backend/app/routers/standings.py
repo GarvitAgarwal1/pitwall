@@ -44,11 +44,28 @@ FALLBACK_CONSTRUCTOR_STANDINGS: List[Dict[str, Any]] = [
 ]
 
 
+import re
+
+def _validate_season(season: str) -> None:
+    """Validate season is 'current' or a 4-digit year between 1950 and 2026."""
+    if season == "current":
+        return
+    if not isinstance(season, str) or not re.fullmatch(r"\d{4}", season):
+        raise HTTPException(status_code=404, detail="Season not found")
+    try:
+        year = int(season)
+        if year < 1950 or year > 2026:
+            raise HTTPException(status_code=404, detail="Season not found")
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+
 @router.get("/drivers/{season}", response_model=DriverStandingsResponse)
 async def get_driver_standings(
     season: str = Path(..., description="Championship season year, e.g. '2024' or 'current'"),
 ) -> DriverStandingsResponse:
     """Fetch World Drivers' Championship standings for a given season."""
+    _validate_season(season)
     try:
         data = await jolpica_client.get_driver_standings(season)
         standings_lists = data.get("StandingsTable", {}).get("StandingsLists", [])
@@ -61,8 +78,8 @@ async def get_driver_standings(
                 constructors = item.get("Constructors", [])
                 constructor = constructors[0] if constructors else {}
 
-                perm_num = driver.get("permanentNumber")
-                driver_num = int(perm_num) if perm_num and perm_num.isdigit() else None
+                perm_num = driver.get("permanentNumber") or item.get("permanentNumber") or item.get("number")
+                driver_num = int(perm_num) if perm_num and str(perm_num).isdigit() else None
 
                 items.append(
                     DriverStandingItem(
@@ -94,6 +111,7 @@ async def get_constructor_standings(
     season: str = Path(..., description="Championship season year, e.g. '2024' or 'current'"),
 ) -> ConstructorStandingsResponse:
     """Fetch World Constructors' Championship standings for a given season."""
+    _validate_season(season)
     try:
         data = await jolpica_client.get_constructor_standings(season)
         standings_lists = data.get("StandingsTable", {}).get("StandingsLists", [])

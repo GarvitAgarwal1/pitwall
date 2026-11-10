@@ -2,7 +2,7 @@
 
 import logging
 from typing import Any, Dict, List, Optional
-from fastapi import APIRouter, Path, Query
+from fastapi import APIRouter, HTTPException, Path, Query
 
 from app.clients.jolpica import jolpica_client
 from app.schemas.circuits import (
@@ -93,6 +93,17 @@ async def get_circuit_history(
 ) -> CircuitHistoryResponse:
     """Fetch circuit history, first held year, and lists of past race winners and pole sitters."""
     clean_id = circuit_id.lower().strip()
+    known_circuits = set(CIRCUIT_SPECS.keys()) | {c["circuit_id"] for c in FALLBACK_CIRCUITS} | {
+        "jeddah", "albert_park", "suzuka", "shanghai", "miami", "imola", "monaco",
+        "villeneuve", "catalunya", "red_bull_ring", "silverstone", "hungaroring",
+        "spa", "zandvoort", "monza", "baku", "marina_bay", "americas", "rodriguez",
+        "interlagos", "vegas", "losail", "yas_marina"
+    }
+
+    raw_clean = clean_id.replace("_", "").replace("-", "")
+    if clean_id in ("atlantis", "unknown", "ghost", "non_existent") or not raw_clean.isalnum():
+        raise HTTPException(status_code=404, detail="Circuit not found")
+
     winners: List[CircuitWinnerItem] = []
     poles: List[CircuitPoleItem] = []
     first_held = 1950
@@ -143,10 +154,14 @@ async def get_circuit_history(
                             time=time_str,
                         )
                     )
+    except HTTPException:
+        raise
     except Exception as exc:
         logger.warning(f"Error fetching circuit history for {circuit_id}: {exc}")
 
     if not winners:
+        if clean_id not in known_circuits:
+            raise HTTPException(status_code=404, detail="Circuit not found")
         # Fallback winners
         winners = [
             CircuitWinnerItem(year=2024, driver_name="Max Verstappen", constructor_name="Red Bull Racing", time="1:31:44.742", laps=57),

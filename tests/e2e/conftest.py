@@ -1016,20 +1016,281 @@ def create_reference_app() -> FastAPI:
 # Pytest Fixtures
 # ---------------------------------------------------------------------------
 
+from unittest.mock import AsyncMock, patch
+
+@pytest.fixture(scope="session", autouse=True)
+def hermetic_client_mocks():
+    """
+    Hermetic offline mocking fixture.
+    Patches external client network methods on openf1_client, jolpica_client, and rss_client
+    to guarantee zero external network calls, no HTTP 429 rate limit errors, and no closed event loop errors.
+    """
+    from app.clients.jolpica import jolpica_client
+    from app.clients.openf1 import openf1_client
+    from app.clients.rss import rss_client
+
+    async def mock_get_driver_standings(season: str = "current"):
+        yr = "2024" if season == "current" else season
+        drivers_data = [
+            {"position": "1", "points": "437.0", "wins": "9", "permanentNumber": "1", "Driver": {"driverId": "max_verstappen", "code": "VER", "givenName": "Max", "familyName": "Verstappen", "nationality": "Dutch", "permanentNumber": "1"}, "Constructors": [{"constructorId": "red_bull", "name": "Red Bull Racing"}]},
+            {"position": "2", "points": "374.0", "wins": "3", "permanentNumber": "4", "Driver": {"driverId": "norris", "code": "NOR", "givenName": "Lando", "familyName": "Norris", "nationality": "British", "permanentNumber": "4"}, "Constructors": [{"constructorId": "mclaren", "name": "McLaren"}]},
+            {"position": "3", "points": "356.0", "wins": "3", "permanentNumber": "16", "Driver": {"driverId": "leclerc", "code": "LEC", "givenName": "Charles", "familyName": "Leclerc", "nationality": "Monegasque", "permanentNumber": "16"}, "Constructors": [{"constructorId": "ferrari", "name": "Ferrari"}]},
+            {"position": "4", "points": "292.0", "wins": "2", "permanentNumber": "81", "Driver": {"driverId": "piastri", "code": "PIA", "givenName": "Oscar", "familyName": "Piastri", "nationality": "Australian", "permanentNumber": "81"}, "Constructors": [{"constructorId": "mclaren", "name": "McLaren"}]},
+            {"position": "5", "points": "290.0", "wins": "2", "permanentNumber": "55", "Driver": {"driverId": "sainz", "code": "SAI", "givenName": "Carlos", "familyName": "Sainz", "nationality": "Spanish", "permanentNumber": "55"}, "Constructors": [{"constructorId": "ferrari", "name": "Ferrari"}]},
+        ]
+        return {"StandingsTable": {"season": yr, "round": "24", "StandingsLists": [{"season": yr, "round": "24", "DriverStandings": drivers_data}]}}
+
+    async def mock_get_constructor_standings(season: str = "current"):
+        yr = "2024" if season == "current" else season
+        teams_data = [
+            {"position": "1", "points": "666.0", "wins": "5", "Constructor": {"constructorId": "mclaren", "name": "McLaren", "nationality": "British"}},
+            {"position": "2", "points": "652.0", "wins": "5", "Constructor": {"constructorId": "ferrari", "name": "Ferrari", "nationality": "Italian"}},
+            {"position": "3", "points": "589.0", "wins": "9", "Constructor": {"constructorId": "red_bull", "name": "Red Bull Racing", "nationality": "Austrian"}},
+            {"position": "4", "points": "468.0", "wins": "4", "Constructor": {"constructorId": "mercedes", "name": "Mercedes", "nationality": "German"}},
+        ]
+        return {"StandingsTable": {"season": yr, "round": "24", "StandingsLists": [{"season": yr, "round": "24", "ConstructorStandings": teams_data}]}}
+
+    async def mock_get_race_schedule(season: str = "current"):
+        yr = "2024" if season == "current" else season
+        return [
+            {"round": "1", "raceName": "Bahrain Grand Prix", "Circuit": {"circuitId": "bahrain", "circuitName": "Bahrain International Circuit", "Location": {"locality": "Sakhir", "country": "Bahrain"}}, "date": f"{yr}-03-02", "time": "15:00:00Z"},
+            {"round": "2", "raceName": "Saudi Arabian Grand Prix", "Circuit": {"circuitId": "jeddah", "circuitName": "Jeddah Corniche Circuit", "Location": {"locality": "Jeddah", "country": "Saudi Arabia"}}, "date": f"{yr}-03-09", "time": "17:00:00Z"},
+            {"round": "5", "raceName": "Chinese Grand Prix", "Circuit": {"circuitId": "shanghai", "circuitName": "Shanghai International Circuit", "Location": {"locality": "Shanghai", "country": "China"}}, "date": f"{yr}-04-21", "time": "07:00:00Z", "Sprint": {"date": f"{yr}-04-20"}},
+        ]
+
+    async def mock_get_race_results(season: str, round_num: int):
+        yr = "2024" if season == "current" else season
+        results = [
+            {"position": "1", "number": "1", "Driver": {"driverId": "max_verstappen", "code": "VER", "givenName": "Max", "familyName": "Verstappen"}, "Constructor": {"name": "Red Bull Racing"}, "grid": "1", "laps": "57", "status": "Finished", "points": "26.0", "Time": {"time": "1:31:44.742"}, "FastestLap": {"rank": "1", "Time": {"time": "1:32.608"}}},
+            {"position": "2", "number": "4", "Driver": {"driverId": "norris", "code": "NOR", "givenName": "Lando", "familyName": "Norris"}, "Constructor": {"name": "McLaren"}, "grid": "2", "laps": "57", "status": "Finished", "points": "18.0", "Time": {"time": "+22.457"}, "FastestLap": {"rank": "2", "Time": {"time": "1:33.120"}}},
+            {"position": "3", "number": "16", "Driver": {"driverId": "leclerc", "code": "LEC", "givenName": "Charles", "familyName": "Leclerc"}, "Constructor": {"name": "Ferrari"}, "grid": "3", "laps": "57", "status": "Finished", "points": "15.0", "Time": {"time": "+25.110"}, "FastestLap": {"rank": "3", "Time": {"time": "1:33.500"}}},
+            {"position": "16", "number": "24", "Driver": {"driverId": "zhou", "code": "ZHO", "givenName": "Guanyu", "familyName": "Zhou"}, "Constructor": {"name": "Kick Sauber"}, "grid": "17", "laps": "56", "status": "+1 Lap", "points": "0.0"},
+        ]
+        return {"RaceTable": {"season": yr, "round": str(round_num), "Races": [{"raceName": "Bahrain Grand Prix", "Circuit": {"circuitName": "Bahrain International Circuit"}, "date": f"{yr}-03-02", "Results": results}]}}
+
+    async def mock_get_qualifying_results(season: str, round_num: int):
+        q_res = [
+            {"position": "1", "number": "1", "Driver": {"driverId": "max_verstappen", "code": "VER", "givenName": "Max", "familyName": "Verstappen"}, "Constructor": {"name": "Red Bull Racing"}, "Q1": "1:30.031", "Q2": "1:29.374", "Q3": "1:29.179"},
+            {"position": "2", "number": "4", "Driver": {"driverId": "norris", "code": "NOR", "givenName": "Lando", "familyName": "Norris"}, "Constructor": {"name": "McLaren"}, "Q1": "1:30.150", "Q2": "1:29.450", "Q3": "1:29.350"},
+            {"position": "3", "number": "16", "Driver": {"driverId": "leclerc", "code": "LEC", "givenName": "Charles", "familyName": "Leclerc"}, "Constructor": {"name": "Ferrari"}, "Q1": "1:30.243", "Q2": "1:29.165", "Q3": "1:29.407"},
+        ]
+        return {"RaceTable": {"season": str(season), "round": str(round_num), "Races": [{"raceName": "Bahrain Grand Prix", "Circuit": {"circuitName": "Bahrain International Circuit"}, "QualifyingResults": q_res}]}}
+
+    async def mock_get_pitstops(season: str, round_num: int):
+        return [
+            {"driverId": "max_verstappen", "stop": "1", "lap": "17", "time": "18:32:10", "duration": "2.45"},
+            {"driverId": "norris", "stop": "1", "lap": "15", "time": "18:29:05", "duration": "2.20"},
+        ]
+
+    async def mock_get_all_circuits(limit: int = 100, offset: int = 0):
+        circuits = [
+            {"circuitId": "bahrain", "circuitName": "Bahrain International Circuit", "Location": {"locality": "Sakhir", "country": "Bahrain", "lat": "26.0325", "long": "50.5106"}},
+            {"circuitId": "monaco", "circuitName": "Circuit de Monaco", "Location": {"locality": "Monte-Carlo", "country": "Monaco", "lat": "43.7347", "long": "7.4205"}},
+            {"circuitId": "silverstone", "circuitName": "Silverstone Circuit", "Location": {"locality": "Silverstone", "country": "UK", "lat": "52.0786", "long": "-1.0169"}},
+            {"circuitId": "spa", "circuitName": "Circuit de Spa-Francorchamps", "Location": {"locality": "Spa", "country": "Belgium", "lat": "50.4372", "long": "5.9714"}},
+        ]
+        return circuits[offset:offset + limit]
+
+    async def mock_get_circuit_history(circuit_id: str):
+        if circuit_id in ("atlantis", "unknown", "ghost", "non_existent"):
+            return {}
+        return {
+            "circuit_id": circuit_id,
+            "winners": [
+                {"season": "2024", "Circuit": {"circuitName": "Bahrain International Circuit"}, "Results": [{"Driver": {"givenName": "Max", "familyName": "Verstappen"}, "Constructor": {"name": "Red Bull Racing"}, "Time": {"time": "1:31:44.742"}, "laps": "57"}]},
+                {"season": "2023", "Circuit": {"circuitName": "Bahrain International Circuit"}, "Results": [{"Driver": {"givenName": "Max", "familyName": "Verstappen"}, "Constructor": {"name": "Red Bull Racing"}, "Time": {"time": "1:33:56.736"}, "laps": "57"}]},
+            ],
+            "poles": [
+                {"season": "2024", "QualifyingResults": [{"Driver": {"givenName": "Max", "familyName": "Verstappen"}, "Q3": "1:29.179"}]},
+                {"season": "2023", "QualifyingResults": [{"Driver": {"givenName": "Max", "familyName": "Verstappen"}, "Q3": "1:29.708"}]},
+            ],
+        }
+
+    async def mock_get_driver_career(driver_id: str):
+        if driver_id in ("ghost", "unknown", "unknown_driver", "ghost_driver", "non_existent"):
+            return {}
+        if driver_id in ("max_verstappen", "verstappen"):
+            return {
+                "driver": {"driverId": "max_verstappen", "code": "VER", "givenName": "Max", "familyName": "Verstappen", "nationality": "Dutch", "dateOfBirth": "1997-09-30", "permanentNumber": "1"},
+                "standings_lists": [{"season": "2024", "DriverStandings": [{"position": "1", "points": "437.0", "wins": "9", "Constructors": [{"name": "Red Bull Racing"}]}]}],
+                "wins": [{"season": "2024"}] * 63,
+                "poles": [{"season": "2024"}] * 40,
+                "total_races": 209,
+            }
+        if driver_id == "norris":
+            return {
+                "driver": {"driverId": "norris", "code": "NOR", "givenName": "Lando", "familyName": "Norris", "nationality": "British", "dateOfBirth": "1999-11-13", "permanentNumber": "4"},
+                "standings_lists": [{"season": "2024", "DriverStandings": [{"position": "2", "points": "374.0", "wins": "3", "Constructors": [{"name": "McLaren"}]}]}],
+                "wins": [{"season": "2024"}] * 3,
+                "poles": [{"season": "2024"}] * 8,
+                "total_races": 128,
+            }
+        if driver_id == "hamilton":
+            return {
+                "driver": {"driverId": "hamilton", "code": "HAM", "givenName": "Lewis", "familyName": "Hamilton", "nationality": "British", "dateOfBirth": "1985-01-07", "permanentNumber": "44"},
+                "standings_lists": [{"season": "2024", "DriverStandings": [{"position": "7", "points": "223.0", "wins": "2", "Constructors": [{"name": "Mercedes"}]}]}],
+                "wins": [{"season": "2024"}] * 105,
+                "poles": [{"season": "2024"}] * 104,
+                "total_races": 356,
+            }
+        return {}
+
+    async def mock_get_all_drivers_historical(limit: int = 50, offset: int = 0):
+        drivers = [
+            {"driverId": "hamilton", "code": "HAM", "givenName": "Lewis", "familyName": "Hamilton", "nationality": "British", "dateOfBirth": "1985-01-07", "permanentNumber": "44"},
+            {"driverId": "schumacher", "code": "MSC", "givenName": "Michael", "familyName": "Schumacher", "nationality": "German", "dateOfBirth": "1969-01-03"},
+            {"driverId": "max_verstappen", "code": "VER", "givenName": "Max", "familyName": "Verstappen", "nationality": "Dutch", "dateOfBirth": "1997-09-30", "permanentNumber": "1"},
+        ]
+        return drivers[offset:offset + limit]
+
+    async def mock_get_all_constructors_historical(limit: int = 50, offset: int = 0):
+        constructors = [
+            {"constructorId": "ferrari", "name": "Ferrari", "nationality": "Italian"},
+            {"constructorId": "mclaren", "name": "McLaren", "nationality": "British"},
+            {"constructorId": "mercedes", "name": "Mercedes", "nationality": "German"},
+            {"constructorId": "williams", "name": "Williams", "nationality": "British"},
+        ]
+        return constructors[offset:offset + limit]
+
+    async def mock_get_laps(session_key: int, driver_number: Optional[int] = None, lap_number: Optional[int] = None):
+        if driver_number == 999:
+            return []
+        base_laps = [
+            {"lap_number": 1, "driver_number": 1, "lap_duration": 96.500, "duration_sector_1": 31.2, "duration_sector_2": 41.1, "duration_sector_3": 24.2, "is_pit_out_lap": False},
+            {"lap_number": 2, "driver_number": 1, "lap_duration": 93.100, "duration_sector_1": 29.8, "duration_sector_2": 39.9, "duration_sector_3": 23.4, "is_pit_out_lap": False},
+            {"lap_number": 18, "driver_number": 1, "lap_duration": 114.500, "duration_sector_1": 30.1, "duration_sector_2": 40.2, "duration_sector_3": 44.2, "is_pit_out_lap": True},
+            {"lap_number": 1, "driver_number": 4, "lap_duration": 97.200, "duration_sector_1": 31.5, "duration_sector_2": 41.4, "duration_sector_3": 24.3, "is_pit_out_lap": False},
+            {"lap_number": 2, "driver_number": 4, "lap_duration": 93.500, "duration_sector_1": 30.0, "duration_sector_2": 40.1, "duration_sector_3": 23.4, "is_pit_out_lap": False},
+        ]
+        res = base_laps
+        if driver_number is not None:
+            res = [l for l in res if l["driver_number"] == driver_number]
+        if lap_number is not None:
+            res = [l for l in res if l["lap_number"] == lap_number]
+        return res
+
+    async def mock_get_stints(session_key: int, driver_number: Optional[int] = None):
+        if driver_number == 999:
+            return []
+        base_stints = [
+            {"driver_number": 1, "driver_name": "Max Verstappen", "stint_number": 1, "lap_start": 1, "lap_end": 17, "compound": "SOFT", "tyre_age_at_start": 0},
+            {"driver_number": 1, "driver_name": "Max Verstappen", "stint_number": 2, "lap_start": 18, "lap_end": 57, "compound": "HARD", "tyre_age_at_start": 0},
+            {"driver_number": 4, "driver_name": "Lando Norris", "stint_number": 1, "lap_start": 1, "lap_end": 15, "compound": "MEDIUM", "tyre_age_at_start": 0},
+            {"driver_number": 4, "driver_name": "Lando Norris", "stint_number": 2, "lap_start": 16, "lap_end": 57, "compound": "HARD", "tyre_age_at_start": 0},
+        ]
+        if driver_number is not None:
+            return [s for s in base_stints if s["driver_number"] == driver_number]
+        return base_stints
+
+    async def mock_get_pit(session_key: int):
+        return [
+            {"driver_number": 1, "driver_id": "max_verstappen", "driver_name": "Max Verstappen", "lap_number": 17, "date": "18:32:10", "pit_duration": 2.45, "lane_duration": 21.80},
+            {"driver_number": 4, "driver_id": "norris", "driver_name": "Lando Norris", "lap_number": 15, "date": "18:29:05", "pit_duration": 2.20, "lane_duration": 21.40},
+        ]
+
+    async def mock_get_positions(session_key: int):
+        return [
+            {"lap_number": 1, "driver_number": 1, "position": 1},
+            {"lap_number": 1, "driver_number": 4, "position": 2},
+            {"lap_number": 2, "driver_number": 1, "position": 1},
+            {"lap_number": 2, "driver_number": 4, "position": 2},
+            {"lap_number": 20, "driver_number": 1, "position": 1},
+            {"lap_number": 20, "driver_number": 4, "position": 2},
+        ]
+
+    async def mock_get_intervals(session_key: int):
+        return [
+            {"lap_number": 10, "date": "2024-03-02T15:20:00Z", "driver_number": 1, "gap_to_leader": 0.0, "interval": "-"},
+            {"lap_number": 10, "date": "2024-03-02T15:20:00Z", "driver_number": 4, "gap_to_leader": 3.412, "interval": 1.245},
+            {"lap_number": 10, "date": "2024-03-02T15:20:00Z", "driver_number": 24, "gap_to_leader": 65.200, "interval": "+1 LAP"},
+        ]
+
+    async def mock_get_weather(session_key: int):
+        return [
+            {"date": "2024-03-02T15:00:00Z", "air_temperature": 24.5, "track_temperature": 32.1, "humidity": 45.0, "pressure": 1012.3, "wind_speed": 12.5, "wind_direction": 310, "rainfall": 0},
+            {"date": "2024-03-02T16:00:00Z", "air_temperature": 23.8, "track_temperature": 30.5, "humidity": 48.0, "pressure": 1012.0, "wind_speed": 14.0, "wind_direction": 315, "rainfall": 0},
+        ]
+
+    async def mock_get_race_control(session_key: int):
+        return [
+            {"date": "2024-03-02T15:05:00Z", "category": "Flag", "message": "GREEN FLAG", "flag": "GREEN", "scope": "Track"},
+            {"date": "2024-03-02T15:25:00Z", "category": "DRS", "message": "DRS ENABLED", "status": "ENABLED"},
+        ]
+
+    async def mock_get_lap_car_data(session_key: int, driver_number: int, lap_number: int):
+        if session_key in (999999, 99999999, 999999999):
+            return []
+        samples = []
+        for i in range(100):
+            t = i * 0.2
+            samples.append({
+                "date": f"2024-03-02T15:10:{int(t):02d}Z",
+                "speed": 100 + (i % 20) * 8,
+                "rpm": 9000 + (i % 20) * 150,
+                "n_gear": 3 + (i // 25),
+                "throttle": 80 if i % 10 != 0 else 0,
+                "brake": 100 if i % 10 == 0 else 0,
+                "drs": 12 if 40 <= i <= 55 else 0,
+            })
+        return samples
+
+    async def mock_get_news(limit: int = 20, source: str = "all"):
+        if limit == 0:
+            return []
+        articles = [
+            {"title": "McLaren introduces aggressive floor upgrade package", "link": "https://autosport.com/f1/news/1", "description": "Floor upgrade", "pub_date": "Sun, 03 Nov 2024 16:30:00 GMT", "source": "Autosport", "thumbnail_url": "https://img.autosport.com/1.jpg"},
+            {"title": "Ferrari targeting straight-line efficiency gains", "link": "https://motorsport.com/f1/news/2", "description": "Efficiency gains", "pub_date": "Sun, 03 Nov 2024 14:15:00 GMT", "source": "Motorsport.com", "thumbnail_url": "https://img.motorsport.com/2.jpg"},
+            {"title": "Verstappen reflects on masterclass drive in wet conditions", "link": "https://bbc.co.uk/sport/formula1/3", "description": "Rain masterclass", "pub_date": "Sun, 03 Nov 2024 12:00:00 GMT", "source": "BBC Sport", "thumbnail_url": "https://img.bbc.com/3.jpg"},
+            {"title": "FIA clarifies tyre pressure monitoring protocols", "link": "https://racefans.net/news/4", "description": "Tyre rules", "pub_date": "Sat, 02 Nov 2024 19:45:00 GMT", "source": "RaceFans", "thumbnail_url": "https://img.racefans.net/4.jpg"},
+        ]
+        if source != "all":
+            articles = [a for a in articles if a["source"].lower() == source.lower()]
+        return articles[:limit]
+
+    patches = [
+        patch.object(jolpica_client, "get_driver_standings", side_effect=mock_get_driver_standings),
+        patch.object(jolpica_client, "get_constructor_standings", side_effect=mock_get_constructor_standings),
+        patch.object(jolpica_client, "get_race_schedule", side_effect=mock_get_race_schedule),
+        patch.object(jolpica_client, "get_race_results", side_effect=mock_get_race_results),
+        patch.object(jolpica_client, "get_qualifying_results", side_effect=mock_get_qualifying_results),
+        patch.object(jolpica_client, "get_pitstops", side_effect=mock_get_pitstops),
+        patch.object(jolpica_client, "get_all_circuits", side_effect=mock_get_all_circuits),
+        patch.object(jolpica_client, "get_circuit_history", side_effect=mock_get_circuit_history),
+        patch.object(jolpica_client, "get_driver_career", side_effect=mock_get_driver_career),
+        patch.object(jolpica_client, "get_all_drivers", side_effect=mock_get_all_drivers_historical),
+        patch.object(jolpica_client, "get_all_constructors", side_effect=mock_get_all_constructors_historical),
+        patch.object(jolpica_client, "close", new=AsyncMock()),
+        patch.object(openf1_client, "get_laps", side_effect=mock_get_laps),
+        patch.object(openf1_client, "get_stints", side_effect=mock_get_stints),
+        patch.object(openf1_client, "get_pit", side_effect=mock_get_pit),
+        patch.object(openf1_client, "get_positions", side_effect=mock_get_positions),
+        patch.object(openf1_client, "get_intervals", side_effect=mock_get_intervals),
+        patch.object(openf1_client, "get_weather", side_effect=mock_get_weather),
+        patch.object(openf1_client, "get_race_control", side_effect=mock_get_race_control),
+        patch.object(openf1_client, "get_lap_car_data", side_effect=mock_get_lap_car_data),
+        patch.object(openf1_client, "get_car_data", side_effect=mock_get_lap_car_data),
+        patch.object(openf1_client, "close", new=AsyncMock()),
+        patch.object(rss_client, "get_news", side_effect=mock_get_news),
+        patch.object(rss_client, "close", new=AsyncMock()),
+    ]
+    for p in patches:
+        p.start()
+    yield
+    for p in patches:
+        p.stop()
+
+
 @pytest.fixture(scope="session")
 def app_instance() -> FastAPI:
     """
-    Dynamically loads the backend FastAPI application.
-    If pitwall/backend/app/main.py is available, imports and returns it;
-    otherwise seamlessly loads the reference application.
+    Returns the real production FastAPI application from backend.app.main.
     """
     try:
-        from app.main import app as real_app
-        if isinstance(real_app, FastAPI):
-            return real_app
+        from backend.app.main import app as real_app
+        return real_app
     except Exception:
-        pass
-    return create_reference_app()
+        from app.main import app as real_app
+        return real_app
 
 
 @pytest.fixture(scope="session")

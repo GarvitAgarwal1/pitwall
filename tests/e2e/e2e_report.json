@@ -1,33 +1,33 @@
 {
-  "timestamp": "2026-11-09T20:34:16Z",
-  "duration_sec": 39.075,
-  "status": "FAIL",
+  "timestamp": "2026-11-10T09:49:36Z",
+  "duration_sec": 3.097,
+  "status": "PASS",
   "summary": {
     "total": 174,
-    "passed": 153,
-    "failed": 21,
+    "passed": 174,
+    "failed": 0,
     "skipped": 0
   },
   "tier_breakdown": {
     "Tier 1 (Feature Coverage)": {
       "total": 130,
-      "passed": 124,
-      "failed": 6
+      "passed": 130,
+      "failed": 0
     },
     "Tier 2 (Boundaries & Edge Cases)": {
       "total": 26,
-      "passed": 13,
-      "failed": 13
+      "passed": 26,
+      "failed": 0
     },
     "Tier 3 (Cross-Feature Combinations)": {
       "total": 12,
-      "passed": 11,
-      "failed": 1
+      "passed": 12,
+      "failed": 0
     },
     "Tier 4 (Real-World Scenarios)": {
       "total": 6,
-      "passed": 5,
-      "failed": 1
+      "passed": 6,
+      "failed": 0
     }
   },
   "results": [
@@ -37,7 +37,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 2.5066,
+      "duration_sec": 0.0042,
       "error": null
     },
     {
@@ -46,7 +46,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0156,
+      "duration_sec": 0.0036,
       "error": null
     },
     {
@@ -55,7 +55,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.3231,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -64,7 +64,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0133,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -73,7 +73,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0132,
+      "duration_sec": 0.003,
       "error": null
     },
     {
@@ -82,7 +82,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0165,
+      "duration_sec": 0.0032,
       "error": null
     },
     {
@@ -91,7 +91,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.3331,
+      "duration_sec": 0.0028,
       "error": null
     },
     {
@@ -100,7 +100,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0139,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -109,7 +109,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.3068,
+      "duration_sec": 0.0027,
       "error": null
     },
     {
@@ -118,7 +118,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.016,
+      "duration_sec": 0.003,
       "error": null
     },
     {
@@ -127,7 +127,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.433,
+      "duration_sec": 0.0033,
       "error": null
     },
     {
@@ -136,7 +136,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0113,
+      "duration_sec": 0.0034,
       "error": null
     },
     {
@@ -145,7 +145,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0122,
+      "duration_sec": 0.0039,
       "error": null
     },
     {
@@ -154,7 +154,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.013,
+      "duration_sec": 0.0033,
       "error": null
     },
     {
@@ -163,7 +163,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0124,
+      "duration_sec": 0.0029,
       "error": null
     },
     {
@@ -172,7 +172,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.3149,
+      "duration_sec": 0.0029,
       "error": null
     },
     {
@@ -181,7 +181,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0114,
+      "duration_sec": 0.0031,
       "error": null
     },
     {
@@ -189,9 +189,9 @@
       "name": "TestRaceResultsFeature.test_race_results_classification_status",
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
-      "outcome": "failed",
-      "duration_sec": 0.0364,
-      "error": "self = <test_tier1_features.TestRaceResultsFeature object at 0x0000023BC599D350>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_results_classification_status(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/results\")\n        assert res.status_code == 200\n        for r in res.json()[\"results\"]:\n>           assert r[\"status\"] in [\"Finished\", \"Retired\", \"+1 Lap\", \"+2 Laps\"]\nE           AssertionError: assert 'Lapped' in ['Finished', 'Retired', '+1 Lap', '+2 Laps']\n\npitwall\\tests\\e2e\\test_tier1_features.py:162: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0029,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceResultsFeature::test_race_results_fastest_lap_fields",
@@ -199,7 +199,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0123,
+      "duration_sec": 0.003,
       "error": null
     },
     {
@@ -208,7 +208,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0133,
+      "duration_sec": 0.0029,
       "error": null
     },
     {
@@ -217,7 +217,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 2.1222,
+      "duration_sec": 0.0041,
       "error": null
     },
     {
@@ -226,7 +226,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0174,
+      "duration_sec": 0.0031,
       "error": null
     },
     {
@@ -235,7 +235,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.502,
+      "duration_sec": 0.0028,
       "error": null
     },
     {
@@ -243,9 +243,9 @@
       "name": "TestRaceLapsFeature.test_race_laps_sector_splits_presence",
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
-      "outcome": "failed",
-      "duration_sec": 0.2288,
-      "error": "self = <test_tier1_features.TestRaceLapsFeature object at 0x0000023BC599DCD0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_laps_sector_splits_presence(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/laps\")\n        assert res.status_code == 200\n        first = res.json()[\"laps\"][0]\n        assert \"duration_sector_1\" in first\n        assert \"duration_sector_2\" in first\n        assert \"duration_sector_3\" in first\n>       assert first[\"lap_duration\"] > 0\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\nE       TypeError: '>' not supported between instances of 'NoneType' and 'int'\n\npitwall\\tests\\e2e\\test_tier1_features.py:211: TypeError"
+      "outcome": "passed",
+      "duration_sec": 0.0026,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRaceLapsFeature::test_race_laps_pit_out_flag",
@@ -253,7 +253,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0961,
+      "duration_sec": 0.0027,
       "error": null
     },
     {
@@ -262,7 +262,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0169,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -271,7 +271,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.5077,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -280,7 +280,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0151,
+      "duration_sec": 0.0023,
       "error": null
     },
     {
@@ -289,7 +289,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0127,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -298,7 +298,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0115,
+      "duration_sec": 0.0029,
       "error": null
     },
     {
@@ -307,7 +307,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.501,
+      "duration_sec": 0.0023,
       "error": null
     },
     {
@@ -316,7 +316,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0124,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -325,7 +325,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0126,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -333,9 +333,9 @@
       "name": "TestRacePitStopsFeature.test_race_pitstops_duration_positive",
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
-      "outcome": "failed",
-      "duration_sec": 0.0118,
-      "error": "self = <test_tier1_features.TestRacePitStopsFeature object at 0x0000023BC599E3F0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_pitstops_duration_positive(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/pitstops\")\n        assert res.status_code == 200\n        first = res.json()[\"pit_stops\"][0]\n        assert first[\"duration\"] > 0\n>       assert first[\"lane_duration\"] > first[\"duration\"]\nE       assert 30.0 > 30.0\n\npitwall\\tests\\e2e\\test_tier1_features.py:288: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0022,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestRacePitStopsFeature::test_race_pitstops_driver_info_present",
@@ -343,7 +343,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0123,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -352,7 +352,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0222,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -361,7 +361,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.6108,
+      "duration_sec": 0.0026,
       "error": null
     },
     {
@@ -370,7 +370,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0158,
+      "duration_sec": 0.0022,
       "error": null
     },
     {
@@ -379,7 +379,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0149,
+      "duration_sec": 0.0022,
       "error": null
     },
     {
@@ -388,7 +388,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0191,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -397,7 +397,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0153,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -406,7 +406,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 3.058,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -415,7 +415,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 1.0331,
+      "duration_sec": 0.0023,
       "error": null
     },
     {
@@ -424,7 +424,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.9621,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -433,7 +433,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 1.1946,
+      "duration_sec": 0.0033,
       "error": null
     },
     {
@@ -442,7 +442,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0167,
+      "duration_sec": 0.0026,
       "error": null
     },
     {
@@ -451,7 +451,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.5106,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -460,7 +460,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0214,
+      "duration_sec": 0.0023,
       "error": null
     },
     {
@@ -469,7 +469,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.02,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -478,7 +478,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0181,
+      "duration_sec": 0.0027,
       "error": null
     },
     {
@@ -487,7 +487,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0135,
+      "duration_sec": 0.0026,
       "error": null
     },
     {
@@ -496,7 +496,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.3117,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -505,7 +505,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0102,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -514,7 +514,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0095,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -523,7 +523,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0117,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -532,7 +532,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0301,
+      "duration_sec": 0.0037,
       "error": null
     },
     {
@@ -541,7 +541,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 1.3641,
+      "duration_sec": 0.0036,
       "error": null
     },
     {
@@ -550,7 +550,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.033,
+      "duration_sec": 0.0033,
       "error": null
     },
     {
@@ -559,7 +559,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.024,
+      "duration_sec": 0.0035,
       "error": null
     },
     {
@@ -568,7 +568,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0273,
+      "duration_sec": 0.0034,
       "error": null
     },
     {
@@ -577,7 +577,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0539,
+      "duration_sec": 0.0081,
       "error": null
     },
     {
@@ -586,7 +586,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0551,
+      "duration_sec": 0.0081,
       "error": null
     },
     {
@@ -595,7 +595,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0525,
+      "duration_sec": 0.0079,
       "error": null
     },
     {
@@ -604,7 +604,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0405,
+      "duration_sec": 0.0087,
       "error": null
     },
     {
@@ -613,7 +613,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0446,
+      "duration_sec": 0.0082,
       "error": null
     },
     {
@@ -622,7 +622,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 1.1533,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -631,7 +631,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.513,
+      "duration_sec": 0.0023,
       "error": null
     },
     {
@@ -640,7 +640,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.4921,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -649,7 +649,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.4857,
+      "duration_sec": 0.0026,
       "error": null
     },
     {
@@ -658,7 +658,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.5073,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -667,7 +667,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 1.6411,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -676,7 +676,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.8515,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -684,18 +684,18 @@
       "name": "TestDriverCompareFeature.test_driver_compare_qualifying_winner_label",
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
-      "outcome": "failed",
-      "duration_sec": 0.7979,
-      "error": "self = <test_tier1_features.TestDriverCompareFeature object at 0x0000023BC5A543E0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_compare_qualifying_winner_label(self, client: TestClient):\n        res = client.get(\"/api/drivers/compare?d1=max_verstappen&d2=norris\")\n        assert res.status_code == 200\n>       assert res.json()[\"qualifying_winner\"] in [\"max_verstappen\", \"norris\", \"TIE\"]\nE       AssertionError: assert 'Max Verstappen' in ['max_verstappen', 'norris', 'TIE']\n\npitwall\\tests\\e2e\\test_tier1_features.py:593: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0024,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCompareFeature::test_driver_compare_race_winner_label",
       "name": "TestDriverCompareFeature.test_driver_compare_race_winner_label",
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
-      "outcome": "failed",
-      "duration_sec": 0.7881,
-      "error": "self = <test_tier1_features.TestDriverCompareFeature object at 0x0000023BC5A54510>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_compare_race_winner_label(self, client: TestClient):\n        res = client.get(\"/api/drivers/compare?d1=max_verstappen&d2=norris\")\n        assert res.status_code == 200\n>       assert res.json()[\"race_finish_winner\"] in [\"max_verstappen\", \"norris\", \"TIE\"]\nE       AssertionError: assert 'Max Verstappen' in ['max_verstappen', 'norris', 'TIE']\n\npitwall\\tests\\e2e\\test_tier1_features.py:598: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0025,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverCompareFeature::test_driver_compare_season_parameter_optional",
@@ -703,7 +703,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.882,
+      "duration_sec": 0.0024,
       "error": null
     },
     {
@@ -712,7 +712,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0164,
+      "duration_sec": 1.7681,
       "error": null
     },
     {
@@ -721,7 +721,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.5293,
+      "duration_sec": 0.0078,
       "error": null
     },
     {
@@ -730,7 +730,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0147,
+      "duration_sec": 0.0054,
       "error": null
     },
     {
@@ -739,7 +739,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0114,
+      "duration_sec": 0.0034,
       "error": null
     },
     {
@@ -748,7 +748,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0105,
+      "duration_sec": 0.0039,
       "error": null
     },
     {
@@ -757,7 +757,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0198,
+      "duration_sec": 0.01,
       "error": null
     },
     {
@@ -766,7 +766,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0178,
+      "duration_sec": 0.0044,
       "error": null
     },
     {
@@ -775,7 +775,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0121,
+      "duration_sec": 0.0044,
       "error": null
     },
     {
@@ -784,7 +784,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0141,
+      "duration_sec": 0.0069,
       "error": null
     },
     {
@@ -793,7 +793,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0123,
+      "duration_sec": 0.0066,
       "error": null
     },
     {
@@ -802,7 +802,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0095,
+      "duration_sec": 0.0051,
       "error": null
     },
     {
@@ -811,7 +811,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0073,
+      "duration_sec": 0.0043,
       "error": null
     },
     {
@@ -820,7 +820,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0078,
+      "duration_sec": 0.0038,
       "error": null
     },
     {
@@ -829,7 +829,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0085,
+      "duration_sec": 0.0038,
       "error": null
     },
     {
@@ -838,7 +838,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0067,
+      "duration_sec": 0.0039,
       "error": null
     },
     {
@@ -847,7 +847,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0084,
+      "duration_sec": 0.0031,
       "error": null
     },
     {
@@ -856,7 +856,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.5344,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -865,7 +865,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0103,
+      "duration_sec": 0.003,
       "error": null
     },
     {
@@ -874,7 +874,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0077,
+      "duration_sec": 0.0029,
       "error": null
     },
     {
@@ -883,7 +883,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0106,
+      "duration_sec": 0.0036,
       "error": null
     },
     {
@@ -892,7 +892,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0143,
+      "duration_sec": 0.003,
       "error": null
     },
     {
@@ -901,7 +901,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.3264,
+      "duration_sec": 0.0031,
       "error": null
     },
     {
@@ -910,7 +910,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0156,
+      "duration_sec": 0.0036,
       "error": null
     },
     {
@@ -919,7 +919,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.2962,
+      "duration_sec": 0.0036,
       "error": null
     },
     {
@@ -928,7 +928,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0078,
+      "duration_sec": 0.0034,
       "error": null
     },
     {
@@ -937,7 +937,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.414,
+      "duration_sec": 0.0031,
       "error": null
     },
     {
@@ -946,7 +946,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.3022,
+      "duration_sec": 0.0027,
       "error": null
     },
     {
@@ -955,7 +955,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.2989,
+      "duration_sec": 0.0028,
       "error": null
     },
     {
@@ -964,7 +964,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.2902,
+      "duration_sec": 0.0025,
       "error": null
     },
     {
@@ -973,7 +973,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.2828,
+      "duration_sec": 0.0036,
       "error": null
     },
     {
@@ -982,7 +982,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.8356,
+      "duration_sec": 0.0039,
       "error": null
     },
     {
@@ -991,7 +991,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0081,
+      "duration_sec": 0.0035,
       "error": null
     },
     {
@@ -1000,7 +1000,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0098,
+      "duration_sec": 0.0031,
       "error": null
     },
     {
@@ -1009,7 +1009,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0088,
+      "duration_sec": 0.0035,
       "error": null
     },
     {
@@ -1017,9 +1017,9 @@
       "name": "TestNewsFeedFeature.test_news_feed_source_attribution",
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
-      "outcome": "failed",
-      "duration_sec": 0.01,
-      "error": "self = <test_tier1_features.TestNewsFeedFeature object at 0x0000023BC5A23D10>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_news_feed_source_attribution(self, client: TestClient):\n        res = client.get(\"/api/news\")\n        assert res.status_code == 200\n        for art in res.json()[\"articles\"]:\n>           assert art[\"source\"] in [\"Autosport\", \"Motorsport.com\", \"BBC Sport\", \"RaceFans\"]\nE           AssertionError: assert 'BBC F1' in ['Autosport', 'Motorsport.com', 'BBC Sport', 'RaceFans']\n\npitwall\\tests\\e2e\\test_tier1_features.py:870: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.004,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier1_features.py::TestDriverHistoricalStatsFeature::test_driver_historical_stats_schema_and_200",
@@ -1027,7 +1027,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0066,
+      "duration_sec": 0.0034,
       "error": null
     },
     {
@@ -1036,7 +1036,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0041,
+      "duration_sec": 0.0029,
       "error": null
     },
     {
@@ -1045,7 +1045,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0037,
+      "duration_sec": 0.0028,
       "error": null
     },
     {
@@ -1054,7 +1054,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0054,
+      "duration_sec": 0.0028,
       "error": null
     },
     {
@@ -1063,7 +1063,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0058,
+      "duration_sec": 0.0027,
       "error": null
     },
     {
@@ -1072,7 +1072,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0085,
+      "duration_sec": 0.0028,
       "error": null
     },
     {
@@ -1081,7 +1081,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0054,
+      "duration_sec": 0.0036,
       "error": null
     },
     {
@@ -1090,7 +1090,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0075,
+      "duration_sec": 0.0038,
       "error": null
     },
     {
@@ -1099,7 +1099,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0041,
+      "duration_sec": 0.0046,
       "error": null
     },
     {
@@ -1108,7 +1108,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0084,
+      "duration_sec": 0.004,
       "error": null
     },
     {
@@ -1117,7 +1117,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0003,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1126,7 +1126,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0003,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1135,7 +1135,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1144,7 +1144,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0003,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1153,7 +1153,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1162,7 +1162,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0004,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1171,7 +1171,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0003,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1180,7 +1180,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1189,7 +1189,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0004,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1198,7 +1198,7 @@
       "file": "test_tier1_features.py",
       "tier": "Tier 1",
       "outcome": "passed",
-      "duration_sec": 0.0004,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1206,27 +1206,27 @@
       "name": "TestEmptyResponsesAndCollections.test_laps_empty_when_no_driver_matches",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.0073,
-      "error": "self = <test_tier2_boundaries.TestEmptyResponsesAndCollections object at 0x0000023BC5A2F890>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_laps_empty_when_no_driver_matches(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/laps?driver_number=999\")\n        assert res.status_code == 200\n        data = res.json()\n        assert \"laps\" in data\n>       assert len(data[\"laps\"]) == 0\nE       AssertionError: assert 20 == 0\nE        +  where 20 = len([{'lap_number': 1, 'driver_number': 999, 'lap_duration': 92.85, 'duration_sector_1': 27.855, ...}, {'lap_number': 2, '..._1': 27.915, ...}, {'lap_number': 6, 'driver_number': 999, 'lap_duration': 93.1, 'duration_sector_1': 27.93, ...}, ...])\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:21: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0037,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestEmptyResponsesAndCollections::test_stints_empty_when_nonexistent_driver",
       "name": "TestEmptyResponsesAndCollections.test_stints_empty_when_nonexistent_driver",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.5038,
-      "error": "self = <test_tier2_boundaries.TestEmptyResponsesAndCollections object at 0x0000023BC5A2FB10>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_stints_empty_when_nonexistent_driver(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/stints?driver_number=999\")\n        assert res.status_code == 200\n        data = res.json()\n        assert \"stints\" in data\n>       assert len(data[\"stints\"]) == 0\nE       AssertionError: assert 2 == 0\nE        +  where 2 = len([{'driver_number': 999, 'driver_name': None, 'stint_number': 1, 'lap_start': 1, ...}, {'driver_number': 999, 'driver_name': None, 'stint_number': 2, 'lap_start': 23, ...}])\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:28: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0036,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestEmptyResponsesAndCollections::test_news_limit_zero_returns_empty_articles",
       "name": "TestEmptyResponsesAndCollections.test_news_limit_zero_returns_empty_articles",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.0101,
-      "error": "self = <test_tier2_boundaries.TestEmptyResponsesAndCollections object at 0x0000023BC5A56060>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_news_limit_zero_returns_empty_articles(self, client: TestClient):\n        res = client.get(\"/api/news?limit=0\")\n        assert res.status_code == 200\n        data = res.json()\n>       assert data[\"count\"] == 0\nE       assert 4 == 0\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:34: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0035,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestEmptyResponsesAndCollections::test_stats_offset_beyond_total",
@@ -1234,7 +1234,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0053,
+      "duration_sec": 0.0055,
       "error": null
     },
     {
@@ -1242,63 +1242,63 @@
       "name": "TestHttp404NotFoundHandling.test_standings_drivers_invalid_season_404",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.0084,
-      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A2FC50>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_standings_drivers_invalid_season_404(self, client: TestClient):\n        res = client.get(\"/api/standings/drivers/1899\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:51: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.003,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_standings_constructors_invalid_season_404",
       "name": "TestHttp404NotFoundHandling.test_standings_constructors_invalid_season_404",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.3041,
-      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A2FD90>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_standings_constructors_invalid_season_404(self, client: TestClient):\n        res = client.get(\"/api/standings/constructors/invalid\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:56: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0028,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_races_calendar_invalid_season_404",
       "name": "TestHttp404NotFoundHandling.test_races_calendar_invalid_season_404",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.0083,
-      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A562C0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_races_calendar_invalid_season_404(self, client: TestClient):\n        res = client.get(\"/api/races/1899\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:61: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0024,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_race_results_invalid_round_404",
       "name": "TestHttp404NotFoundHandling.test_race_results_invalid_round_404",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.299,
-      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A563F0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_results_invalid_round_404(self, client: TestClient):\n        res = client.get(\"/api/races/2024/99/results\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:66: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0027,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_driver_career_unknown_driver_404",
       "name": "TestHttp404NotFoundHandling.test_driver_career_unknown_driver_404",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.6174,
-      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC5A768D0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_career_unknown_driver_404(self, client: TestClient):\n        res = client.get(\"/api/drivers/ghost/career\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:71: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0027,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_circuit_history_unknown_circuit_404",
       "name": "TestHttp404NotFoundHandling.test_circuit_history_unknown_circuit_404",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.2792,
-      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC59ED590>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_circuit_history_unknown_circuit_404(self, client: TestClient):\n        res = client.get(\"/api/circuits/atlantis/history\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:76: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0024,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestHttp404NotFoundHandling::test_lap_telemetry_unknown_session_key_404",
       "name": "TestHttp404NotFoundHandling.test_lap_telemetry_unknown_session_key_404",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.0108,
-      "error": "self = <test_tier2_boundaries.TestHttp404NotFoundHandling object at 0x0000023BC59ED480>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_lap_telemetry_unknown_session_key_404(self, client: TestClient):\n        res = client.get(\"/api/telemetry/999999/1/18\")\n>       assert res.status_code == 404\nE       assert 200 == 404\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:81: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0026,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestNumericBoundariesAndZeroDivisions::test_pit_window_zero_variance_identical_lap_times",
@@ -1306,7 +1306,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0008,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1315,7 +1315,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1324,7 +1324,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1351,7 +1351,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1360,7 +1360,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0003,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1369,7 +1369,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0003,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1378,7 +1378,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1387,7 +1387,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0002,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1395,9 +1395,9 @@
       "name": "TestExtremeGapsAndIntervals.test_race_gaps_extreme_gap_over_60_seconds",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.4126,
-      "error": "self = <test_tier2_boundaries.TestExtremeGapsAndIntervals object at 0x0000023BC5A94410>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_race_gaps_extreme_gap_over_60_seconds(self, client: TestClient):\n        res = client.get(\"/api/races/2024/1/gaps\")\n        assert res.status_code == 200\n        intervals = res.json()[\"intervals\"]\n        lapped_car = [i for i in intervals if i[\"interval\"] == \"+1 LAP\"]\n>       assert len(lapped_car) > 0\nE       assert 0 > 0\nE        +  where 0 = len([])\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:209: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0029,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestExtremeGapsAndIntervals::test_race_gaps_zero_second_photo_finish",
@@ -1405,7 +1405,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.5049,
+      "duration_sec": 0.004,
       "error": null
     },
     {
@@ -1414,7 +1414,7 @@
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
       "outcome": "passed",
-      "duration_sec": 0.0003,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1422,18 +1422,18 @@
       "name": "TestSpecialCharactersAndSanitization.test_driver_id_with_special_characters_handled",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.5661,
-      "error": "self = <test_tier2_boundaries.TestSpecialCharactersAndSanitization object at 0x0000023BC5A94690>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_driver_id_with_special_characters_handled(self, client: TestClient):\n        res = client.get(\"/api/drivers/unknown_driver/career\")\n>       assert res.status_code in [404, 400]\nE       assert 200 in [404, 400]\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:234: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0028,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier2_boundaries.py::TestSpecialCharactersAndSanitization::test_sql_injection_probe_in_season_path",
       "name": "TestSpecialCharactersAndSanitization.test_sql_injection_probe_in_season_path",
       "file": "test_tier2_boundaries.py",
       "tier": "Tier 2",
-      "outcome": "failed",
-      "duration_sec": 0.0069,
-      "error": "self = <test_tier2_boundaries.TestSpecialCharactersAndSanitization object at 0x0000023BC5A947D0>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_sql_injection_probe_in_season_path(self, client: TestClient):\n        res = client.get(\"/api/standings/drivers/2024'%20OR%201=1;--\")\n>       assert res.status_code in [404, 400]\nE       assert 200 in [404, 400]\nE        +  where 200 = <Response [200 OK]>.status_code\n\npitwall\\tests\\e2e\\test_tier2_boundaries.py:238: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0026,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestQualifyingToRaceResultsIntegration::test_qualifying_pole_matches_race_grid_p1",
@@ -1441,7 +1441,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0127,
+      "duration_sec": 0.0054,
       "error": null
     },
     {
@@ -1450,7 +1450,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0075,
+      "duration_sec": 0.0089,
       "error": null
     },
     {
@@ -1459,7 +1459,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0107,
+      "duration_sec": 0.0083,
       "error": null
     },
     {
@@ -1468,7 +1468,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0132,
+      "duration_sec": 0.0064,
       "error": null
     },
     {
@@ -1476,9 +1476,9 @@
       "name": "TestRaceResultsToPositionChangesIntegration.test_final_lap_position_matches_race_result",
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
-      "outcome": "failed",
-      "duration_sec": 0.0148,
-      "error": "self = <test_tier3_combinations.TestRaceResultsToPositionChangesIntegration object at 0x0000023BC5A94E10>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_final_lap_position_matches_race_result(self, client: TestClient):\n        r_res = client.get(\"/api/races/2024/1/results\")\n        assert r_res.status_code == 200\n        results = r_res.json()[\"results\"]\n        winner = results[0]\n    \n        p_res = client.get(\"/api/races/2024/1/positions\")\n        assert p_res.status_code == 200\n        positions = p_res.json()[\"positions\"]\n    \n        # Check winner is P1 in positions\n        winner_positions = [p for p in positions if p[\"driver_number\"] == winner[\"driver_number\"]]\n        assert len(winner_positions) > 0\n>       assert winner_positions[-1][\"position\"] == winner[\"position\"]\nE       assert 5 == 1\n\npitwall\\tests\\e2e\\test_tier3_combinations.py:99: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0064,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier3_combinations.py::TestTelemetryCompareToDeltaTimeIntegration::test_telemetry_compare_delta_corresponds_to_lap_times",
@@ -1486,7 +1486,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0838,
+      "duration_sec": 0.0133,
       "error": null
     },
     {
@@ -1495,7 +1495,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0222,
+      "duration_sec": 0.0106,
       "error": null
     },
     {
@@ -1504,7 +1504,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.8369,
+      "duration_sec": 0.0063,
       "error": null
     },
     {
@@ -1513,7 +1513,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0116,
+      "duration_sec": 0.0065,
       "error": null
     },
     {
@@ -1531,7 +1531,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.0115,
+      "duration_sec": 0.0062,
       "error": null
     },
     {
@@ -1540,7 +1540,7 @@
       "file": "test_tier3_combinations.py",
       "tier": "Tier 3",
       "outcome": "passed",
-      "duration_sec": 0.3133,
+      "duration_sec": 0.0056,
       "error": null
     },
     {
@@ -1548,9 +1548,9 @@
       "name": "TestGrandPrixWeekendSimulation.test_complete_grand_prix_weekend_flow",
       "file": "test_tier4_scenarios.py",
       "tier": "Tier 4",
-      "outcome": "failed",
-      "duration_sec": 0.0348,
-      "error": "self = <test_tier4_scenarios.TestGrandPrixWeekendSimulation object at 0x0000023BC5A95810>\nclient = <starlette.testclient.TestClient object at 0x0000023BC69D27B0>\n\n    def test_complete_grand_prix_weekend_flow(self, client: TestClient):\n        # Step 1: Circuit Verification\n        circuit_res = client.get(\"/api/circuits\")\n        assert circuit_res.status_code == 200\n        circuits = circuit_res.json()[\"circuits\"]\n        bahrain = next(c for c in circuits if c[\"circuit_id\"] == \"bahrain\")\n        assert bahrain[\"turns\"] == 15\n        assert bahrain[\"length_km\"] > 5.0\n    \n        # Step 2: Weather Monitoring\n        weather_res = client.get(\"/api/races/2024/1/weather\")\n        assert weather_res.status_code == 200\n        weather_points = weather_res.json()[\"weather_points\"]\n        assert len(weather_points) > 0\n        assert weather_points[0][\"rainfall\"] == 0  # Dry race\n    \n        # Step 3: Saturday Qualifying Shootout\n        quali_res = client.get(\"/api/qualifying/2024/1\")\n        assert quali_res.status_code == 200\n        quali_results = quali_res.json()[\"qualifying_results\"]\n        assert quali_results[0][\"position\"] == 1\n        pole_driver = quali_results[0][\"driver_code\"]\n    \n        # Step 4: Sunday Race Stints Strategy\n        stints_res = client.get(\"/api/races/2024/1/stints?driver_number=1\")\n        assert stints_res.status_code == 200\n        ver_stints = stints_res.json()[\"stints\"]\n        assert len(ver_stints) >= 2  # At least 1 pit stop executed\n>       assert ver_stints[0][\"compound\"] == \"SOFT\"\nE       AssertionError: assert 'HARD' == 'SOFT'\nE         \nE         - SOFT\nE         + HARD\n\npitwall\\tests\\e2e\\test_tier4_scenarios.py:45: AssertionError"
+      "outcome": "passed",
+      "duration_sec": 0.0165,
+      "error": null
     },
     {
       "node_id": "pitwall/tests/e2e/test_tier4_scenarios.py::TestSafetyCarLifecycleScenario::test_safety_car_incident_lifecycle",
@@ -1558,7 +1558,7 @@
       "file": "test_tier4_scenarios.py",
       "tier": "Tier 4",
       "outcome": "passed",
-      "duration_sec": 0.0066,
+      "duration_sec": 0.0045,
       "error": null
     },
     {
@@ -1567,7 +1567,7 @@
       "file": "test_tier4_scenarios.py",
       "tier": "Tier 4",
       "outcome": "passed",
-      "duration_sec": 0.0009,
+      "duration_sec": 0.0002,
       "error": null
     },
     {
@@ -1576,7 +1576,7 @@
       "file": "test_tier4_scenarios.py",
       "tier": "Tier 4",
       "outcome": "passed",
-      "duration_sec": 0.0004,
+      "duration_sec": 0.0001,
       "error": null
     },
     {
@@ -1585,7 +1585,7 @@
       "file": "test_tier4_scenarios.py",
       "tier": "Tier 4",
       "outcome": "passed",
-      "duration_sec": 0.0239,
+      "duration_sec": 0.0576,
       "error": null
     },
     {
@@ -1594,7 +1594,7 @@
       "file": "test_tier4_scenarios.py",
       "tier": "Tier 4",
       "outcome": "passed",
-      "duration_sec": 0.0406,
+      "duration_sec": 0.0136,
       "error": null
     }
   ]
