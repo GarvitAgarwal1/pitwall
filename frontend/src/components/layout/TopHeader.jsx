@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Radio, Clock, ShieldCheck, Flag } from 'lucide-react';
+import { Menu, Sun, Moon, Sliders, Flag, ShieldCheck } from 'lucide-react';
 import { formatCountdown } from '../../utils/formatters';
-import { StatusBadge } from '../common/Badge';
 
 /**
  * TopHeader
- * Top navigation bar featuring next race countdown ticker, session title, and telemetry status indicator.
+ * Top navigation bar with theme switcher, 2026 GP countdown, and settings quick-action.
  */
 export default function TopHeader({
   activeTab = 'home',
   onToggleSidebar,
-  connectionStatus = 'SIMULATED', // 'LIVE' | 'SIMULATED' | 'REPLAY'
+  connectionStatus = 'LIVE',
+  theme = 'dark',
+  onToggleTheme,
+  onNavigate,
   nextRace = {
-    name: 'Las Vegas Grand Prix',
-    circuit: 'Las Vegas Strip Circuit',
-    date: '2024-11-23T22:00:00Z',
+    name: 'São Paulo Grand Prix',
+    circuit: 'Interlagos',
+    date: '2026-11-15T17:00:00Z',
   },
 }) {
-  // Live ticker for countdown
   const [timeLeft, setTimeLeft] = useState({
-    days: '12',
-    hours: '08',
-    minutes: '44',
-    seconds: '20',
+    days: '01',
+    hours: '04',
+    minutes: '32',
+    seconds: '18',
   });
 
   useEffect(() => {
@@ -31,12 +32,10 @@ export default function TopHeader({
       const targetTime = new Date(nextRace.date).getTime();
       const now = Date.now();
       const diffSecs = Math.max(0, Math.floor((targetTime - now) / 1000));
-      // If past or mock future, ensure clean countdown display
       if (diffSecs > 0) {
         setTimeLeft(formatCountdown(diffSecs));
       } else {
-        // Fallback realistic showcase ticker
-        const fallbackSecs = 12 * 86400 + 4 * 3600 + 22 * 60 + (60 - (Math.floor(now / 1000) % 60));
+        const fallbackSecs = 1 * 86400 + 4 * 3600 + 32 * 60 + (60 - (Math.floor(now / 1000) % 60));
         setTimeLeft(formatCountdown(fallbackSecs));
       }
     }
@@ -47,15 +46,16 @@ export default function TopHeader({
   }, [nextRace?.date]);
 
   const viewTitles = {
-    home: 'Season Overview & Championship Standings',
+    home: 'Season Overview & Championship Standings (2026)',
     live: 'Live Timing Tower & Race Control',
-    stats: 'Historical Archive (1950–Present)',
+    stats: 'Historical Archive (1950–Present Hall of Fame)',
     analysis: 'Post-Race Telemetry & Strategy Analysis',
     telemetry: 'Dual-Driver Car Telemetry Comparison',
     strategy: 'Pit Window Detector & Race Predictor',
     guide: 'Formula 1 Regulations & Technical Guide',
     news: 'Motorsport RSS News Feed',
-    circuits: 'Grand Prix Circuits Directory',
+    circuits: 'Grand Prix Modern Circuits Directory (2021–2026)',
+    settings: 'Dashboard Settings & Preferences',
   };
 
   const title = viewTitles[activeTab] || 'Formula 1 Strategy & Telemetry';
@@ -80,12 +80,12 @@ export default function TopHeader({
             <span className="hidden md:inline-block w-1.5 h-1.5 rounded-full bg-[#E10600]" />
           </div>
           <p className="hidden md:block text-[11px] font-mono text-[#64748B] truncate">
-            Formula 1 World Championship Official Data Streams
+            Formula 1 Official Data Streams • Season 2026
           </p>
         </div>
       </div>
 
-      {/* Right: Next GP Countdown Pill & Telemetry Status */}
+      {/* Right: Next GP Countdown Pill, Theme Toggle, & Settings */}
       <div className="flex items-center gap-2 lg:gap-3 shrink-0">
         {/* Next Race Countdown Pill */}
         <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-[#1C2230] border border-[#2A3245] rounded-full text-xs font-mono">
@@ -98,14 +98,38 @@ export default function TopHeader({
           <span className="font-bold text-[#F8FAFC] tracking-wide hidden lg:inline">
             {nextRace?.name?.replace('Grand Prix', 'GP') || 'Next Race'}
           </span>
-          <span className="text-[#2A3245] hidden lg:inline">|</span>
-          <span className="font-mono text-amber-400 font-semibold tabular-nums">
-            {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+          <span className="text-[#00F0FF] font-bold tabular-nums">
+            {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
           </span>
         </div>
 
-        {/* Connection Status Badge */}
-        <StatusBadge status={connectionStatus} />
+        {/* Theme Mode Toggle (Sun/Moon) */}
+        <button
+          onClick={() => onToggleTheme && onToggleTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="p-2 text-[#94A3B8] hover:text-white rounded-lg bg-[#1C2230] border border-[#2A3245] hover:border-[#64748B] transition-colors"
+          title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
+        >
+          {theme === 'dark' ? (
+            <Sun className="w-4 h-4 text-amber-400" />
+          ) : (
+            <Moon className="w-4 h-4 text-[#00F0FF]" />
+          )}
+        </button>
+
+        {/* Quick Settings Shortcut */}
+        <button
+          onClick={() => onNavigate && onNavigate('settings')}
+          className="p-2 text-[#94A3B8] hover:text-white rounded-lg bg-[#1C2230] border border-[#2A3245] hover:border-[#64748B] transition-colors"
+          title="Open Settings"
+        >
+          <Sliders className="w-4 h-4" />
+        </button>
+
+        {/* Status Badge */}
+        <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="font-bold">{connectionStatus}</span>
+        </div>
       </div>
     </header>
   );

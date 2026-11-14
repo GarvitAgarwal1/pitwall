@@ -5,12 +5,14 @@ import TopHeader from './TopHeader';
 /**
  * AppShell
  * Top-level application frame coordinating the responsive Sidebar, TopHeader,
- * and main scrollable content area.
+ * light/dark theme modes, and main scrollable content area.
  */
 export default function AppShell({
   activeTab = 'home',
   onSelectTab,
-  connectionStatus = 'SIMULATED',
+  connectionStatus = 'LIVE',
+  theme = 'dark',
+  onToggleTheme,
   children,
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -19,7 +21,13 @@ export default function AppShell({
   const closeSidebar = () => setSidebarOpen(false);
 
   return (
-    <div className="min-h-screen bg-[#0B0E14] text-[#F8FAFC] flex flex-col antialiased">
+    <div
+      className={`min-h-screen flex flex-col antialiased transition-colors duration-200 ${
+        theme === 'light'
+          ? 'bg-[#F1F5F9] text-[#0F172A]'
+          : 'bg-[#0B0E14] text-[#F8FAFC]'
+      }`}
+    >
       {/* Sidebar Navigation */}
       <Sidebar
         activeTab={activeTab}
@@ -35,6 +43,9 @@ export default function AppShell({
           activeTab={activeTab}
           onToggleSidebar={toggleSidebar}
           connectionStatus={connectionStatus}
+          theme={theme}
+          onToggleTheme={onToggleTheme}
+          onNavigate={onSelectTab}
         />
 
         {/* Dynamic Page Content */}
@@ -43,13 +54,19 @@ export default function AppShell({
         </main>
 
         {/* Global Footer */}
-        <footer className="px-6 py-4 border-t border-[#2A3245] bg-[#12161F] text-xs font-mono text-[#64748B] flex flex-col sm:flex-row items-center justify-between gap-2">
+        <footer
+          className={`px-6 py-4 border-t text-xs font-mono flex flex-col sm:flex-row items-center justify-between gap-2 transition-colors ${
+            theme === 'light'
+              ? 'bg-[#FFFFFF] border-slate-300 text-slate-500'
+              : 'bg-[#12161F] border-[#2A3245] text-[#64748B]'
+          }`}
+        >
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#E10600]" />
-            <span>PitWall — Formula 1 Strategy, Telemetry & Live Timing Showcase</span>
+            <span className="font-bold">PitWall — Formula 1 Strategy, Telemetry & Live Timing (2026 Season)</span>
           </div>
           <div>
-            <span>Data powered by Jolpica Ergast & OpenF1 APIs</span>
+            <span>Official APIs: Jolpica Ergast & OpenF1</span>
           </div>
         </footer>
       </div>

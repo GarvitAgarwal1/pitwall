@@ -9,6 +9,7 @@ import {
   BookOpen,
   Newspaper,
   MapPin,
+  Sliders,
   X,
   Zap,
 } from 'lucide-react';
@@ -23,11 +24,12 @@ export const NAVIGATION_ITEMS = [
   { id: 'guide', label: 'F1 Guide', icon: BookOpen, badge: null, path: '/guide' },
   { id: 'news', label: 'F1 News', icon: Newspaper, badge: null, path: '/news' },
   { id: 'circuits', label: 'Circuits', icon: MapPin, badge: null, path: '/circuits' },
+  { id: 'settings', label: 'Settings', icon: Sliders, badge: 'NEW', path: '/settings' },
 ];
 
 /**
  * Sidebar Navigation Component
- * Features all 9 PitWall views with active route indicators and icons.
+ * Features all 10 PitWall views with active route indicators and icons.
  */
 export default function Sidebar({
   activeTab = 'home',
@@ -58,32 +60,26 @@ export default function Sidebar({
               <span className="font-mono font-black text-white text-lg tracking-tighter">PW</span>
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-display font-black tracking-wider text-base text-white">PITWALL</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E10600] animate-pulse" />
-              </div>
-              <p className="text-[10px] font-mono tracking-widest text-[#64748B] uppercase">F1 Strategy & Telemetry</p>
+              <span className="font-display font-black text-white text-lg tracking-wider block leading-none">
+                PITWALL
+              </span>
+              <span className="text-[10px] font-mono text-[#E10600] uppercase tracking-widest font-bold">
+                F1 STRATEGY 2026
+              </span>
             </div>
           </div>
 
-          {/* Mobile Close Button */}
-          {onClose && (
-            <button
-              onClick={onClose}
-              className="lg:hidden p-1.5 text-[#64748B] hover:text-white rounded-lg hover:bg-[#1C2230]"
-              aria-label="Close Sidebar"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          )}
+          <button
+            onClick={onClose}
+            className="lg:hidden p-1.5 text-[#64748B] hover:text-white rounded-lg hover:bg-[#1C2230]"
+            aria-label="Close navigation"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        {/* Navigation Link List */}
+        {/* Navigation Items */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-widest text-[#64748B]">
-            Pit Wall Systems
-          </div>
-
           {NAVIGATION_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -92,10 +88,10 @@ export default function Sidebar({
               <button
                 key={item.id}
                 onClick={() => {
-                  if (onSelectTab) onSelectTab(item.id);
-                  if (onClose) onClose();
+                  onSelectTab && onSelectTab(item.id);
+                  onClose && onClose();
                 }}
-                className={`w-full group flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-mono font-medium transition-all group ${
                   isActive
                     ? 'bg-[#E10600]/15 text-white border border-[#E10600]/40 shadow-sm'
                     : 'text-[#94A3B8] hover:text-white hover:bg-[#1C2230] border border-transparent'
@@ -115,7 +111,9 @@ export default function Sidebar({
                     className={`px-1.5 py-0.5 text-[10px] font-mono font-bold tracking-wider rounded ${
                       isActive
                         ? 'bg-[#E10600] text-white animate-pulse'
-                        : 'bg-[#1C2230] text-red-400 border border-red-500/30'
+                        : item.badge === 'LIVE'
+                        ? 'bg-[#1C2230] text-red-400 border border-red-500/30'
+                        : 'bg-[#1C2230] text-[#00F0FF] border border-[#00F0FF]/30'
                     }`}
                   >
                     {item.badge}
@@ -132,7 +130,7 @@ export default function Sidebar({
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
             <div className="flex-1 min-w-0">
               <p className="text-[11px] font-mono font-semibold text-[#F8FAFC] truncate">Telemetry Link Active</p>
-              <p className="text-[10px] font-mono text-[#64748B] truncate">OpenF1 & Jolpica Ergast</p>
+              <p className="text-[10px] font-mono text-[#64748B] truncate">OpenF1 & Jolpica 2026</p>
             </div>
             <Zap className="w-3.5 h-3.5 text-amber-400" />
           </div>

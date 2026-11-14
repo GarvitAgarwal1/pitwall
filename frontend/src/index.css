@@ -56,4 +56,11 @@
     background-image: radial-gradient(#2A3245 0.75px, transparent 0.75px);
     background-size: 12px 12px;
   }
+
+  /* Glassmorphism racing surface */
+  .racing-glass {
+    background: rgba(18, 22, 31, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(42, 50, 69, 0.7);
+  }
 }

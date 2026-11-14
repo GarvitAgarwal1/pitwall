@@ -1,9 +1,9 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import AppShell from './components/layout/AppShell';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import LoadingSkeleton from './components/common/LoadingSkeleton';
 
-// Code-split 9 Dashboard Views via React.lazy
+// Code-split all 10 Dashboard Views via React.lazy
 const HomePage = lazy(() => import('./pages/HomePage'));
 const LiveTimingPage = lazy(() => import('./pages/LiveTimingPage'));
 const StatsPage = lazy(() => import('./pages/StatsPage'));
@@ -13,15 +13,51 @@ const StrategyToolsPage = lazy(() => import('./pages/StrategyToolsPage'));
 const F1GuidePage = lazy(() => import('./pages/F1GuidePage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
 const CircuitsPage = lazy(() => import('./pages/CircuitsPage'));
+const SettingsPage = lazy(() => import('./pages/SettingsPage'));
 
 /**
  * PitWall Main Application Entrypoint
- * Mounts and coordinates all 9 Formula 1 dashboard views with responsive navigation shell,
+ * Coordinates all 10 Formula 1 views, responsive theme management (Light & Dark),
  * telemetry status monitoring, error boundaries, and code-split suspense loading.
  */
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [connectionStatus, setConnectionStatus] = useState('LIVE');
+
+  // Theme & Preferences State with localStorage persistence
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('pitwall_theme') || 'dark';
+  });
+  const [speedUnit, setSpeedUnit] = useState(() => {
+    return localStorage.getItem('pitwall_speed_unit') || 'km/h';
+  });
+  const [tempUnit, setTempUnit] = useState(() => {
+    return localStorage.getItem('pitwall_temp_unit') || 'C';
+  });
+  const [favoriteTeam, setFavoriteTeam] = useState(() => {
+    return localStorage.getItem('pitwall_fav_team') || 'ferrari';
+  });
+
+  const handleToggleTheme = (newTheme) => {
+    const val = newTheme || (theme === 'dark' ? 'light' : 'dark');
+    setTheme(val);
+    localStorage.setItem('pitwall_theme', val);
+  };
+
+  const handleSpeedUnitChange = (unit) => {
+    setSpeedUnit(unit);
+    localStorage.setItem('pitwall_speed_unit', unit);
+  };
+
+  const handleTempUnitChange = (unit) => {
+    setTempUnit(unit);
+    localStorage.setItem('pitwall_temp_unit', unit);
+  };
+
+  const handleFavoriteTeamChange = (teamId) => {
+    setFavoriteTeam(teamId);
+    localStorage.setItem('pitwall_fav_team', teamId);
+  };
 
   const handleNavigate = (tabId) => {
     setActiveTab(tabId);
@@ -48,6 +84,19 @@ export default function App() {
         return <NewsPage onNavigate={handleNavigate} />;
       case 'circuits':
         return <CircuitsPage onNavigate={handleNavigate} />;
+      case 'settings':
+        return (
+          <SettingsPage
+            theme={theme}
+            onToggleTheme={handleToggleTheme}
+            speedUnit={speedUnit}
+            onChangeSpeedUnit={handleSpeedUnitChange}
+            tempUnit={tempUnit}
+            onChangeTempUnit={handleTempUnitChange}
+            favoriteTeam={favoriteTeam}
+            onChangeFavoriteTeam={handleFavoriteTeamChange}
+          />
+        );
       default:
         return <HomePage onNavigate={handleNavigate} />;
     }
@@ -59,6 +108,8 @@ export default function App() {
         activeTab={activeTab}
         onSelectTab={handleNavigate}
         connectionStatus={connectionStatus}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       >
         <ErrorBoundary key={activeTab}>
           <Suspense fallback={<LoadingSkeleton type="card" rows={4} />}>
