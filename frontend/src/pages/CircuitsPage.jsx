@@ -812,7 +812,7 @@ export default function CircuitsPage() {
   return (
     <div className="space-y-6">
       {/* 1. Header Toolbar */}
-      <div className="bg-[#12161F] border border-[#2A3245] rounded-xl p-5 space-y-4 shadow-xl">
+      <div className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-xl p-5 space-y-4 shadow-sm dark:shadow-xl transition-colors">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -821,7 +821,7 @@ export default function CircuitsPage() {
               </span>
               <span className="text-xs font-mono text-[#64748B]">Authentic Track Layouts & Specs (2021–2026)</span>
             </div>
-            <h2 className="text-xl lg:text-2xl font-display font-black text-white tracking-wide uppercase">
+            <h2 className="text-xl lg:text-2xl font-display font-black text-slate-900 dark:text-white tracking-wide uppercase">
               Formula 1 Grand Prix Circuits Directory
             </h2>
           </div>
@@ -834,13 +834,13 @@ export default function CircuitsPage() {
               placeholder="Search circuit, country, driver record..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#1C2230] border border-[#2A3245] rounded-lg pl-9 pr-3 py-2 text-xs font-mono text-white placeholder-[#64748B] focus:outline-none focus:border-[#E10600]"
+              className="w-full bg-slate-50 dark:bg-[#1C2230] border border-slate-200 dark:border-[#2A3245] rounded-lg pl-9 pr-3 py-2 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-[#64748B] focus:outline-none focus:border-[#E10600] transition-colors"
             />
           </div>
         </div>
 
         {/* Region Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-[#2A3245]">
+        <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-200 dark:border-[#2A3245]">
           {['ALL', 'Europe', 'Americas', 'Middle East', 'Asia & Pacific'].map((reg) => (
             <button
               key={reg}
@@ -848,7 +848,7 @@ export default function CircuitsPage() {
               className={`px-3 py-1 rounded-lg text-xs font-mono transition-all ${
                 selectedRegion === reg
                   ? 'bg-[#E10600] text-white font-bold shadow-md shadow-red-950/40'
-                  : 'bg-[#1C2230] text-[#94A3B8] hover:text-white border border-[#2A3245]'
+                  : 'bg-slate-100 dark:bg-[#1C2230] text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-[#2A3245]'
               }`}
             >
               {reg.toUpperCase()}
@@ -869,14 +869,14 @@ export default function CircuitsPage() {
             <div
               key={circuit.circuit_id}
               onClick={() => setSelectedCircuit(circuit)}
-              className="bg-[#12161F] border border-[#2A3245] rounded-xl p-5 hover:border-[#E10600] transition-all cursor-pointer group shadow-lg flex flex-col justify-between"
+              className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-xl p-5 hover:border-[#E10600] transition-all cursor-pointer group shadow-sm hover:shadow-md flex flex-col justify-between"
             >
               <div>
                 {/* Header: Flag, Country & Round */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">{circuit.flag}</span>
-                    <span className="text-xs font-mono font-bold text-[#94A3B8] uppercase">
+                    <span className="text-xs font-mono font-bold text-slate-500 dark:text-[#94A3B8] uppercase">
                       {circuit.country}
                     </span>
                   </div>
@@ -886,7 +886,7 @@ export default function CircuitsPage() {
                 </div>
 
                 {/* Circuit Name & Locality */}
-                <h3 className="font-bold text-white text-base group-hover:text-[#E10600] transition-colors leading-snug mb-1">
+                <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#E10600] transition-colors leading-snug mb-1">
                   {circuit.circuit_name}
                 </h3>
                 <p className="text-xs font-mono text-[#64748B] mb-3 flex items-center gap-1">
@@ -929,14 +929,14 @@ export default function CircuitsPage() {
                 </div>
 
                 {/* Key Technical Metrics Grid */}
-                <div className="grid grid-cols-3 gap-2 py-2.5 border-t border-b border-[#2A3245]/60 text-center font-mono text-xs">
+                <div className="grid grid-cols-3 gap-2 py-2.5 border-t border-b border-slate-200 dark:border-[#2A3245]/60 text-center font-mono text-xs">
                   <div>
                     <span className="block text-[10px] text-[#64748B]">LENGTH</span>
-                    <span className="text-white font-bold">{circuit.length_km} km</span>
+                    <span className="text-slate-900 dark:text-white font-bold">{circuit.length_km} km</span>
                   </div>
                   <div>
                     <span className="block text-[10px] text-[#64748B]">TURNS</span>
-                    <span className="text-white font-bold">{circuit.turns}</span>
+                    <span className="text-slate-900 dark:text-white font-bold">{circuit.turns}</span>
                   </div>
                   <div>
                     <span className="block text-[10px] text-[#64748B]">RACE LAPS</span>
@@ -946,14 +946,14 @@ export default function CircuitsPage() {
               </div>
 
               {/* Latest Verified Winner Footer */}
-              <div className="pt-3 mt-3 flex items-center justify-between text-xs font-mono">
+              <div className="pt-3 mt-3 flex items-center justify-between text-xs font-mono border-t border-slate-100 dark:border-transparent">
                 <div className="flex items-center gap-1.5 truncate">
-                  <Trophy className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  <span className="text-[#94A3B8] truncate">
+                  <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-[#94A3B8] truncate">
                     {latestWinner ? `${latestWinner.year}: ${latestWinner.winner}` : 'TBD'}
                   </span>
                 </div>
-                <div className="flex items-center gap-1 text-[11px] text-[#64748B] group-hover:text-white transition-colors shrink-0">
+                <div className="flex items-center gap-1 text-[11px] text-[#64748B] group-hover:text-slate-900 dark:group-hover:text-white transition-colors shrink-0">
                   <span>Track Specs</span>
                   <ChevronRight className="w-4 h-4" />
                 </div>

@@ -28,6 +28,14 @@ export default function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('pitwall_theme') || 'dark';
   });
+
+  // Keep <html> root element class synchronized with active theme for Tailwind darkMode: 'class'
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    localStorage.setItem('pitwall_theme', theme);
+  }, [theme]);
   const [speedUnit, setSpeedUnit] = useState(() => {
     return localStorage.getItem('pitwall_speed_unit') || 'km/h';
   });

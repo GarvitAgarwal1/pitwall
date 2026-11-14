@@ -5,28 +5,30 @@ from app.clients.openf1 import openf1_client
 
 logger = logging.getLogger(__name__)
 
-# Standard 2024 20-car driver grid reference for realistic replay/mock generation
+# Standard official 2026 22-car driver grid reference for realistic replay/mock generation
 DEFAULT_GRID = [
     {"driver_number": 1, "driver_code": "VER", "driver_name": "Max Verstappen", "team_name": "Red Bull Racing", "team_colour": "3671C6"},
-    {"driver_number": 11, "driver_code": "PER", "driver_name": "Sergio Perez", "team_name": "Red Bull Racing", "team_colour": "3671C6"},
-    {"driver_number": 16, "driver_code": "LEC", "driver_name": "Charles Leclerc", "team_name": "Ferrari", "team_colour": "E8002D"},
-    {"driver_number": 55, "driver_code": "SAI", "driver_name": "Carlos Sainz", "team_name": "Ferrari", "team_colour": "E8002D"},
+    {"driver_number": 6, "driver_code": "HAD", "driver_name": "Isack Hadjar", "team_name": "Red Bull Racing", "team_colour": "3671C6"},
     {"driver_number": 4, "driver_code": "NOR", "driver_name": "Lando Norris", "team_name": "McLaren", "team_colour": "FF8000"},
     {"driver_number": 81, "driver_code": "PIA", "driver_name": "Oscar Piastri", "team_name": "McLaren", "team_colour": "FF8000"},
+    {"driver_number": 16, "driver_code": "LEC", "driver_name": "Charles Leclerc", "team_name": "Ferrari", "team_colour": "E8002D"},
+    {"driver_number": 44, "driver_code": "HAM", "driver_name": "Lewis Hamilton", "team_name": "Ferrari", "team_colour": "E8002D"},
     {"driver_number": 63, "driver_code": "RUS", "driver_name": "George Russell", "team_name": "Mercedes", "team_colour": "27F4D2"},
-    {"driver_number": 44, "driver_code": "HAM", "driver_name": "Lewis Hamilton", "team_name": "Mercedes", "team_colour": "27F4D2"},
+    {"driver_number": 12, "driver_code": "ANT", "driver_name": "Andrea Kimi Antonelli", "team_name": "Mercedes", "team_colour": "27F4D2"},
     {"driver_number": 14, "driver_code": "ALO", "driver_name": "Fernando Alonso", "team_name": "Aston Martin", "team_colour": "229971"},
     {"driver_number": 18, "driver_code": "STR", "driver_name": "Lance Stroll", "team_name": "Aston Martin", "team_colour": "229971"},
-    {"driver_number": 10, "driver_code": "GAS", "driver_name": "Pierre Gasly", "team_name": "Alpine", "team_colour": "FF87BC"},
-    {"driver_number": 31, "driver_code": "OCO", "driver_name": "Esteban Ocon", "team_name": "Alpine", "team_colour": "FF87BC"},
+    {"driver_number": 10, "driver_code": "GAS", "driver_name": "Pierre Gasly", "team_name": "Alpine", "team_colour": "0093CC"},
+    {"driver_number": 7, "driver_code": "DOO", "driver_name": "Jack Doohan", "team_name": "Alpine", "team_colour": "0093CC"},
+    {"driver_number": 55, "driver_code": "SAI", "driver_name": "Carlos Sainz", "team_name": "Williams", "team_colour": "64C4FF"},
     {"driver_number": 23, "driver_code": "ALB", "driver_name": "Alexander Albon", "team_name": "Williams", "team_colour": "64C4FF"},
-    {"driver_number": 2, "driver_code": "SAR", "driver_name": "Logan Sargeant", "team_name": "Williams", "team_colour": "64C4FF"},
-    {"driver_number": 22, "driver_code": "TSU", "driver_name": "Yuki Tsunoda", "team_name": "RB", "team_colour": "6692FF"},
-    {"driver_number": 3, "driver_code": "RIC", "driver_name": "Daniel Ricciardo", "team_name": "RB", "team_colour": "6692FF"},
-    {"driver_number": 77, "driver_code": "BOT", "driver_name": "Valtteri Bottas", "team_name": "Kick Sauber", "team_colour": "52E252"},
-    {"driver_number": 24, "driver_code": "ZHO", "driver_name": "Zhou Guanyu", "team_name": "Kick Sauber", "team_colour": "52E252"},
-    {"driver_number": 20, "driver_code": "MAG", "driver_name": "Kevin Magnussen", "team_name": "Haas F1 Team", "team_colour": "B6BABD"},
-    {"driver_number": 27, "driver_code": "HUL", "driver_name": "Nico Hulkenberg", "team_name": "Haas F1 Team", "team_colour": "B6BABD"},
+    {"driver_number": 22, "driver_code": "TSU", "driver_name": "Yuki Tsunoda", "team_name": "Racing Bulls", "team_colour": "6692FF"},
+    {"driver_number": 30, "driver_code": "LAW", "driver_name": "Liam Lawson", "team_name": "Racing Bulls", "team_colour": "6692FF"},
+    {"driver_number": 31, "driver_code": "OCO", "driver_name": "Esteban Ocon", "team_name": "Haas F1 Team", "team_colour": "B6BABD"},
+    {"driver_number": 87, "driver_code": "BEA", "driver_name": "Oliver Bearman", "team_name": "Haas F1 Team", "team_colour": "B6BABD"},
+    {"driver_number": 27, "driver_code": "HUL", "driver_name": "Nico Hülkenberg", "team_name": "Audi F1 Team", "team_colour": "52E252"},
+    {"driver_number": 5, "driver_code": "BOR", "driver_name": "Gabriel Bortoleto", "team_name": "Audi F1 Team", "team_colour": "52E252"},
+    {"driver_number": 77, "driver_code": "BOT", "driver_name": "Valtteri Bottas", "team_name": "Cadillac F1 Team", "team_colour": "C0C0C0"},
+    {"driver_number": 11, "driver_code": "PER", "driver_name": "Sergio Perez", "team_name": "Cadillac F1 Team", "team_colour": "C0C0C0"},
 ]
 
 

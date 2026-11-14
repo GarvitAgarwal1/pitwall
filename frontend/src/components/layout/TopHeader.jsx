@@ -59,14 +59,21 @@ export default function TopHeader({
   };
 
   const title = viewTitles[activeTab] || 'Formula 1 Strategy & Telemetry';
+  const isLight = theme === 'light';
 
   return (
-    <header className="h-16 px-4 lg:px-6 bg-[#151922]/90 backdrop-blur-md border-b border-[#2A3245] sticky top-0 z-30 flex items-center justify-between gap-4">
+    <header className={`h-16 px-4 lg:px-6 backdrop-blur-md border-b sticky top-0 z-30 flex items-center justify-between gap-4 transition-colors ${
+      isLight ? 'bg-white/95 border-slate-200 text-slate-900 shadow-sm' : 'bg-[#151922]/90 border-[#2A3245] text-[#F8FAFC]'
+    }`}>
       {/* Left: Mobile Menu Toggle & Title */}
       <div className="flex items-center gap-3 min-w-0">
         <button
           onClick={onToggleSidebar}
-          className="lg:hidden p-2 text-[#94A3B8] hover:text-white rounded-lg hover:bg-[#1C2230] border border-[#2A3245]"
+          className={`lg:hidden p-2 rounded-lg border transition-colors ${
+            isLight
+              ? 'text-slate-600 hover:text-slate-900 bg-slate-100 border-slate-200'
+              : 'text-[#94A3B8] hover:text-white bg-[#1C2230] border-[#2A3245]'
+          }`}
           aria-label="Toggle Navigation"
         >
           <Menu className="w-5 h-5" />
@@ -74,12 +81,16 @@ export default function TopHeader({
 
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <h1 className="text-sm lg:text-base font-bold text-[#F8FAFC] tracking-tight truncate uppercase">
+            <h1 className={`text-sm lg:text-base font-bold tracking-tight truncate uppercase ${
+              isLight ? 'text-slate-900' : 'text-[#F8FAFC]'
+            }`}>
               {title}
             </h1>
             <span className="hidden md:inline-block w-1.5 h-1.5 rounded-full bg-[#E10600]" />
           </div>
-          <p className="hidden md:block text-[11px] font-mono text-[#64748B] truncate">
+          <p className={`hidden md:block text-[11px] font-mono truncate ${
+            isLight ? 'text-slate-500' : 'text-[#64748B]'
+          }`}>
             Formula 1 Official Data Streams • Season 2026
           </p>
         </div>
@@ -88,17 +99,23 @@ export default function TopHeader({
       {/* Right: Next GP Countdown Pill, Theme Toggle, & Settings */}
       <div className="flex items-center gap-2 lg:gap-3 shrink-0">
         {/* Next Race Countdown Pill */}
-        <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-[#1C2230] border border-[#2A3245] rounded-full text-xs font-mono">
+        <div className={`hidden sm:flex items-center gap-2 px-3 py-1 border rounded-full text-xs font-mono ${
+          isLight ? 'bg-slate-100 border-slate-200 text-slate-800' : 'bg-[#1C2230] border-[#2A3245] text-[#F8FAFC]'
+        }`}>
           <div className="flex items-center gap-1.5 text-[#E10600]">
             <Flag className="w-3.5 h-3.5" />
-            <span className="font-bold uppercase tracking-wider text-[10px] text-[#94A3B8] hidden xl:inline">
+            <span className={`font-bold uppercase tracking-wider text-[10px] hidden xl:inline ${
+              isLight ? 'text-slate-500' : 'text-[#94A3B8]'
+            }`}>
               Next GP:
             </span>
           </div>
-          <span className="font-bold text-[#F8FAFC] tracking-wide hidden lg:inline">
+          <span className={`font-bold tracking-wide hidden lg:inline ${
+            isLight ? 'text-slate-900' : 'text-[#F8FAFC]'
+          }`}>
             {nextRace?.name?.replace('Grand Prix', 'GP') || 'Next Race'}
           </span>
-          <span className="text-[#00F0FF] font-bold tabular-nums">
+          <span className={`${isLight ? 'text-sky-600' : 'text-[#00F0FF]'} font-bold tabular-nums`}>
             {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
           </span>
         </div>
@@ -106,28 +123,40 @@ export default function TopHeader({
         {/* Theme Mode Toggle (Sun/Moon) */}
         <button
           onClick={() => onToggleTheme && onToggleTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="p-2 text-[#94A3B8] hover:text-white rounded-lg bg-[#1C2230] border border-[#2A3245] hover:border-[#64748B] transition-colors"
+          className={`p-2 rounded-lg border transition-colors ${
+            isLight
+              ? 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200 hover:text-slate-900'
+              : 'bg-[#1C2230] border-[#2A3245] text-[#94A3B8] hover:text-white hover:border-[#64748B]'
+          }`}
           title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
         >
           {theme === 'dark' ? (
             <Sun className="w-4 h-4 text-amber-400" />
           ) : (
-            <Moon className="w-4 h-4 text-[#00F0FF]" />
+            <Moon className="w-4 h-4 text-sky-600" />
           )}
         </button>
 
         {/* Quick Settings Shortcut */}
         <button
           onClick={() => onNavigate && onNavigate('settings')}
-          className="p-2 text-[#94A3B8] hover:text-white rounded-lg bg-[#1C2230] border border-[#2A3245] hover:border-[#64748B] transition-colors"
+          className={`p-2 rounded-lg border transition-colors ${
+            isLight
+              ? 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200 hover:text-slate-900'
+              : 'bg-[#1C2230] border-[#2A3245] text-[#94A3B8] hover:text-white hover:border-[#64748B]'
+          }`}
           title="Open Settings"
         >
           <Sliders className="w-4 h-4" />
         </button>
 
         {/* Status Badge */}
-        <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <div className={`hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono ${
+          isLight
+            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+            : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+        }`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           <span className="font-bold">{connectionStatus}</span>
         </div>
       </div>

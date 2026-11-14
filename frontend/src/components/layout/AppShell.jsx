@@ -34,6 +34,7 @@ export default function AppShell({
         onSelectTab={onSelectTab}
         isOpen={sidebarOpen}
         onClose={closeSidebar}
+        theme={theme}
       />
 
       {/* Main Content Area (Offset for desktop sidebar w-64) */}

@@ -50,16 +50,32 @@ def _validate_round(round_num: int) -> None:
     if not isinstance(round_num, int) or round_num < 1 or round_num > 30:
         raise HTTPException(status_code=404, detail="Round not found")
 
-# Fallback calendar schedule
+# Fallback official 2026 calendar schedule
 FALLBACK_RACES = [
-    {"round": 1, "race_name": "Bahrain Grand Prix", "circuit_id": "bahrain", "circuit_name": "Bahrain International Circuit", "locality": "Sakhir", "country": "Bahrain", "date": "2024-03-02", "time": "15:00:00Z", "is_completed": True},
-    {"round": 2, "race_name": "Saudi Arabian Grand Prix", "circuit_id": "jeddah", "circuit_name": "Jeddah Corniche Circuit", "locality": "Jeddah", "country": "Saudi Arabia", "date": "2024-03-09", "time": "17:00:00Z", "is_completed": True},
-    {"round": 3, "race_name": "Australian Grand Prix", "circuit_id": "albert_park", "circuit_name": "Albert Park Grand Prix Circuit", "locality": "Melbourne", "country": "Australia", "date": "2024-03-24", "time": "04:00:00Z", "is_completed": True},
-    {"round": 4, "race_name": "Japanese Grand Prix", "circuit_id": "suzuka", "circuit_name": "Suzuka Circuit", "locality": "Suzuka", "country": "Japan", "date": "2024-04-07", "time": "05:00:00Z", "is_completed": True},
-    {"round": 5, "race_name": "Chinese Grand Prix", "circuit_id": "shanghai", "circuit_name": "Shanghai International Circuit", "locality": "Shanghai", "country": "China", "date": "2024-04-21", "time": "07:00:00Z", "sprint_date": "2024-04-20", "is_completed": True},
-    {"round": 6, "race_name": "Miami Grand Prix", "circuit_id": "miami", "circuit_name": "Miami International Autodrome", "locality": "Miami", "country": "USA", "date": "2024-05-05", "time": "20:00:00Z", "sprint_date": "2024-05-04", "is_completed": True},
-    {"round": 7, "race_name": "Emilia Romagna Grand Prix", "circuit_id": "imola", "circuit_name": "Autodromo Enzo e Dino Ferrari", "locality": "Imola", "country": "Italy", "date": "2024-05-19", "time": "13:00:00Z", "is_completed": True},
-    {"round": 8, "race_name": "Monaco Grand Prix", "circuit_id": "monaco", "circuit_name": "Circuit de Monaco", "locality": "Monte-Carlo", "country": "Monaco", "date": "2024-05-26", "time": "13:00:00Z", "is_completed": True},
+    {"round": 1, "race_name": "Australian Grand Prix", "circuit_id": "albert_park", "circuit_name": "Albert Park Circuit", "locality": "Melbourne", "country": "Australia", "date": "2026-03-15", "time": "04:00:00Z", "is_completed": True},
+    {"round": 2, "race_name": "Chinese Grand Prix", "circuit_id": "shanghai", "circuit_name": "Shanghai International Circuit", "locality": "Shanghai", "country": "China", "date": "2026-03-29", "time": "07:00:00Z", "sprint_date": "2026-03-28", "is_completed": True},
+    {"round": 3, "race_name": "Japanese Grand Prix", "circuit_id": "suzuka", "circuit_name": "Suzuka International Racing Course", "locality": "Suzuka", "country": "Japan", "date": "2026-04-12", "time": "05:00:00Z", "is_completed": True},
+    {"round": 4, "race_name": "Bahrain Grand Prix", "circuit_id": "bahrain", "circuit_name": "Bahrain International Circuit", "locality": "Sakhir", "country": "Bahrain", "date": "2026-04-26", "time": "15:00:00Z", "is_completed": True},
+    {"round": 5, "race_name": "Saudi Arabian Grand Prix", "circuit_id": "jeddah", "circuit_name": "Jeddah Corniche Circuit", "locality": "Jeddah", "country": "Saudi Arabia", "date": "2026-05-03", "time": "17:00:00Z", "is_completed": True},
+    {"round": 6, "race_name": "Miami Grand Prix", "circuit_id": "miami", "circuit_name": "Miami International Autodrome", "locality": "Miami", "country": "USA", "date": "2026-05-17", "time": "20:00:00Z", "sprint_date": "2026-05-16", "is_completed": True},
+    {"round": 7, "race_name": "Emilia Romagna Grand Prix", "circuit_id": "imola", "circuit_name": "Autodromo Enzo e Dino Ferrari", "locality": "Imola", "country": "Italy", "date": "2026-05-31", "time": "13:00:00Z", "is_completed": True},
+    {"round": 8, "race_name": "Monaco Grand Prix", "circuit_id": "monaco", "circuit_name": "Circuit de Monaco", "locality": "Monte Carlo", "country": "Monaco", "date": "2026-06-07", "time": "13:00:00Z", "is_completed": True},
+    {"round": 9, "race_name": "Spanish Grand Prix", "circuit_id": "catalunya", "circuit_name": "Circuit de Barcelona-Catalunya", "locality": "Barcelona", "country": "Spain", "date": "2026-06-21", "time": "13:00:00Z", "is_completed": True},
+    {"round": 10, "race_name": "Canadian Grand Prix", "circuit_id": "villeneuve", "circuit_name": "Circuit Gilles Villeneuve", "locality": "Montreal", "country": "Canada", "date": "2026-07-05", "time": "18:00:00Z", "is_completed": True},
+    {"round": 11, "race_name": "Austrian Grand Prix", "circuit_id": "red_bull_ring", "circuit_name": "Red Bull Ring", "locality": "Spielberg", "country": "Austria", "date": "2026-07-19", "time": "13:00:00Z", "sprint_date": "2026-07-18", "is_completed": True},
+    {"round": 12, "race_name": "British Grand Prix", "circuit_id": "silverstone", "circuit_name": "Silverstone Circuit", "locality": "Silverstone", "country": "United Kingdom", "date": "2026-08-02", "time": "14:00:00Z", "is_completed": True},
+    {"round": 13, "race_name": "Belgian Grand Prix", "circuit_id": "spa", "circuit_name": "Circuit de Spa-Francorchamps", "locality": "Stavelot", "country": "Belgium", "date": "2026-08-30", "time": "13:00:00Z", "sprint_date": "2026-08-29", "is_completed": True},
+    {"round": 14, "race_name": "Hungarian Grand Prix", "circuit_id": "hungaroring", "circuit_name": "Hungaroring", "locality": "Budapest", "country": "Hungary", "date": "2026-09-06", "time": "13:00:00Z", "is_completed": True},
+    {"round": 15, "race_name": "Dutch Grand Prix", "circuit_id": "zandvoort", "circuit_name": "Circuit Zandvoort", "locality": "Zandvoort", "country": "Netherlands", "date": "2026-09-20", "time": "13:00:00Z", "is_completed": True},
+    {"round": 16, "race_name": "Italian Grand Prix", "circuit_id": "monza", "circuit_name": "Autodromo Nazionale Monza", "locality": "Monza", "country": "Italy", "date": "2026-09-27", "time": "13:00:00Z", "is_completed": True},
+    {"round": 17, "race_name": "Azerbaijan Grand Prix", "circuit_id": "baku", "circuit_name": "Baku City Circuit", "locality": "Baku", "country": "Azerbaijan", "date": "2026-10-11", "time": "11:00:00Z", "is_completed": True},
+    {"round": 18, "race_name": "Singapore Grand Prix", "circuit_id": "marina_bay", "circuit_name": "Marina Bay Street Circuit", "locality": "Singapore", "country": "Singapore", "date": "2026-10-18", "time": "12:00:00Z", "is_completed": True},
+    {"round": 19, "race_name": "United States Grand Prix", "circuit_id": "americas", "circuit_name": "Circuit of the Americas", "locality": "Austin", "country": "USA", "date": "2026-11-01", "time": "19:00:00Z", "sprint_date": "2026-10-31", "is_completed": True},
+    {"round": 20, "race_name": "Mexico City Grand Prix", "circuit_id": "rodriguez", "circuit_name": "Autódromo Hermanos Rodríguez", "locality": "Mexico City", "country": "Mexico", "date": "2026-11-08", "time": "20:00:00Z", "is_completed": True},
+    {"round": 21, "race_name": "São Paulo Grand Prix", "circuit_id": "interlagos", "circuit_name": "Autódromo José Carlos Pace", "locality": "São Paulo", "country": "Brazil", "date": "2026-11-15", "time": "17:00:00Z", "sprint_date": "2026-11-14", "is_completed": False},
+    {"round": 22, "race_name": "Las Vegas Grand Prix", "circuit_id": "vegas", "circuit_name": "Las Vegas Strip Circuit", "locality": "Las Vegas", "country": "USA", "date": "2026-11-22", "time": "06:00:00Z", "is_completed": False},
+    {"round": 23, "race_name": "Qatar Grand Prix", "circuit_id": "losail", "circuit_name": "Lusail International Circuit", "locality": "Lusail", "country": "Qatar", "date": "2026-11-29", "time": "17:00:00Z", "sprint_date": "2026-11-28", "is_completed": False},
+    {"round": 24, "race_name": "Abu Dhabi Grand Prix", "circuit_id": "yas_marina", "circuit_name": "Yas Marina Circuit", "locality": "Abu Dhabi", "country": "UAE", "date": "2026-12-06", "time": "13:00:00Z", "is_completed": False},
 ]
 
 

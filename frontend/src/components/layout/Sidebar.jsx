@@ -36,7 +36,10 @@ export default function Sidebar({
   onSelectTab,
   isOpen = false,
   onClose,
+  theme = 'dark',
 }) {
+  const isLight = theme === 'light';
+
   return (
     <>
       {/* Mobile Backdrop */}
@@ -49,18 +52,18 @@ export default function Sidebar({
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-[#151922] border-r border-[#2A3245] flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 flex flex-col transition-all duration-300 ease-in-out lg:translate-x-0 ${
+          isLight ? 'bg-white border-r border-slate-200 text-slate-900 shadow-sm' : 'bg-[#151922] border-r border-[#2A3245] text-white'
+        } ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         {/* PitWall Brand Header */}
-        <div className="h-16 px-5 border-b border-[#2A3245] flex items-center justify-between">
+        <div className={`h-16 px-5 border-b flex items-center justify-between ${isLight ? 'border-slate-200' : 'border-[#2A3245]'}`}>
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => onSelectTab && onSelectTab('home')}>
             <div className="w-9 h-9 rounded-lg bg-[#E10600] flex items-center justify-center shadow-lg shadow-red-900/40">
               <span className="font-mono font-black text-white text-lg tracking-tighter">PW</span>
             </div>
             <div>
-              <span className="font-display font-black text-white text-lg tracking-wider block leading-none">
+              <span className={`font-display font-black text-lg tracking-wider block leading-none ${isLight ? 'text-slate-900' : 'text-white'}`}>
                 PITWALL
               </span>
               <span className="text-[10px] font-mono text-[#E10600] uppercase tracking-widest font-bold">
@@ -71,7 +74,7 @@ export default function Sidebar({
 
           <button
             onClick={onClose}
-            className="lg:hidden p-1.5 text-[#64748B] hover:text-white rounded-lg hover:bg-[#1C2230]"
+            className={`lg:hidden p-1.5 rounded-lg ${isLight ? 'text-slate-400 hover:text-slate-800 hover:bg-slate-100' : 'text-[#64748B] hover:text-white hover:bg-[#1C2230]'}`}
             aria-label="Close navigation"
           >
             <X className="w-5 h-5" />
@@ -93,14 +96,18 @@ export default function Sidebar({
                 }}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-mono font-medium transition-all group ${
                   isActive
-                    ? 'bg-[#E10600]/15 text-white border border-[#E10600]/40 shadow-sm'
+                    ? isLight
+                      ? 'bg-[#E10600]/10 text-[#E10600] border border-[#E10600]/30 font-bold shadow-sm'
+                      : 'bg-[#E10600]/15 text-white border border-[#E10600]/40 shadow-sm'
+                    : isLight
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-transparent'
                     : 'text-[#94A3B8] hover:text-white hover:bg-[#1C2230] border border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <Icon
                     className={`w-4 h-4 transition-colors ${
-                      isActive ? 'text-[#E10600]' : 'text-[#64748B] group-hover:text-white'
+                      isActive ? 'text-[#E10600]' : isLight ? 'text-slate-400 group-hover:text-slate-800' : 'text-[#64748B] group-hover:text-white'
                     }`}
                   />
                   <span className="tracking-wide">{item.label}</span>
@@ -112,7 +119,11 @@ export default function Sidebar({
                       isActive
                         ? 'bg-[#E10600] text-white animate-pulse'
                         : item.badge === 'LIVE'
-                        ? 'bg-[#1C2230] text-red-400 border border-red-500/30'
+                        ? isLight
+                          ? 'bg-red-50 text-red-600 border border-red-200'
+                          : 'bg-[#1C2230] text-red-400 border border-red-500/30'
+                        : isLight
+                        ? 'bg-sky-50 text-sky-700 border border-sky-200'
                         : 'bg-[#1C2230] text-[#00F0FF] border border-[#00F0FF]/30'
                     }`}
                   >
@@ -125,14 +136,14 @@ export default function Sidebar({
         </nav>
 
         {/* Sidebar Footer — Status & Attribution */}
-        <div className="p-3.5 border-t border-[#2A3245] bg-[#0B0E14]/50">
-          <div className="p-2.5 rounded-lg bg-[#1C2230] border border-[#2A3245]/70 flex items-center gap-2.5">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+        <div className={`p-3.5 border-t ${isLight ? 'border-slate-200 bg-slate-50' : 'border-[#2A3245] bg-[#0B0E14]/50'}`}>
+          <div className={`p-2.5 rounded-lg border flex items-center gap-2.5 ${isLight ? 'bg-white border-slate-200' : 'bg-[#1C2230] border-[#2A3245]/70'}`}>
+            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
             <div className="flex-1 min-w-0">
-              <p className="text-[11px] font-mono font-semibold text-[#F8FAFC] truncate">Telemetry Link Active</p>
-              <p className="text-[10px] font-mono text-[#64748B] truncate">OpenF1 & Jolpica 2026</p>
+              <p className={`text-[11px] font-mono font-semibold truncate ${isLight ? 'text-slate-800' : 'text-[#F8FAFC]'}`}>Telemetry Link Active</p>
+              <p className={`text-[10px] font-mono truncate ${isLight ? 'text-slate-400' : 'text-[#64748B]'}`}>OpenF1 & Jolpica 2026</p>
             </div>
-            <Zap className="w-3.5 h-3.5 text-amber-400" />
+            <Zap className="w-3.5 h-3.5 text-amber-500" />
           </div>
         </div>
       </aside>
