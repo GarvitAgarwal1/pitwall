@@ -79,6 +79,14 @@ export default function TopHeader({
           <Menu className="w-5 h-5" />
         </button>
 
+        <div className="lg:hidden flex items-center gap-1.5 cursor-pointer mr-1" onClick={() => onNavigate && onNavigate('home')}>
+          <div className="w-7 h-7 rounded-lg bg-[#E10600] flex items-center justify-center shadow-sm">
+            <svg viewBox="0 0 28 28" className="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 21L11 5h5L8 21H3zm10 0l8-16h5l-8 16h-5z" />
+            </svg>
+          </div>
+        </div>
+
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <h1 className={`text-sm lg:text-base font-bold tracking-tight truncate uppercase ${

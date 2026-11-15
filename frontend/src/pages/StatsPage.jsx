@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import apiClient from '../api/client';
 import {
   Trophy,
   Search,
@@ -8,15 +9,27 @@ import {
   Sparkles,
   ArrowUpDown,
   Filter,
+  Calendar,
+  ChevronRight,
+  ChevronDown,
+  Info,
+  ExternalLink,
+  Flame,
 } from 'lucide-react';
 import DriverAvatar from '../components/common/DriverAvatar';
 import Modal from '../components/common/Modal';
-import { DRIVER_PROFILES } from '../utils/drivers';
+import {
+  DRIVER_PROFILES,
+  getDriverProfile,
+  CONSTRUCTOR_LIVERIES,
+} from '../utils/drivers';
+import { getTeamColor } from '../utils/theme';
 
 /**
  * Complete, unbroken archive of Formula 1 World Champions (1950–Present)
  */
 export const ALL_TIME_CHAMPIONS = [
+  { year: 2026, driver: 'Max Verstappen', code: 'VER', team: 'Red Bull Racing', wins: 8, points: 412 },
   { year: 2025, driver: 'Lando Norris', code: 'NOR', team: 'McLaren', wins: 8, points: 421 },
   { year: 2024, driver: 'Max Verstappen', code: 'VER', team: 'Red Bull Racing', wins: 9, points: 437 },
   { year: 2023, driver: 'Max Verstappen', code: 'VER', team: 'Red Bull Racing', wins: 19, points: 575 },
@@ -99,22 +112,21 @@ export const ALL_TIME_CHAMPIONS = [
  * All-Time Driver Legend Records (1950–Present)
  */
 export const ALL_TIME_DRIVERS = [
-  { driver_id: 'hamilton', driver_code: 'HAM', driver_name: 'Lewis Hamilton', nationality: 'British', flag: '🇬🇧', championships: 7, race_entries: 360, race_wins: 105, podiums: 202, pole_positions: 104, fastest_laps: 67, dnf_count: 32, win_percentage: 29.2 },
-  { driver_id: 'michael_schumacher', driver_code: 'MSC', driver_name: 'Michael Schumacher', nationality: 'German', flag: '🇩🇪', championships: 7, race_entries: 308, race_wins: 91, podiums: 155, pole_positions: 68, fastest_laps: 77, dnf_count: 68, win_percentage: 29.5 },
-  { driver_id: 'max_verstappen', driver_code: 'VER', driver_name: 'Max Verstappen', nationality: 'Dutch', flag: '🇳🇱', championships: 4, race_entries: 215, race_wins: 65, podiums: 115, pole_positions: 42, fastest_laps: 35, dnf_count: 32, win_percentage: 30.2 },
-  { driver_id: 'vettel', driver_code: 'VET', driver_name: 'Sebastian Vettel', nationality: 'German', flag: '🇩🇪', championships: 4, race_entries: 299, race_wins: 53, podiums: 122, pole_positions: 57, fastest_laps: 38, dnf_count: 44, win_percentage: 17.7 },
-  { driver_id: 'prost', driver_code: 'PRO', driver_name: 'Alain Prost', nationality: 'French', flag: '🇫🇷', championships: 4, race_entries: 202, race_wins: 51, podiums: 106, pole_positions: 33, fastest_laps: 41, dnf_count: 57, win_percentage: 25.2 },
-  { driver_id: 'senna', driver_code: 'SEN', driver_name: 'Ayrton Senna', nationality: 'Brazilian', flag: '🇧🇷', championships: 3, race_entries: 162, race_wins: 41, podiums: 80, pole_positions: 65, fastest_laps: 19, dnf_count: 56, win_percentage: 25.3 },
-  { driver_id: 'alonso', driver_code: 'ALO', driver_name: 'Fernando Alonso', nationality: 'Spanish', flag: '🇪🇸', championships: 2, race_entries: 405, race_wins: 32, podiums: 106, pole_positions: 22, fastest_laps: 26, dnf_count: 80, win_percentage: 7.9 },
-  { driver_id: 'mansell', driver_code: 'MAN', driver_name: 'Nigel Mansell', nationality: 'British', flag: '🇬🇧', championships: 1, race_entries: 191, race_wins: 31, podiums: 59, pole_positions: 32, fastest_laps: 30, dnf_count: 86, win_percentage: 16.2 },
-  { driver_id: 'stewart', driver_code: 'STE', driver_name: 'Jackie Stewart', nationality: 'British', flag: '🇬🇧', championships: 3, race_entries: 100, race_wins: 27, podiums: 43, pole_positions: 17, fastest_laps: 15, dnf_count: 34, win_percentage: 27.0 },
-  { driver_id: 'clark', driver_code: 'CLA', driver_name: 'Jim Clark', nationality: 'British', flag: '🇬🇧', championships: 2, race_entries: 73, race_wins: 25, podiums: 32, pole_positions: 33, fastest_laps: 28, dnf_count: 27, win_percentage: 34.2 },
-  { driver_id: 'lauda', driver_code: 'LAU', driver_name: 'Niki Lauda', nationality: 'Austrian', flag: '🇦🇹', championships: 3, race_entries: 177, race_wins: 25, podiums: 54, pole_positions: 24, fastest_laps: 24, dnf_count: 81, win_percentage: 14.1 },
-  { driver_id: 'fangio', driver_code: 'FAN', driver_name: 'Juan Manuel Fangio', nationality: 'Argentine', flag: '🇦🇷', championships: 5, race_entries: 52, race_wins: 24, podiums: 35, pole_positions: 29, fastest_laps: 23, dnf_count: 13, win_percentage: 46.2 },
-  { driver_id: 'norris', driver_code: 'NOR', driver_name: 'Lando Norris', nationality: 'British', flag: '🇬🇧', championships: 1, race_entries: 135, race_wins: 11, podiums: 35, pole_positions: 12, fastest_laps: 14, dnf_count: 12, win_percentage: 8.1 },
-  { driver_id: 'piastri', driver_code: 'PIA', driver_name: 'Oscar Piastri', nationality: 'Australian', flag: '🇦🇺', championships: 0, race_entries: 50, race_wins: 5, podiums: 18, pole_positions: 2, fastest_laps: 4, dnf_count: 4, win_percentage: 10.0 },
-  { driver_id: 'leclerc', driver_code: 'LEC', driver_name: 'Charles Leclerc', nationality: 'Monegasque', flag: '🇲🇨', championships: 0, race_entries: 150, race_wins: 9, podiums: 45, pole_positions: 26, fastest_laps: 11, dnf_count: 21, win_percentage: 6.0 },
-  { driver_id: 'russell', driver_code: 'RUS', driver_name: 'George Russell', nationality: 'British', flag: '🇬🇧', championships: 0, race_entries: 130, race_wins: 5, podiums: 20, pole_positions: 5, fastest_laps: 8, dnf_count: 15, win_percentage: 3.8 },
+  { driver_id: 'hamilton', driver_code: 'HAM', driver_name: 'Lewis Hamilton', nationality: 'British', flag: '🇬🇧', championships: 7, race_entries: 360, race_wins: 105, podiums: 202, pole_positions: 104, fastest_laps: 67, win_percentage: 29.2 },
+  { driver_id: 'michael_schumacher', driver_code: 'MSC', driver_name: 'Michael Schumacher', nationality: 'German', flag: '🇩🇪', championships: 7, race_entries: 308, race_wins: 91, podiums: 155, pole_positions: 68, fastest_laps: 77, win_percentage: 29.5 },
+  { driver_id: 'max_verstappen', driver_code: 'VER', driver_name: 'Max Verstappen', nationality: 'Dutch', flag: '🇳🇱', championships: 4, race_entries: 215, race_wins: 65, podiums: 115, pole_positions: 42, fastest_laps: 35, win_percentage: 30.2 },
+  { driver_id: 'fangio', driver_code: 'FAN', driver_name: 'Juan Manuel Fangio', nationality: 'Argentine', flag: '🇦🇷', championships: 5, race_entries: 52, race_wins: 24, podiums: 35, pole_positions: 29, fastest_laps: 23, win_percentage: 46.2 },
+  { driver_id: 'vettel', driver_code: 'VET', driver_name: 'Sebastian Vettel', nationality: 'German', flag: '🇩🇪', championships: 4, race_entries: 299, race_wins: 53, podiums: 122, pole_positions: 57, fastest_laps: 38, win_percentage: 17.7 },
+  { driver_id: 'prost', driver_code: 'PRO', driver_name: 'Alain Prost', nationality: 'French', flag: '🇫🇷', championships: 4, race_entries: 202, race_wins: 51, podiums: 106, pole_positions: 33, fastest_laps: 41, win_percentage: 25.2 },
+  { driver_id: 'senna', driver_code: 'SEN', driver_name: 'Ayrton Senna', nationality: 'Brazilian', flag: '🇧🇷', championships: 3, race_entries: 162, race_wins: 41, podiums: 80, pole_positions: 65, fastest_laps: 19, win_percentage: 25.3 },
+  { driver_id: 'lauda', driver_code: 'LAU', driver_name: 'Niki Lauda', nationality: 'Austrian', flag: '🇦🇹', championships: 3, race_entries: 177, race_wins: 25, podiums: 54, pole_positions: 24, fastest_laps: 24, win_percentage: 14.1 },
+  { driver_id: 'stewart', driver_code: 'STE', driver_name: 'Jackie Stewart', nationality: 'British', flag: '🇬🇧', championships: 3, race_entries: 100, race_wins: 27, podiums: 43, pole_positions: 17, fastest_laps: 15, win_percentage: 27.0 },
+  { driver_id: 'clark', driver_code: 'CLA', driver_name: 'Jim Clark', nationality: 'British', flag: '🇬🇧', championships: 2, race_entries: 73, race_wins: 25, podiums: 32, pole_positions: 33, fastest_laps: 28, win_percentage: 34.2 },
+  { driver_id: 'ascari', driver_code: 'ASC', driver_name: 'Alberto Ascari', nationality: 'Italian', flag: '🇮🇹', championships: 2, race_entries: 33, race_wins: 13, podiums: 17, pole_positions: 14, fastest_laps: 12, win_percentage: 39.4 },
+  { driver_id: 'alonso', driver_code: 'ALO', driver_name: 'Fernando Alonso', nationality: 'Spanish', flag: '🇪🇸', championships: 2, race_entries: 405, race_wins: 32, podiums: 106, pole_positions: 22, fastest_laps: 26, win_percentage: 7.9 },
+  { driver_id: 'mansell', driver_code: 'MAN', driver_name: 'Nigel Mansell', nationality: 'British', flag: '🇬🇧', championships: 1, race_entries: 191, race_wins: 31, podiums: 59, pole_positions: 32, fastest_laps: 30, win_percentage: 16.2 },
+  { driver_id: 'hakkinen', driver_code: 'HAK', driver_name: 'Mika Häkkinen', nationality: 'Finnish', flag: '🇫🇮', championships: 2, race_entries: 161, race_wins: 20, podiums: 51, pole_positions: 26, fastest_laps: 25, win_percentage: 12.4 },
+  { driver_id: 'norris', driver_code: 'NOR', driver_name: 'Lando Norris', nationality: 'British', flag: '🇬🇧', championships: 1, race_entries: 135, race_wins: 11, podiums: 35, pole_positions: 12, fastest_laps: 14, win_percentage: 8.1 },
 ];
 
 /**
@@ -131,15 +143,71 @@ export const ALL_TIME_CONSTRUCTORS = [
   { constructor_id: 'renault', constructor_name: 'Renault / Alpine', nationality: 'French', flag: '🇫🇷', championships: 2, race_entries: 440, race_wins: 36, podiums: 108, pole_positions: 51, win_percentage: 8.1 },
 ];
 
-export default function StatsPage() {
-  const [activeTab, setActiveTab] = useState('champions'); // 'champions' | 'drivers' | 'constructors'
+export default function StatsPage({ theme = 'dark' }) {
+  const [activeTab, setActiveTab] = useState('year_explorer'); // 'year_explorer' | 'champions' | 'drivers' | 'constructors'
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDecade, setSelectedDecade] = useState('ALL');
+
+  // Year-by-Year Standings Explorer State
+  const [selectedYear, setSelectedYear] = useState('2024');
+  const [yearStandingsLoading, setYearStandingsLoading] = useState(false);
+  const [yearDriverStandings, setYearDriverStandings] = useState([]);
+  const [yearConstructorStandings, setYearConstructorStandings] = useState([]);
+
+  // Driver Dossier Modal
+  const [selectedDriver, setSelectedDriver] = useState(null);
 
   // Head-to-Head Compare Modal
   const [compareModalOpen, setCompareModalOpen] = useState(false);
   const [driver1Code, setDriver1Code] = useState('HAM');
   const [driver2Code, setDriver2Code] = useState('VER');
+
+  const isLight = theme === 'light';
+
+  // Load standings whenever selectedYear changes in Year-by-Year Explorer
+  useEffect(() => {
+    let isMounted = true;
+    async function loadYearStandings() {
+      setYearStandingsLoading(true);
+      try {
+        const [driversRes, constructorsRes] = await Promise.allSettled([
+          apiClient.get(`/standings/drivers/${selectedYear}`),
+          apiClient.get(`/standings/constructors/${selectedYear}`),
+        ]);
+
+        if (!isMounted) return;
+
+        if (driversRes.status === 'fulfilled' && driversRes.value?.standings) {
+          setYearDriverStandings(driversRes.value.standings);
+        } else {
+          setYearDriverStandings([]);
+        }
+
+        if (constructorsRes.status === 'fulfilled' && constructorsRes.value?.standings) {
+          setYearConstructorStandings(constructorsRes.value.standings);
+        } else {
+          setYearConstructorStandings([]);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setYearDriverStandings([]);
+          setYearConstructorStandings([]);
+        }
+      } finally {
+        if (isMounted) setYearStandingsLoading(false);
+      }
+    }
+
+    loadYearStandings();
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedYear]);
+
+  // Find champion of selected year
+  const yearChamp = useMemo(() => {
+    return ALL_TIME_CHAMPIONS.find((c) => String(c.year) === String(selectedYear));
+  }, [selectedYear]);
 
   // Filter Champions by Decade & Search
   const filteredChampions = useMemo(() => {
@@ -181,138 +249,460 @@ export default function StatsPage() {
     });
   }, [searchQuery]);
 
+  const handleDriverClick = (driverCodeOrName) => {
+    const profile = getDriverProfile(driverCodeOrName);
+    setSelectedDriver(profile);
+  };
+
   const d1 = ALL_TIME_DRIVERS.find((d) => d.driver_code === driver1Code) || ALL_TIME_DRIVERS[0];
   const d2 = ALL_TIME_DRIVERS.find((d) => d.driver_code === driver2Code) || ALL_TIME_DRIVERS[2];
+
+  // Milestone years for quick jump
+  const MILESTONE_YEARS = [
+    { year: '2026', label: '2026 Season' },
+    { year: '2024', label: '2024 Verstappen' },
+    { year: '2021', label: '2021 Title Decider' },
+    { year: '2008', label: '2008 Hamilton' },
+    { year: '2004', label: '2004 Schumacher Ferrari' },
+    { year: '1998', label: '1998 Häkkinen' },
+    { year: '1988', label: '1988 Senna vs Prost' },
+    { year: '1976', label: '1976 Hunt vs Lauda' },
+    { year: '1965', label: '1965 Jim Clark' },
+    { year: '1957', label: '1957 Fangio Maserati' },
+    { year: '1953', label: '1953 Alberto Ascari' },
+    { year: '1950', label: '1950 Giuseppe Farina' },
+  ];
 
   return (
     <div className="space-y-6">
       {/* 1. Header Toolbar */}
-      <div className="bg-[#12161F] border border-[#2A3245] rounded-xl p-5 shadow-xl space-y-4">
+      <div className={`border rounded-2xl p-5 shadow-sm space-y-4 transition-colors ${
+        isLight ? 'bg-white border-slate-200 shadow-sm' : 'bg-[#12161F] border-[#2A3245] shadow-xl'
+      }`}>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600]/20 text-[#E10600] border border-[#E10600]/40 uppercase tracking-wider">
-                Historical Archive
+              <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600]/15 text-[#E10600] border border-[#E10600]/30 uppercase tracking-wider">
+                Historical Archive (1950–Present)
               </span>
-              <span className="text-xs font-mono text-[#64748B]">Complete Records 1950–Present</span>
+              <span className={`text-xs font-mono ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>
+                Every Season & Legend in Formula 1 History
+              </span>
             </div>
-            <h2 className="text-xl lg:text-2xl font-display font-black text-white tracking-wide uppercase">
-              Formula 1 All-Time Championships & Hall of Fame
+            <h2 className={`text-xl lg:text-2xl font-black italic tracking-tight uppercase ${
+              isLight ? 'text-slate-900' : 'text-white'
+            }`}>
+              Championship Standings & Hall of Fame
             </h2>
           </div>
 
           {/* Action Button: Head-to-Head Compare */}
           <button
             onClick={() => setCompareModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-[#E10600] hover:bg-[#B30500] text-white rounded-lg font-mono text-xs font-bold transition-all shadow-lg shadow-red-950/40 shrink-0"
+            className="flex items-center gap-2 px-4 py-2 bg-[#E10600] hover:bg-red-700 text-white rounded-lg font-mono text-xs font-bold transition-all shadow-md shadow-red-950/30 shrink-0"
           >
             <Users className="w-4 h-4" />
-            <span>Driver Head-to-Head Matrix</span>
+            <span>Driver Career H2H Matrix</span>
           </button>
         </div>
 
-        {/* Tab Switcher & Search Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[#2A3245]">
-          <div className="flex items-center gap-2">
+        {/* Tab Switcher */}
+        <div className={`flex flex-wrap items-center justify-between gap-3 pt-3 border-t ${
+          isLight ? 'border-slate-200' : 'border-[#2A3245]'
+        }`}>
+          <div className="flex flex-wrap items-center gap-2">
             {[
-              { id: 'champions', label: 'World Champions (1950–Now)', icon: Trophy },
+              { id: 'year_explorer', label: 'Year-by-Year Standings Explorer', icon: Calendar },
+              { id: 'champions', label: 'World Champions (1950–Present)', icon: Trophy },
               { id: 'drivers', label: 'Driver Career Records', icon: Award },
               { id: 'constructors', label: 'Constructors Records', icon: Shield },
             ].map((tab) => {
               const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
-                    activeTab === tab.id
-                      ? 'bg-[#1C2230] border border-[#E10600] text-white font-bold'
-                      : 'text-[#94A3B8] hover:text-white hover:bg-[#151922]'
+                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+                    isActive
+                      ? 'bg-[#E10600] text-white shadow-sm'
+                      : isLight
+                        ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                        : 'text-[#94A3B8] hover:text-white hover:bg-[#151922]'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5 text-[#E10600]" />
+                  <Icon className="w-3.5 h-3.5" />
                   <span>{tab.label}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Search Box */}
-          <div className="relative w-full sm:w-64">
-            <Search className="w-3.5 h-3.5 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search driver, team, year..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#1C2230] border border-[#2A3245] rounded-lg pl-9 pr-3 py-1.5 text-xs font-mono text-white placeholder-[#64748B] focus:outline-none focus:border-[#E10600]"
-            />
+          {/* Search Box (Active on non-explorer tabs) */}
+          {activeTab !== 'year_explorer' && (
+            <div className="relative w-full sm:w-64">
+              <Search className={`w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 ${
+                isLight ? 'text-slate-400' : 'text-[#64748B]'
+              }`} />
+              <input
+                type="text"
+                placeholder="Search driver, team, year..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={`w-full rounded-lg pl-9 pr-3 py-1.5 text-xs font-mono border focus:outline-none focus:border-[#E10600] ${
+                  isLight
+                    ? 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'
+                    : 'bg-[#1C2230] border-[#2A3245] text-white placeholder-[#64748B]'
+                }`}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ==================== TAB: YEAR-BY-YEAR STANDINGS EXPLORER (1950-2026) ==================== */}
+      {activeTab === 'year_explorer' && (
+        <div className="space-y-6">
+          {/* Year Selector Control Panel */}
+          <div className={`border rounded-xl p-5 space-y-4 ${
+            isLight ? 'bg-white border-slate-200 shadow-sm' : 'bg-[#12161F] border-[#2A3245] shadow-xl'
+          }`}>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-[#E10600]" />
+                <div>
+                  <h3 className={`font-bold text-sm uppercase tracking-wider ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                    Select Formula 1 Championship Season
+                  </h3>
+                  <p className={`text-xs font-mono ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>
+                    Full championship driver & constructor standings from the 1950 British GP to 2026
+                  </p>
+                </div>
+              </div>
+
+              {/* Year Dropdown & Slider */}
+              <div className="flex items-center gap-3">
+                <span className={`text-xs font-mono ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>Season:</span>
+                <select
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  className={`px-3 py-1.5 rounded-lg border font-mono font-bold text-sm focus:outline-none focus:border-[#E10600] ${
+                    isLight
+                      ? 'bg-slate-50 border-slate-300 text-slate-900'
+                      : 'bg-[#1C2230] border-[#2A3245] text-white'
+                  }`}
+                >
+                  {Array.from({ length: 2026 - 1950 + 1 }, (_, i) => 2026 - i).map((y) => (
+                    <option key={y} value={String(y)}>
+                      {y} Championship Season
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Quick Era Milestone Chips */}
+            <div className={`pt-3 border-t flex flex-wrap items-center gap-1.5 text-xs font-mono ${
+              isLight ? 'border-slate-100' : 'border-[#2A3245]/60'
+            }`}>
+              <span className={`mr-1 ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>Milestones:</span>
+              {MILESTONE_YEARS.map((m) => (
+                <button
+                  key={m.year}
+                  onClick={() => setSelectedYear(m.year)}
+                  className={`px-2.5 py-1 rounded-md text-[11px] transition-all font-semibold ${
+                    selectedYear === m.year
+                      ? 'bg-[#E10600] text-white shadow-sm'
+                      : isLight
+                        ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                        : 'bg-[#1C2230] text-[#94A3B8] hover:text-white border border-[#2A3245]'
+                  }`}
+                >
+                  {m.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Year Champion Banner (Hero Preview) */}
+          {yearChamp && (
+            <div
+              onClick={() => handleDriverClick(yearChamp.code || yearChamp.driver)}
+              className={`p-6 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden group cursor-pointer transition-all ${
+                isLight
+                  ? 'bg-gradient-to-r from-amber-50/70 via-white to-amber-50/40 border-amber-300 shadow-sm hover:shadow-md'
+                  : 'bg-gradient-to-r from-[#1A1E29] to-[#12161F] border-amber-500/40 shadow-xl shadow-amber-950/20 hover:border-amber-400'
+              }`}
+            >
+              <div className="flex items-center gap-5">
+                <DriverAvatar code={yearChamp.code} name={yearChamp.driver} size="xl" showNumber />
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40 uppercase">
+                      {selectedYear} World Champion
+                    </span>
+                    <Trophy className="w-4 h-4 text-amber-500" />
+                  </div>
+                  <h3 className={`text-2xl font-black italic tracking-tight group-hover:text-amber-500 transition-colors ${
+                    isLight ? 'text-slate-900' : 'text-white'
+                  }`}>
+                    {yearChamp.driver}
+                  </h3>
+                  <p className={`text-xs font-mono ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>
+                    {yearChamp.team} • {yearChamp.wins} Wins • {yearChamp.points} Points
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#E10600] group-hover:translate-x-1 transition-transform">
+                <span>View Full Career Dossier</span>
+                <ChevronRight className="w-4 h-4" />
+              </div>
+            </div>
+          )}
+
+          {/* Season Tables: Drivers & Constructors */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Drivers Standings for selectedYear */}
+            <div className={`border rounded-xl p-5 space-y-3 ${
+              isLight ? 'bg-white border-slate-200 shadow-sm' : 'bg-[#12161F] border-[#2A3245] shadow-xl'
+            }`}>
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-[#2A3245]">
+                <div className="flex items-center gap-2">
+                  <Trophy className="w-4 h-4 text-amber-500" />
+                  <h4 className={`text-xs font-bold uppercase tracking-wider ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                    {selectedYear} Driver Standings
+                  </h4>
+                </div>
+                <span className={`text-[10px] font-mono ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>
+                  Click row to view portrait & bio
+                </span>
+              </div>
+
+              {yearStandingsLoading ? (
+                <div className="py-12 text-center font-mono text-xs text-[#64748B]">
+                  Loading official {selectedYear} standings...
+                </div>
+              ) : yearDriverStandings.length > 0 ? (
+                <div className="overflow-x-auto max-h-[460px] overflow-y-auto">
+                  <table className="w-full text-left font-mono text-xs">
+                    <thead className={`text-[10px] uppercase border-b sticky top-0 ${
+                      isLight ? 'bg-slate-50 text-slate-500 border-slate-200' : 'bg-[#151922] text-[#94A3B8] border-[#2A3245]'
+                    }`}>
+                      <tr>
+                        <th className="py-2 px-2.5">Pos</th>
+                        <th className="py-2 px-2.5">Driver</th>
+                        <th className="py-2 px-2.5 hidden sm:table-cell">Team</th>
+                        <th className="py-2 px-2.5 text-center">Wins</th>
+                        <th className="py-2 px-2.5 text-right">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className={`divide-y ${isLight ? 'divide-slate-100' : 'divide-[#2A3245]/50'}`}>
+                      {yearDriverStandings.map((item, idx) => (
+                        <tr
+                          key={item.driver_id || idx}
+                          onClick={() => handleDriverClick(item.driver_code || `${item.given_name} ${item.family_name}`)}
+                          className={`cursor-pointer transition-colors ${
+                            isLight ? 'hover:bg-slate-50' : 'hover:bg-[#1C2230]/70'
+                          }`}
+                        >
+                          <td className="py-2 px-2.5 font-bold">
+                            <span className={`w-5 h-5 inline-flex items-center justify-center rounded text-[11px] ${
+                              item.position === 1
+                                ? 'bg-amber-500/20 text-amber-600 dark:text-amber-400 font-black'
+                                : isLight ? 'text-slate-600' : 'text-[#64748B]'
+                            }`}>
+                              {item.position}
+                            </span>
+                          </td>
+                          <td className="py-2 px-2.5">
+                            <span className={`font-bold block ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                              {item.given_name} {item.family_name}
+                            </span>
+                            <span className={`text-[10px] sm:hidden ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>
+                              {item.constructor_name}
+                            </span>
+                          </td>
+                          <td className={`py-2 px-2.5 hidden sm:table-cell truncate max-w-[130px] ${
+                            isLight ? 'text-slate-600' : 'text-[#94A3B8]'
+                          }`}>
+                            {item.constructor_name}
+                          </td>
+                          <td className={`py-2 px-2.5 text-center font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                            {item.wins}
+                          </td>
+                          <td className={`py-2 px-2.5 text-right font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                            {item.points}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="py-8 text-center text-xs font-mono text-[#64748B]">
+                  No driver standings recorded for {selectedYear}
+                </div>
+              )}
+            </div>
+
+            {/* Constructors Standings for selectedYear */}
+            <div className={`border rounded-xl p-5 space-y-3 ${
+              isLight ? 'bg-white border-slate-200 shadow-sm' : 'bg-[#12161F] border-[#2A3245] shadow-xl'
+            }`}>
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-[#2A3245]">
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-[#00F0FF]" />
+                  <h4 className={`text-xs font-bold uppercase tracking-wider ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                    {selectedYear} Constructor Standings
+                  </h4>
+                </div>
+                <span className={`text-[10px] font-mono ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>
+                  {yearConstructorStandings.length} Teams
+                </span>
+              </div>
+
+              {yearStandingsLoading ? (
+                <div className="py-12 text-center font-mono text-xs text-[#64748B]">
+                  Loading official {selectedYear} constructors...
+                </div>
+              ) : yearConstructorStandings.length > 0 ? (
+                <div className="overflow-x-auto max-h-[460px] overflow-y-auto">
+                  <table className="w-full text-left font-mono text-xs">
+                    <thead className={`text-[10px] uppercase border-b sticky top-0 ${
+                      isLight ? 'bg-slate-50 text-slate-500 border-slate-200' : 'bg-[#151922] text-[#94A3B8] border-[#2A3245]'
+                    }`}>
+                      <tr>
+                        <th className="py-2 px-2.5">Pos</th>
+                        <th className="py-2 px-2.5">Constructor</th>
+                        <th className="py-2 px-2.5 text-center">Wins</th>
+                        <th className="py-2 px-2.5 text-right">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className={`divide-y ${isLight ? 'divide-slate-100' : 'divide-[#2A3245]/50'}`}>
+                      {yearConstructorStandings.map((c, idx) => (
+                        <tr
+                          key={c.constructor_id || idx}
+                          className={`transition-colors ${isLight ? 'hover:bg-slate-50' : 'hover:bg-[#1C2230]/70'}`}
+                        >
+                          <td className="py-2.5 px-2.5 font-bold">
+                            <span className={`w-5 h-5 inline-flex items-center justify-center rounded text-[11px] ${
+                              c.position === 1
+                                ? 'bg-amber-500/20 text-amber-600 dark:text-amber-400 font-black'
+                                : isLight ? 'text-slate-600' : 'text-[#64748B]'
+                            }`}>
+                              {c.position}
+                            </span>
+                          </td>
+                          <td className={`py-2.5 px-2.5 font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                            {c.constructor_name}
+                          </td>
+                          <td className={`py-2.5 px-2.5 text-center font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                            {c.wins}
+                          </td>
+                          <td className={`py-2.5 px-2.5 text-right font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                            {c.points}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="py-8 text-center text-xs font-mono text-[#64748B]">
+                  {Number(selectedYear) < 1958
+                    ? 'Constructor Championship was inaugurated in 1958'
+                    : `No constructor standings recorded for ${selectedYear}`}
+                </div>
+              )}
+            </div>
           </div>
         </div>
+      )}
 
-        {/* Decade Filters (Only shown on Champions tab) */}
-        {activeTab === 'champions' && (
-          <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#2A3245]/60 text-xs font-mono">
-            <span className="text-[#64748B] mr-2">Decade:</span>
+      {/* ==================== TAB: WORLD CHAMPIONS (1950–PRESENT) ==================== */}
+      {activeTab === 'champions' && (
+        <div className="space-y-4">
+          {/* Decade Filters */}
+          <div className={`p-3 rounded-xl border flex flex-wrap items-center gap-1.5 text-xs font-mono ${
+            isLight ? 'bg-white border-slate-200' : 'bg-[#12161F] border-[#2A3245]'
+          }`}>
+            <span className={`mr-2 ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>Filter Decade:</span>
             {['ALL', '2020s', '2010s', '2000s', '90s', '80s', '70s', '60s', '50s'].map((dec) => (
               <button
                 key={dec}
                 onClick={() => setSelectedDecade(dec)}
-                className={`px-2.5 py-0.5 rounded text-[11px] transition-all ${
+                className={`px-2.5 py-1 rounded text-[11px] transition-all font-semibold ${
                   selectedDecade === dec
-                    ? 'bg-[#E10600] text-white font-bold'
-                    : 'bg-[#1C2230] text-[#94A3B8] hover:text-white border border-[#2A3245]'
+                    ? 'bg-[#E10600] text-white shadow-sm'
+                    : isLight
+                      ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      : 'bg-[#1C2230] text-[#94A3B8] hover:text-white border border-[#2A3245]'
                 }`}
               >
                 {dec}
               </button>
             ))}
           </div>
-        )}
-      </div>
 
-      {/* 2. Champions Archive Grid (Every Single Year from 1950 to Present) */}
-      {activeTab === 'champions' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-          {filteredChampions.map((champ) => (
-            <div
-              key={champ.year}
-              className="bg-[#12161F] border border-[#2A3245] rounded-xl p-4 hover:border-[#E10600]/60 transition-all shadow-md group flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-base font-mono font-black text-white px-2 py-0.5 rounded bg-[#1C2230] border border-[#2A3245]">
-                    {champ.year}
-                  </span>
-                  <Trophy className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+            {filteredChampions.map((champ) => (
+              <div
+                key={champ.year}
+                onClick={() => handleDriverClick(champ.code || champ.driver)}
+                className={`border rounded-xl p-4 transition-all shadow-sm group flex flex-col justify-between cursor-pointer ${
+                  isLight
+                    ? 'bg-white border-slate-200 hover:border-[#E10600] hover:shadow-md'
+                    : 'bg-[#12161F] border-[#2A3245] hover:border-[#E10600]/60 shadow-md'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`text-base font-mono font-black px-2 py-0.5 rounded border ${
+                      isLight ? 'bg-slate-100 border-slate-200 text-slate-900' : 'bg-[#1C2230] border-[#2A3245] text-white'
+                    }`}>
+                      {champ.year}
+                    </span>
+                    <Trophy className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+                  </div>
 
-                <div className="flex items-center gap-3 mb-3">
-                  <DriverAvatar code={champ.code} name={champ.driver} size="md" />
-                  <div className="min-w-0">
-                    <h4 className="font-bold text-white text-sm truncate leading-snug">
-                      {champ.driver}
-                    </h4>
-                    <p className="text-[11px] font-mono text-[#94A3B8] truncate">{champ.team}</p>
+                  <div className="flex items-center gap-3 mb-3">
+                    <DriverAvatar code={champ.code} name={champ.driver} size="md" />
+                    <div className="min-w-0">
+                      <h4 className={`font-bold text-sm truncate leading-snug group-hover:text-[#E10600] transition-colors ${
+                        isLight ? 'text-slate-900' : 'text-white'
+                      }`}>
+                        {champ.driver}
+                      </h4>
+                      <p className={`text-[11px] font-mono truncate ${isLight ? 'text-slate-500' : 'text-[#94A3B8]'}`}>
+                        {champ.team}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="pt-2 border-t border-[#2A3245]/60 flex items-center justify-between text-xs font-mono text-[#64748B]">
-                <span className="text-[#00F0FF] font-bold">{champ.wins} Wins</span>
-                <span className="text-white font-bold">{champ.points} PTS</span>
+                <div className={`pt-2 border-t flex items-center justify-between text-xs font-mono ${
+                  isLight ? 'border-slate-100 text-slate-600' : 'border-[#2A3245]/60 text-[#64748B]'
+                }`}>
+                  <span className={`${isLight ? 'text-sky-600' : 'text-[#00F0FF]'} font-bold`}>{champ.wins} Wins</span>
+                  <span className={`font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>{champ.points} PTS</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
-      {/* 3. Driver All-Time Career Leaderboards */}
+      {/* ==================== TAB: DRIVER LEGENDS & CAREER RECORDS ==================== */}
       {activeTab === 'drivers' && (
-        <div className="bg-[#12161F] border border-[#2A3245] rounded-xl overflow-hidden shadow-xl">
+        <div className={`border rounded-xl overflow-hidden shadow-sm ${
+          isLight ? 'bg-white border-slate-200' : 'bg-[#12161F] border-[#2A3245]'
+        }`}>
           <div className="overflow-x-auto">
             <table className="w-full text-left font-mono text-xs">
-              <thead className="bg-[#151922] border-b border-[#2A3245] text-[#94A3B8] uppercase text-[10px]">
+              <thead className={`border-b uppercase text-[10px] ${
+                isLight ? 'bg-slate-50 text-slate-500 border-slate-200' : 'bg-[#151922] text-[#94A3B8] border-[#2A3245]'
+              }`}>
                 <tr>
                   <th className="py-3 px-4">#</th>
                   <th className="py-3 px-4">Driver</th>
@@ -325,34 +715,42 @@ export default function StatsPage() {
                   <th className="py-3 px-4 text-right">Win Rate</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#2A3245]/60">
+              <tbody className={`divide-y ${isLight ? 'divide-slate-100' : 'divide-[#2A3245]/60'}`}>
                 {filteredDrivers.map((d, idx) => (
-                  <tr key={d.driver_id} className="hover:bg-[#1C2230]/70 transition-colors">
-                    <td className="py-3 px-4 text-[#64748B] font-bold">{idx + 1}</td>
+                  <tr
+                    key={d.driver_id}
+                    onClick={() => handleDriverClick(d.driver_code || d.driver_name)}
+                    className={`cursor-pointer transition-colors ${
+                      isLight ? 'hover:bg-slate-50' : 'hover:bg-[#1C2230]/70'
+                    }`}
+                  >
+                    <td className="py-3 px-4 font-bold text-slate-400">{idx + 1}</td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
                         <DriverAvatar code={d.driver_code} name={d.driver_name} size="sm" />
                         <div>
-                          <span className="font-bold text-white text-sm block">
+                          <span className={`font-bold text-sm block group-hover:text-[#E10600] ${
+                            isLight ? 'text-slate-900' : 'text-white'
+                          }`}>
                             {d.driver_name}
                           </span>
-                          <span className="text-[10px] text-[#64748B]">
+                          <span className={`text-[10px] ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>
                             {d.flag} {d.nationality}
                           </span>
                         </div>
                       </div>
                     </td>
                     <td className="py-3 px-4 text-center">
-                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30">
+                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/30">
                         {d.championships}x
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-center text-white font-bold">{d.race_wins}</td>
-                    <td className="py-3 px-4 text-center text-[#94A3B8]">{d.podiums}</td>
-                    <td className="py-3 px-4 text-center text-[#94A3B8]">{d.pole_positions}</td>
-                    <td className="py-3 px-4 text-center text-[#94A3B8]">{d.fastest_laps}</td>
-                    <td className="py-3 px-4 text-center text-[#64748B]">{d.race_entries}</td>
-                    <td className="py-3 px-4 text-right text-[#00F0FF] font-bold">
+                    <td className={`py-3 px-4 text-center font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>{d.race_wins}</td>
+                    <td className={`py-3 px-4 text-center ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>{d.podiums}</td>
+                    <td className={`py-3 px-4 text-center ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>{d.pole_positions}</td>
+                    <td className={`py-3 px-4 text-center ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>{d.fastest_laps}</td>
+                    <td className="py-3 px-4 text-center text-slate-400">{d.race_entries}</td>
+                    <td className={`py-3 px-4 text-right font-bold ${isLight ? 'text-sky-600' : 'text-[#00F0FF]'}`}>
                       {d.win_percentage.toFixed(1)}%
                     </td>
                   </tr>
@@ -363,12 +761,16 @@ export default function StatsPage() {
         </div>
       )}
 
-      {/* 4. Constructor All-Time Leaderboards */}
+      {/* ==================== TAB: CONSTRUCTOR RECORDS ==================== */}
       {activeTab === 'constructors' && (
-        <div className="bg-[#12161F] border border-[#2A3245] rounded-xl overflow-hidden shadow-xl">
+        <div className={`border rounded-xl overflow-hidden shadow-sm ${
+          isLight ? 'bg-white border-slate-200' : 'bg-[#12161F] border-[#2A3245]'
+        }`}>
           <div className="overflow-x-auto">
             <table className="w-full text-left font-mono text-xs">
-              <thead className="bg-[#151922] border-b border-[#2A3245] text-[#94A3B8] uppercase text-[10px]">
+              <thead className={`border-b uppercase text-[10px] ${
+                isLight ? 'bg-slate-50 text-slate-500 border-slate-200' : 'bg-[#151922] text-[#94A3B8] border-[#2A3245]'
+              }`}>
                 <tr>
                   <th className="py-3 px-4">#</th>
                   <th className="py-3 px-4">Constructor</th>
@@ -380,26 +782,29 @@ export default function StatsPage() {
                   <th className="py-3 px-4 text-right">Win Rate</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#2A3245]/60">
+              <tbody className={`divide-y ${isLight ? 'divide-slate-100' : 'divide-[#2A3245]/60'}`}>
                 {ALL_TIME_CONSTRUCTORS.map((c, idx) => (
-                  <tr key={c.constructor_id} className="hover:bg-[#1C2230]/70 transition-colors">
-                    <td className="py-3 px-4 text-[#64748B] font-bold">{idx + 1}</td>
-                    <td className="py-3 px-4 font-bold text-white text-sm">
+                  <tr
+                    key={c.constructor_id}
+                    className={`transition-colors ${isLight ? 'hover:bg-slate-50' : 'hover:bg-[#1C2230]/70'}`}
+                  >
+                    <td className="py-3 px-4 text-slate-400 font-bold">{idx + 1}</td>
+                    <td className={`py-3 px-4 font-bold text-sm ${isLight ? 'text-slate-900' : 'text-white'}`}>
                       <div className="flex items-center gap-2">
                         <span>{c.flag}</span>
                         <span>{c.constructor_name}</span>
                       </div>
                     </td>
                     <td className="py-3 px-4 text-center">
-                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30">
+                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/30">
                         {c.championships}x WCC
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-center text-white font-bold">{c.race_wins}</td>
-                    <td className="py-3 px-4 text-center text-[#94A3B8]">{c.podiums}</td>
-                    <td className="py-3 px-4 text-center text-[#94A3B8]">{c.pole_positions}</td>
-                    <td className="py-3 px-4 text-center text-[#64748B]">{c.race_entries}</td>
-                    <td className="py-3 px-4 text-right text-[#00F0FF] font-bold">
+                    <td className={`py-3 px-4 text-center font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>{c.race_wins}</td>
+                    <td className={`py-3 px-4 text-center ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>{c.podiums}</td>
+                    <td className={`py-3 px-4 text-center ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>{c.pole_positions}</td>
+                    <td className="py-3 px-4 text-center text-slate-400">{c.race_entries}</td>
+                    <td className={`py-3 px-4 text-right font-bold ${isLight ? 'text-sky-600' : 'text-[#00F0FF]'}`}>
                       {c.win_percentage.toFixed(1)}%
                     </td>
                   </tr>
@@ -410,7 +815,119 @@ export default function StatsPage() {
         </div>
       )}
 
-      {/* 5. Head-to-Head Compare Modal (PORTALED TO DOCUMENT.BODY: ZERO BACKDROP CLIPPING) */}
+      {/* ==================== INTERACTIVE DRIVER DOSSIER MODAL ==================== */}
+      {selectedDriver && (
+        <Modal
+          isOpen={Boolean(selectedDriver)}
+          onClose={() => setSelectedDriver(null)}
+          title={`${selectedDriver.name} Dossier`}
+          subtitle={`Formula 1 Driver Archive • #${selectedDriver.number || 'Legend'}`}
+          size="lg"
+        >
+          <div className="space-y-6">
+            {/* Top Hero Banner */}
+            <div className={`p-6 rounded-2xl border flex flex-col md:flex-row items-center gap-6 relative overflow-hidden ${
+              isLight
+                ? 'bg-gradient-to-r from-slate-50 to-white border-slate-200'
+                : 'bg-gradient-to-r from-[#151922] to-[#1C2230] border-[#2A3245]'
+            }`}>
+              {/* Large Driver Portrait */}
+              <div className="relative shrink-0">
+                <img
+                  src={selectedDriver.portraitUrl}
+                  alt={selectedDriver.name}
+                  className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-[#E10600] shadow-xl"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png';
+                  }}
+                />
+                <span className="absolute -bottom-2 -right-2 px-2.5 py-0.5 rounded-lg bg-[#E10600] text-white font-mono font-black text-sm shadow-md">
+                  #{selectedDriver.number || '★'}
+                </span>
+              </div>
+
+              {/* Bio Highlights */}
+              <div className="space-y-2 text-center md:text-left min-w-0">
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                  <span className="text-xl">{selectedDriver.countryFlag || '🏁'}</span>
+                  <span className={`text-xs font-mono font-bold uppercase ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>
+                    {selectedDriver.nationality}
+                  </span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600]/15 text-[#E10600]">
+                    {selectedDriver.team}
+                  </span>
+                </div>
+
+                <h3 className={`text-2xl font-black italic tracking-tight ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                  {selectedDriver.name}
+                </h3>
+
+                <p className={`text-xs font-mono ${isLight ? 'text-slate-600' : 'text-[#94A3B8]'}`}>
+                  Born: {selectedDriver.birthDate} • {selectedDriver.birthPlace}
+                </p>
+
+                <p className={`text-xs leading-relaxed max-w-xl ${isLight ? 'text-slate-700' : 'text-slate-300'}`}>
+                  {selectedDriver.biography}
+                </p>
+              </div>
+            </div>
+
+            {/* Career Accomplishments Grid */}
+            <div>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-1.5 ${
+                isLight ? 'text-slate-900' : 'text-white'
+              }`}>
+                <Award className="w-4 h-4 text-amber-500" />
+                <span>Career Records & Achievements</span>
+              </h4>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                {[
+                  { label: 'World Titles', val: selectedDriver.stats?.championships ?? 0, color: 'text-amber-500' },
+                  { label: 'Race Wins', val: selectedDriver.stats?.wins ?? 0, color: 'text-emerald-500' },
+                  { label: 'Podiums', val: selectedDriver.stats?.podiums ?? 0, color: 'text-sky-500' },
+                  { label: 'Pole Positions', val: selectedDriver.stats?.poles ?? 0, color: 'text-purple-500' },
+                  { label: 'Career Points', val: selectedDriver.stats?.points ?? 0, color: 'text-[#E10600]' },
+                  { label: 'Best Finish', val: selectedDriver.stats?.bestFinish ?? 'P1', color: isLight ? 'text-slate-900' : 'text-white' },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className={`p-3 rounded-xl border text-center ${
+                      isLight ? 'bg-slate-50 border-slate-200' : 'bg-[#151922] border-[#2A3245]'
+                    }`}
+                  >
+                    <span className={`text-xl font-mono font-black block ${stat.color}`}>
+                      {stat.val}
+                    </span>
+                    <span className={`text-[10px] font-mono uppercase tracking-wider ${
+                      isLight ? 'text-slate-500' : 'text-[#64748B]'
+                    }`}>
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Close */}
+            <div className={`pt-4 border-t flex justify-end ${isLight ? 'border-slate-200' : 'border-[#2A3245]'}`}>
+              <button
+                onClick={() => setSelectedDriver(null)}
+                className={`px-4 py-2 rounded-lg text-xs font-mono font-bold border transition-colors ${
+                  isLight
+                    ? 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
+                    : 'bg-[#1C2230] hover:bg-[#2A3245] text-white border-[#2A3245]'
+                }`}
+              >
+                Close Dossier
+              </button>
+            </div>
+          </div>
+        </Modal>
+      )}
+
+      {/* ==================== HEAD-TO-HEAD COMPARE MODAL ==================== */}
       <Modal
         isOpen={compareModalOpen}
         onClose={() => setCompareModalOpen(false)}
@@ -422,14 +939,20 @@ export default function StatsPage() {
           {/* Driver Selectors with Real Photos */}
           <div className="grid grid-cols-2 gap-4">
             {/* Driver 1 */}
-            <div className="p-3 bg-[#151922] rounded-xl border border-[#2A3245] flex items-center gap-3">
+            <div className={`p-3 rounded-xl border flex items-center gap-3 ${
+              isLight ? 'bg-slate-50 border-slate-200' : 'bg-[#151922] border-[#2A3245]'
+            }`}>
               <DriverAvatar code={driver1Code} size="md" />
               <div className="flex-1 min-w-0">
-                <label className="block text-[10px] font-mono text-[#64748B]">DRIVER 1</label>
+                <label className={`block text-[10px] font-mono ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>DRIVER 1</label>
                 <select
                   value={driver1Code}
                   onChange={(e) => setDriver1Code(e.target.value)}
-                  className="w-full bg-[#1C2230] border border-[#2A3245] text-white text-xs font-mono font-bold rounded p-1.5 focus:outline-none focus:border-[#E10600]"
+                  className={`w-full border text-xs font-mono font-bold rounded p-1.5 focus:outline-none focus:border-[#E10600] ${
+                    isLight
+                      ? 'bg-white border-slate-300 text-slate-900'
+                      : 'bg-[#1C2230] border-[#2A3245] text-white'
+                  }`}
                 >
                   {ALL_TIME_DRIVERS.map((d) => (
                     <option key={d.driver_code} value={d.driver_code}>
@@ -441,14 +964,20 @@ export default function StatsPage() {
             </div>
 
             {/* Driver 2 */}
-            <div className="p-3 bg-[#151922] rounded-xl border border-[#2A3245] flex items-center gap-3">
+            <div className={`p-3 rounded-xl border flex items-center gap-3 ${
+              isLight ? 'bg-slate-50 border-slate-200' : 'bg-[#151922] border-[#2A3245]'
+            }`}>
               <DriverAvatar code={driver2Code} size="md" />
               <div className="flex-1 min-w-0">
-                <label className="block text-[10px] font-mono text-[#64748B]">DRIVER 2</label>
+                <label className={`block text-[10px] font-mono ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>DRIVER 2</label>
                 <select
                   value={driver2Code}
                   onChange={(e) => setDriver2Code(e.target.value)}
-                  className="w-full bg-[#1C2230] border border-[#2A3245] text-white text-xs font-mono font-bold rounded p-1.5 focus:outline-none focus:border-[#E10600]"
+                  className={`w-full border text-xs font-mono font-bold rounded p-1.5 focus:outline-none focus:border-[#E10600] ${
+                    isLight
+                      ? 'bg-white border-slate-300 text-slate-900'
+                      : 'bg-[#1C2230] border-[#2A3245] text-white'
+                  }`}
                 >
                   {ALL_TIME_DRIVERS.map((d) => (
                     <option key={d.driver_code} value={d.driver_code}>
@@ -479,15 +1008,23 @@ export default function StatsPage() {
               return (
                 <div
                   key={row.label}
-                  className="p-3 bg-[#1C2230] rounded-xl border border-[#2A3245] flex items-center justify-between"
+                  className={`p-3 rounded-xl border flex items-center justify-between ${
+                    isLight ? 'bg-slate-50 border-slate-200' : 'bg-[#1C2230] border-[#2A3245]'
+                  }`}
                 >
-                  <span className={`w-20 font-bold text-sm tabular-nums ${d1Wins ? 'text-amber-400' : 'text-white'}`}>
+                  <span className={`w-20 font-bold text-sm tabular-nums ${
+                    d1Wins ? 'text-amber-500 font-black' : isLight ? 'text-slate-800' : 'text-white'
+                  }`}>
                     {row.v1}
                   </span>
-                  <span className="text-center font-bold text-[#94A3B8] uppercase text-[11px]">
+                  <span className={`text-center font-bold uppercase text-[11px] ${
+                    isLight ? 'text-slate-600' : 'text-[#94A3B8]'
+                  }`}>
                     {row.label}
                   </span>
-                  <span className={`w-20 text-right font-bold text-sm tabular-nums ${d2Wins ? 'text-amber-400' : 'text-white'}`}>
+                  <span className={`w-20 text-right font-bold text-sm tabular-nums ${
+                    d2Wins ? 'text-amber-500 font-black' : isLight ? 'text-slate-800' : 'text-white'
+                  }`}>
                     {row.v2}
                   </span>
                 </div>

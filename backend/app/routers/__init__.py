@@ -9,6 +9,7 @@ from app.routers.standings import router as standings_router
 from app.routers.stats import router as stats_router
 from app.routers.strategy import router as strategy_router
 from app.routers.telemetry import router as telemetry_router
+from app.routers.enrichment import router as enrichment_router
 
 __all__ = [
     "standings_router",
@@ -20,4 +21,5 @@ __all__ = [
     "circuits_router",
     "news_router",
     "stats_router",
+    "enrichment_router",
 ]

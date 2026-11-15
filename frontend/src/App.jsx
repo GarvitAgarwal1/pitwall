@@ -75,11 +75,11 @@ export default function App() {
   const renderActiveView = () => {
     switch (activeTab) {
       case 'home':
-        return <HomePage onNavigate={handleNavigate} />;
+        return <HomePage onNavigate={handleNavigate} theme={theme} />;
       case 'live':
-        return <LiveTimingPage onNavigate={handleNavigate} />;
+        return <LiveTimingPage onNavigate={handleNavigate} theme={theme} />;
       case 'stats':
-        return <StatsPage onNavigate={handleNavigate} />;
+        return <StatsPage onNavigate={handleNavigate} theme={theme} />;
       case 'analysis':
         return <RaceAnalysisPage onNavigate={handleNavigate} />;
       case 'telemetry':

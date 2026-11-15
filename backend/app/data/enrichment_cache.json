@@ -1,0 +1,22 @@
+{
+  "fangio": {
+    "found": true,
+    "query": "fangio",
+    "title": "Juan Manuel Fangio",
+    "description": "Argentine racing driver (1911–1995)",
+    "extract": "Juan Manuel Fangio was an Argentine racing driver, who competed in Formula One from 1950 to 1958. Nicknamed \"el Chueco\" and \"el Maestro\", Fangio won five Formula One World Drivers' Championship titles and—at the time of his retirement—held the record for most wins (24), pole positions (29), fastest laps (23), and podium finishes (35), among others.",
+    "portrait_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Fangio_in_1955_%28cropped%29.jpg/330px-Fangio_in_1955_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page_url": "https://en.wikipedia.org/wiki/Juan_Manuel_Fangio",
+    "source": "wikipedia_rest_api"
+  },
+  "rafael câmara": {
+    "found": true,
+    "query": "Rafael Câmara",
+    "title": "Rafael Câmara",
+    "description": "Brazilian racing driver (born 2005)",
+    "extract": "Rafael \"Rafa\" Chaves Câmara is a Brazilian racing driver who competes in Formula One for Haas and the FIA Formula 2 Championship for Invicta Racing as part of the Ferrari Driver Academy.",
+    "portrait_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Rafael_C%C3%A2mara_in_2022.jpg/330px-Rafael_C%C3%A2mara_in_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page_url": "https://en.wikipedia.org/wiki/Rafael_C%C3%A2mara",
+    "source": "wikipedia_rest_api"
+  }
+}

@@ -18,6 +18,7 @@ from app.database import init_db
 from app.routers import (
     circuits_router,
     drivers_router,
+    enrichment_router,
     live_router,
     news_router,
     races_router,
@@ -98,3 +99,4 @@ app.include_router(live_router, prefix="/api")
 app.include_router(circuits_router, prefix="/api")
 app.include_router(news_router, prefix="/api")
 app.include_router(stats_router, prefix="/api")
+app.include_router(enrichment_router, prefix="/api")

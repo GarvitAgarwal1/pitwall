@@ -58,17 +58,17 @@ export default function Sidebar({
       >
         {/* PitWall Brand Header */}
         <div className={`h-16 px-5 border-b flex items-center justify-between ${isLight ? 'border-slate-200' : 'border-[#2A3245]'}`}>
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => onSelectTab && onSelectTab('home')}>
-            <div className="w-9 h-9 rounded-lg bg-[#E10600] flex items-center justify-center shadow-lg shadow-red-900/40">
-              <span className="font-mono font-black text-white text-lg tracking-tighter">PW</span>
+          <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => onSelectTab && onSelectTab('home')}>
+            <div className="w-8 h-8 rounded-lg bg-[#E10600] flex items-center justify-center shadow-md shadow-red-900/30 group-hover:scale-105 transition-all">
+              <svg viewBox="0 0 28 28" className="w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 21L11 5h5L8 21H3zm10 0l8-16h5l-8 16h-5z" />
+              </svg>
             </div>
-            <div>
-              <span className={`font-display font-black text-lg tracking-wider block leading-none ${isLight ? 'text-slate-900' : 'text-white'}`}>
+            <div className="flex items-center gap-1">
+              <span className={`font-black italic text-xl tracking-tight ${isLight ? 'text-slate-900' : 'text-white'}`}>
                 PITWALL
               </span>
-              <span className="text-[10px] font-mono text-[#E10600] uppercase tracking-widest font-bold">
-                F1 STRATEGY 2026
-              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E10600] mb-2" />
             </div>
           </div>
 
