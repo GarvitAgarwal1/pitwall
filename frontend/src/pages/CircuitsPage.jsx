@@ -8,791 +8,41 @@ import {
   Gauge,
   Flag,
   Zap,
-  Info,
   ChevronRight,
+  ChevronLeft,
   Sparkles,
   Calendar,
   Layers,
+  Sliders,
+  Compass,
+  ArrowRight,
+  ArrowLeft,
+  ShieldAlert,
+  Activity,
+  Maximize2,
+  Columns,
+  Grid,
 } from 'lucide-react';
 import Modal from '../components/common/Modal';
+import { OFFICIAL_CIRCUITS } from '../data/circuitsData';
+
+export { OFFICIAL_CIRCUITS };
 
 /**
- * Official Modern FIA Formula 1 Championship Circuits
- * 100% authentic track geometry vectors, official FIA race lap counts,
- * turn counts, track lengths, verified all-time lap records, and actual race winners.
+ * Formula-Timer Inspired Circuits & Telemetry Atlas
+ * Displays Formula 1 championship circuits with authentic technical layouts,
+ * turn-by-turn corner callouts, sector-by-sector engineering dossiers,
+ * aerodynamic downforce setups, tyre stress ratings, and historical honor rolls.
  */
-export const OFFICIAL_CIRCUITS = [
-  {
-    circuit_id: 'albert_park',
-    round_2026: 1,
-    date_2026: '15 Mar 2026',
-    circuit_name: 'Albert Park Circuit',
-    locality: 'Melbourne',
-    country: 'Australia',
-    flag: '🇦🇺',
-    region: 'Asia & Pacific',
-    length_km: 5.278,
-    turns: 14,
-    laps: 58,
-    race_distance_km: 306.124,
-    drs_zones: 4,
-    tyre_stress: 3,
-    lap_record: { time: '1:19.813', driver: 'Charles Leclerc', team: 'Ferrari', year: 2024 },
-    map_image: '/circuits/Australia_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit.webp',
-    drs_details: '4 DRS Zones (Main Straight, T2-T3, T8-T9, T10-T11)',
-    drs_detection: 'Turn 6 entry & Turn 13 exit',
-    speed_trap: 'Main straight 100m before Turn 1',
-    // Albert Park: Lakeside loop with high-speed chicane and technical parkland turns
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 70,80 L 140,40 C 180,20 230,25 270,55 L 320,100 C 350,130 355,170 330,205 L 290,245 C 265,270 230,280 195,265 L 145,245 C 120,235 110,210 120,185 L 130,160 C 135,145 125,130 110,125 L 80,120 C 55,115 50,95 70,80 Z',
-    finish_line: { x: 75, y: 95 },
-    past_winners: [
-      { year: 2024, winner: 'Carlos Sainz', team: 'Ferrari', time: '1:20:26.843', laps: 58 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '2:32:38.371', laps: 58 },
-      { year: 2022, winner: 'Charles Leclerc', team: 'Ferrari', time: '1:27:46.548', laps: 58 },
-      { year: 2019, winner: 'Valtteri Bottas', team: 'Mercedes', time: '1:25:27.325', laps: 58 },
-    ],
-  },
-  {
-    circuit_id: 'shanghai',
-    round_2026: 2,
-    date_2026: '29 Mar 2026',
-    circuit_name: 'Shanghai International Circuit',
-    locality: 'Shanghai',
-    country: 'China',
-    flag: '🇨🇳',
-    region: 'Asia & Pacific',
-    length_km: 5.451,
-    turns: 16,
-    laps: 56,
-    race_distance_km: 305.066,
-    drs_zones: 2,
-    tyre_stress: 4,
-    lap_record: { time: '1:32.238', driver: 'Michael Schumacher', team: 'Ferrari', year: 2004 },
-    map_image: '/circuits/China_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/China_Circuit.webp',
-    drs_details: '2 DRS Zones (1.2km Back Straight, Main Straight)',
-    drs_detection: 'Turn 12 exit & Turn 16 exit',
-    speed_trap: 'Back straight 200m before Turn 14 hairpin',
-    // Shanghai: Iconic "Shang" (上) Chinese character layout with tightening snail turn and 1.2km backstraight
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 90,140 C 120,70 190,50 230,70 C 260,90 250,135 200,145 C 150,155 160,205 195,225 L 320,225 C 345,225 345,255 320,265 L 140,265 C 90,265 75,215 90,140 Z',
-    finish_line: { x: 135, y: 265 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:40:52.554', laps: 56 },
-      { year: 2019, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:32:06.350', laps: 56 },
-      { year: 2018, winner: 'Daniel Ricciardo', team: 'Red Bull Racing', time: '1:35:36.380', laps: 56 },
-      { year: 2017, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:37:36.158', laps: 56 },
-    ],
-  },
-  {
-    circuit_id: 'suzuka',
-    round_2026: 3,
-    date_2026: '12 Apr 2026',
-    circuit_name: 'Suzuka International Racing Course',
-    locality: 'Suzuka',
-    country: 'Japan',
-    flag: '🇯🇵',
-    region: 'Asia & Pacific',
-    length_km: 5.807,
-    turns: 18,
-    laps: 53,
-    race_distance_km: 307.471,
-    drs_zones: 1,
-    tyre_stress: 5,
-    lap_record: { time: '1:30.983', driver: 'Lewis Hamilton', team: 'Mercedes', year: 2019 },
-    map_image: '/circuits/Japan_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Japan_Circuit.webp',
-    drs_details: '1 DRS Zone (Pit Straight)',
-    drs_detection: 'Turn 16 (130R exit chicane approach)',
-    speed_trap: 'Before 130R flat-out sweeping left',
-    // Suzuka: World-famous crossover figure-8 layout with S-Curves, Degner, Spoon, and 130R
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 70,120 C 70,60 130,35 190,45 C 245,55 285,90 265,135 C 245,170 190,170 155,200 C 120,230 140,270 195,270 C 255,270 275,230 250,195 L 125,135 Z',
-    finish_line: { x: 75, y: 130 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:54:23.566', laps: 53 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:30:58.421', laps: 53 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '3:01:44.004', laps: 28 },
-      { year: 2019, winner: 'Valtteri Bottas', team: 'Mercedes', time: '1:21:46.755', laps: 52 },
-    ],
-  },
-  {
-    circuit_id: 'bahrain',
-    round_2026: 4,
-    date_2026: '26 Apr 2026',
-    circuit_name: 'Bahrain International Circuit',
-    locality: 'Sakhir',
-    country: 'Bahrain',
-    flag: '🇧🇭',
-    region: 'Middle East',
-    length_km: 5.412,
-    turns: 15,
-    laps: 57,
-    race_distance_km: 308.238,
-    drs_zones: 3,
-    tyre_stress: 5,
-    lap_record: { time: '1:31.447', driver: 'Pedro de la Rosa', team: 'McLaren', year: 2005 },
-    map_image: '/circuits/Bahrain_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Bahrain_Circuit.webp',
-    drs_details: '3 DRS Zones (Main Straight, T3-T4, T10-T11)',
-    drs_detection: 'Before Turn 1, Turn 9, and Turn 14',
-    speed_trap: 'Main straight approaching Turn 1 heavy braking',
-    // Bahrain: Long straights connected by heavy braking zones and technical infield turns 9-10
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,70 L 220,70 C 260,70 280,100 265,135 L 210,165 C 190,175 200,205 230,215 L 260,225 C 275,245 250,265 210,265 L 110,265 C 75,265 65,235 85,215 L 130,180 L 65,140 C 40,120 40,85 50,70 Z',
-    finish_line: { x: 55, y: 70 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:31:44.742', laps: 57 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:33:56.736', laps: 57 },
-      { year: 2022, winner: 'Charles Leclerc', team: 'Ferrari', time: '1:37:33.584', laps: 57 },
-      { year: 2021, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:32:03.897', laps: 56 },
-    ],
-  },
-  {
-    circuit_id: 'jeddah',
-    round_2026: 5,
-    date_2026: '03 May 2026',
-    circuit_name: 'Jeddah Corniche Circuit',
-    locality: 'Jeddah',
-    country: 'Saudi Arabia',
-    flag: '🇸🇦',
-    region: 'Middle East',
-    length_km: 6.174,
-    turns: 27,
-    laps: 50,
-    race_distance_km: 308.450,
-    drs_zones: 3,
-    tyre_stress: 3,
-    lap_record: { time: '1:30.734', driver: 'Lewis Hamilton', team: 'Mercedes', year: 2021 },
-    map_image: '/circuits/Saudi_Arabia_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Saudi_Arabia_Circuit.webp',
-    drs_details: '3 DRS Zones (Main Straight, T19-T22, T25-T27)',
-    drs_detection: 'Turn 17 exit, Turn 22 exit, Turn 27 approach',
-    speed_trap: 'Approaching Turn 27 final banked hairpin',
-    // Jeddah: Ultra high-speed Red Sea shoreline corridor with banked Turn 13
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 140,25 C 180,25 210,55 210,120 L 220,220 C 220,265 170,275 140,275 C 110,275 75,250 85,210 L 95,110 C 95,55 110,25 140,25 Z',
-    finish_line: { x: 95, y: 150 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:20:43.273', laps: 50 },
-      { year: 2023, winner: 'Sergio Perez', team: 'Red Bull Racing', time: '1:21:14.894', laps: 50 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:24:19.293', laps: 50 },
-      { year: 2021, winner: 'Lewis Hamilton', team: 'Mercedes', time: '2:06:15.118', laps: 50 },
-    ],
-  },
-  {
-    circuit_id: 'miami',
-    round_2026: 6,
-    date_2026: '17 May 2026',
-    circuit_name: 'Miami International Autodrome',
-    locality: 'Miami',
-    country: 'United States',
-    flag: '🇺🇸',
-    region: 'Americas',
-    length_km: 5.412,
-    turns: 19,
-    laps: 57,
-    race_distance_km: 308.326,
-    drs_zones: 3,
-    tyre_stress: 3,
-    lap_record: { time: '1:29.708', driver: 'Max Verstappen', team: 'Red Bull Racing', year: 2023 },
-    map_image: '/circuits/Miami_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Miami_Circuit.webp',
-    drs_details: '3 DRS Zones (Main Straight, T8-T11, Back Straight T16-T17)',
-    drs_detection: 'Turn 8 exit, Turn 16 exit, Turn 17 exit',
-    speed_trap: 'Back straight approaching Turn 17 braking zone',
-    // Miami: Hard Rock Stadium loop, marina straight, and highway overpass chicane
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,90 L 260,90 C 290,90 300,120 280,140 L 220,170 L 285,210 C 305,230 285,260 250,260 L 80,260 C 50,260 40,230 50,200 L 75,150 L 50,120 Z',
-    finish_line: { x: 60, y: 90 },
-    past_winners: [
-      { year: 2024, winner: 'Lando Norris', team: 'McLaren', time: '1:30:49.876', laps: 57 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:27:38.241', laps: 57 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:34:24.258', laps: 57 },
-    ],
-  },
-  {
-    circuit_id: 'imola',
-    round_2026: 7,
-    date_2026: '31 May 2026',
-    circuit_name: 'Autodromo Enzo e Dino Ferrari',
-    locality: 'Imola',
-    country: 'Italy',
-    flag: '🇮🇹',
-    region: 'Europe',
-    length_km: 4.909,
-    turns: 19,
-    laps: 63,
-    race_distance_km: 309.049,
-    drs_zones: 1,
-    tyre_stress: 3,
-    lap_record: { time: '1:15.484', driver: 'Lewis Hamilton', team: 'Mercedes', year: 2020 },
-    map_image: '/circuits/Emilia_Romagna_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Emilia_Romagna_Circuit.webp',
-    drs_details: '1 DRS Zone (Main Straight Rivazza exit to Tamburello)',
-    drs_detection: 'Turn 17 (Rivazza exit timing loop)',
-    speed_trap: 'Main straight approaching Tamburello chicane',
-    // Imola: Historic anti-clockwise circuit featuring Tamburello, Tosa, Piratella, Acque Minerali, and Rivazza
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 60,80 L 210,60 C 255,60 285,90 275,130 L 240,170 C 265,200 240,240 210,250 L 85,270 C 50,270 40,230 50,190 L 75,140 Z',
-    finish_line: { x: 75, y: 75 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:25:25.252', laps: 63 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:32:07.986', laps: 63 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '2:02:34.598', laps: 63 },
-      { year: 2020, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:28:32.430', laps: 63 },
-    ],
-  },
-  {
-    circuit_id: 'monaco',
-    round_2026: 8,
-    date_2026: '07 Jun 2026',
-    circuit_name: 'Circuit de Monaco',
-    locality: 'Monte Carlo',
-    country: 'Monaco',
-    flag: '🇲🇨',
-    region: 'Europe',
-    length_km: 3.337,
-    turns: 19,
-    laps: 78,
-    race_distance_km: 260.286,
-    drs_zones: 1,
-    tyre_stress: 1,
-    lap_record: { time: '1:12.909', driver: 'Lewis Hamilton', team: 'Mercedes', year: 2021 },
-    map_image: '/circuits/Monaco_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Monaco_Circuit.webp',
-    drs_details: '1 DRS Zone (Main Straight Anthony Noghès to Sainte-Dévote)',
-    drs_detection: 'Turn 16 exit (after Rascasse)',
-    speed_trap: 'Inside tunnel blast before Nouvelle Chicane',
-    // Monaco: The crown jewel of F1 with Sainte-Dévote, Casino Square, Grand Hotel Hairpin, Tunnel, and Swimming Pool
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 90,75 C 135,50 215,50 260,75 C 295,95 305,130 270,150 C 235,170 225,205 260,225 C 285,245 260,285 205,275 C 155,265 145,230 110,230 C 75,230 50,190 60,145 Z',
-    finish_line: { x: 95, y: 155 },
-    past_winners: [
-      { year: 2024, winner: 'Charles Leclerc', team: 'Ferrari', time: '2:23:15.554', laps: 78 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:48:51.980', laps: 78 },
-      { year: 2022, winner: 'Sergio Perez', team: 'Red Bull Racing', time: '1:56:30.265', laps: 64 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:38:56.820', laps: 78 },
-    ],
-  },
-  {
-    circuit_id: 'villeneuve',
-    round_2026: 9,
-    date_2026: '21 Jun 2026',
-    circuit_name: 'Circuit Gilles Villeneuve',
-    locality: 'Montreal',
-    country: 'Canada',
-    flag: '🇨🇦',
-    region: 'Americas',
-    length_km: 4.361,
-    turns: 14,
-    laps: 70,
-    race_distance_km: 305.270,
-    drs_zones: 3,
-    tyre_stress: 3,
-    lap_record: { time: '1:13.078', driver: 'Valtteri Bottas', team: 'Mercedes', year: 2019 },
-    map_image: '/circuits/Canada_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Canada_Circuit.webp',
-    drs_details: '3 DRS Zones (Droit du Casino, Main Straight, T7-T8)',
-    drs_detection: 'Before Turn 8, Turn 12 hairpin, Pit straight',
-    speed_trap: 'Back straight before Turn 13 Wall of Champions',
-    // Montreal: Île Notre-Dame island circuit featuring heavy chicanes and the legendary Wall of Champions
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,90 L 275,80 C 310,80 320,115 295,135 L 225,160 L 295,190 C 320,210 295,245 260,245 L 60,255 C 35,255 25,220 50,190 L 75,135 Z',
-    finish_line: { x: 60, y: 90 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:45:47.927', laps: 70 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:33:58.348', laps: 70 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:36:21.757', laps: 70 },
-      { year: 2019, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:29:07.084', laps: 70 },
-    ],
-  },
-  {
-    circuit_id: 'catalunya',
-    round_2026: 10,
-    date_2026: '05 Jul 2026',
-    circuit_name: 'Circuit de Barcelona-Catalunya',
-    locality: 'Barcelona',
-    country: 'Spain',
-    flag: '🇪🇸',
-    region: 'Europe',
-    length_km: 4.657,
-    turns: 14,
-    laps: 66,
-    race_distance_km: 307.236,
-    drs_zones: 2,
-    tyre_stress: 5,
-    lap_record: { time: '1:16.330', driver: 'Max Verstappen', team: 'Red Bull Racing', year: 2023 },
-    map_image: '/circuits/Spain_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Spain_Circuit.webp',
-    drs_details: '2 DRS Zones (Main Straight, Back Straight T9-T10)',
-    drs_detection: 'Before Turn 9 and Turn 14 chicane exit',
-    speed_trap: 'Main straight approaching Turn 1 heavy braking',
-    // Barcelona: High downforce aerodynamic testbed with sweeping Campsa and fast final sector
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 60,95 L 260,85 C 295,85 305,130 270,150 L 190,175 C 215,210 260,220 260,255 C 260,285 215,295 165,285 L 75,285 C 40,285 40,230 50,175 Z',
-    finish_line: { x: 80, y: 95 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:28:20.227', laps: 66 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:27:57.940', laps: 66 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:37:20.475', laps: 66 },
-      { year: 2021, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:33:07.680', laps: 66 },
-    ],
-  },
-  {
-    circuit_id: 'red_bull_ring',
-    round_2026: 11,
-    date_2026: '19 Jul 2026',
-    circuit_name: 'Red Bull Ring',
-    locality: 'Spielberg',
-    country: 'Austria',
-    flag: '🇦🇹',
-    region: 'Europe',
-    length_km: 4.318,
-    turns: 10,
-    laps: 71,
-    race_distance_km: 306.452,
-    drs_zones: 3,
-    tyre_stress: 3,
-    lap_record: { time: '1:05.619', driver: 'Carlos Sainz', team: 'McLaren', year: 2020 },
-    map_image: '/circuits/Austria_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.webp',
-    drs_details: '3 DRS Zones (Main Straight, T1-T3, T3-T4)',
-    drs_detection: 'Before Turn 1, Turn 3, and Turn 4',
-    speed_trap: 'Uphill run approaching Turn 3 hairpin',
-    // Red Bull Ring: 10 corners, steep uphill climb to Turn 3 hairpin, ultra-fast sub-65s lap
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,165 L 145,70 C 170,45 205,45 230,70 L 290,140 C 310,165 290,210 250,225 L 145,245 L 85,280 C 50,300 25,255 35,220 Z',
-    finish_line: { x: 120, y: 245 },
-    past_winners: [
-      { year: 2024, winner: 'George Russell', team: 'Mercedes', time: '1:24:22.798', laps: 71 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:25:33.607', laps: 71 },
-      { year: 2022, winner: 'Charles Leclerc', team: 'Ferrari', time: '1:24:24.312', laps: 71 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:23:54.543', laps: 71 },
-    ],
-  },
-  {
-    circuit_id: 'silverstone',
-    round_2026: 12,
-    date_2026: '02 Aug 2026',
-    circuit_name: 'Silverstone Circuit',
-    locality: 'Silverstone',
-    country: 'United Kingdom',
-    flag: '🇬🇧',
-    region: 'Europe',
-    length_km: 5.891,
-    turns: 18,
-    laps: 52,
-    race_distance_km: 306.198,
-    drs_zones: 2,
-    tyre_stress: 5,
-    lap_record: { time: '1:27.097', driver: 'Max Verstappen', team: 'Red Bull Racing', year: 2020 },
-    map_image: '/circuits/Great_Britain_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Great_Britain_Circuit.webp',
-    drs_details: '2 DRS Zones (Wellington Straight T5-T6, Hangar Straight T14-T15)',
-    drs_detection: 'Turn 3 Arena exit & Turn 11 Chapel exit',
-    speed_trap: 'Hangar Straight before Stowe corner (Turn 15)',
-    // Silverstone: Home of British motorsport with legendary Maggotts, Becketts, Chapel, and Stowe
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 60,130 C 70,75 140,50 200,60 L 285,95 C 310,120 295,165 260,175 L 190,190 C 215,225 260,250 250,285 C 240,305 190,305 155,285 L 75,270 C 40,245 40,190 60,130 Z',
-    finish_line: { x: 235, y: 80 },
-    past_winners: [
-      { year: 2024, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:22:27.059', laps: 52 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:25:16.938', laps: 52 },
-      { year: 2022, winner: 'Carlos Sainz', team: 'Ferrari', time: '2:17:50.311', laps: 52 },
-      { year: 2021, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:58:23.284', laps: 52 },
-    ],
-  },
-  {
-    circuit_id: 'spa',
-    round_2026: 13,
-    date_2026: '30 Aug 2026',
-    circuit_name: 'Circuit de Spa-Francorchamps',
-    locality: 'Stavelot',
-    country: 'Belgium',
-    flag: '🇧🇪',
-    region: 'Europe',
-    length_km: 7.004,
-    turns: 19,
-    laps: 44,
-    race_distance_km: 308.052,
-    drs_zones: 2,
-    tyre_stress: 5,
-    lap_record: { time: '1:44.701', driver: 'Sergio Perez', team: 'Red Bull Racing', year: 2024 },
-    map_image: '/circuits/Belgium_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp',
-    drs_details: '2 DRS Zones (Kemmel Straight after Raidillon, Main Straight after Bus Stop)',
-    drs_detection: 'Turn 2 (Eau Rouge approach) & Turn 18 (Blanchimont)',
-    speed_trap: 'Kemmel Straight before Les Combes chicane',
-    // Spa: The rollercoaster of the Ardennes with Eau Rouge, Raidillon, Kemmel Straight, Pouhon, and Blanchimont
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 60,95 L 170,50 C 205,35 250,50 285,85 L 300,165 C 285,210 240,235 205,250 L 145,285 C 110,310 60,285 50,240 L 60,155 Z',
-    finish_line: { x: 75, y: 110 },
-    past_winners: [
-      { year: 2024, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:19:57.971', laps: 44 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:22:30.450', laps: 44 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:25:52.894', laps: 44 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '0:03:27.071', laps: 1 },
-    ],
-  },
-  {
-    circuit_id: 'hungaroring',
-    round_2026: 14,
-    date_2026: '06 Sep 2026',
-    circuit_name: 'Hungaroring',
-    locality: 'Budapest',
-    country: 'Hungary',
-    flag: '🇭🇺',
-    region: 'Europe',
-    length_km: 4.381,
-    turns: 14,
-    laps: 70,
-    race_distance_km: 306.630,
-    drs_zones: 2,
-    tyre_stress: 3,
-    lap_record: { time: '1:16.627', driver: 'Lewis Hamilton', team: 'Mercedes', year: 2020 },
-    map_image: '/circuits/Hungary_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Hungary_Circuit.webp',
-    drs_details: '2 DRS Zones (Main Straight, Downhill Run T1-T2)',
-    drs_detection: 'Turn 14 final corner apex',
-    speed_trap: 'Main straight before Turn 1 downhill braking',
-    // Hungaroring: Twisting "Monaco without the walls" with relentless series of medium-speed turns
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 70,95 L 230,85 C 275,85 285,130 260,155 L 205,190 C 230,215 275,225 260,260 C 250,295 205,295 165,285 L 85,285 C 50,270 50,200 60,155 Z',
-    finish_line: { x: 100, y: 95 },
-    past_winners: [
-      { year: 2024, winner: 'Oscar Piastri', team: 'McLaren', time: '1:38:01.989', laps: 70 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:38:08.634', laps: 70 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:39:35.912', laps: 70 },
-      { year: 2021, winner: 'Esteban Ocon', team: 'Alpine', time: '2:04:43.199', laps: 70 },
-    ],
-  },
-  {
-    circuit_id: 'zandvoort',
-    round_2026: 15,
-    date_2026: '20 Sep 2026',
-    circuit_name: 'Circuit Zandvoort',
-    locality: 'Zandvoort',
-    country: 'Netherlands',
-    flag: '🇳🇱',
-    region: 'Europe',
-    length_km: 4.259,
-    turns: 14,
-    laps: 72,
-    race_distance_km: 306.587,
-    drs_zones: 2,
-    tyre_stress: 4,
-    lap_record: { time: '1:11.097', driver: 'Lewis Hamilton', team: 'Mercedes', year: 2021 },
-    map_image: '/circuits/Netherlands_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Netherlands_Circuit.webp',
-    drs_details: '2 DRS Zones (Arie Luyendykbocht into Main Straight, T10-T11)',
-    drs_detection: 'Turn 10 entry & Turn 13 entry',
-    speed_trap: 'Main straight approaching Tarzanbocht (Turn 1)',
-    // Zandvoort: Historic sand dune track with 18-degree steep banked Hugenholtz and Arie Luyendyk corners
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 70,75 C 130,50 215,50 265,85 L 290,155 C 300,190 250,215 205,215 C 170,215 155,260 180,285 C 190,305 155,305 120,295 L 60,235 C 35,200 50,130 70,75 Z',
-    finish_line: { x: 80, y: 80 },
-    past_winners: [
-      { year: 2024, winner: 'Lando Norris', team: 'McLaren', time: '1:30:45.519', laps: 72 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '2:24:04.411', laps: 72 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:36:42.773', laps: 72 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:30:05.395', laps: 72 },
-    ],
-  },
-  {
-    circuit_id: 'monza',
-    round_2026: 16,
-    date_2026: '27 Sep 2026',
-    circuit_name: 'Autodromo Nazionale Monza',
-    locality: 'Monza',
-    country: 'Italy',
-    flag: '🇮🇹',
-    region: 'Europe',
-    length_km: 5.793,
-    turns: 11,
-    laps: 53,
-    race_distance_km: 306.720,
-    drs_zones: 2,
-    tyre_stress: 3,
-    lap_record: { time: '1:21.046', driver: 'Rubens Barrichello', team: 'Ferrari', year: 2004 },
-    map_image: '/circuits/Italy_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.webp',
-    drs_details: '2 DRS Zones (Rettifilo Tribune Main Straight, Curva del Serraglio)',
-    drs_detection: 'Parabolica entry & Lesmo 2 exit',
-    speed_trap: 'Main straight before Variante del Rettifilo Chicane',
-    // Monza: The Temple of Speed with Curva Grande, Lesmo, Variante Ascari, and Curva Alboreto (Parabolica)
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,120 L 275,60 C 310,60 325,95 300,130 L 195,205 C 215,230 250,250 240,285 C 230,305 180,305 145,285 L 60,265 C 35,240 25,180 50,120 Z',
-    finish_line: { x: 70, y: 150 },
-    past_winners: [
-      { year: 2024, winner: 'Charles Leclerc', team: 'Ferrari', time: '1:14:40.727', laps: 53 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:13:41.143', laps: 53 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:20:27.511', laps: 53 },
-      { year: 2021, winner: 'Daniel Ricciardo', team: 'McLaren', time: '1:21:54.365', laps: 53 },
-    ],
-  },
-  {
-    circuit_id: 'baku',
-    round_2026: 17,
-    date_2026: '11 Oct 2026',
-    circuit_name: 'Baku City Circuit',
-    locality: 'Baku',
-    country: 'Azerbaijan',
-    flag: '🇦🇿',
-    region: 'Europe',
-    length_km: 6.003,
-    turns: 20,
-    laps: 51,
-    race_distance_km: 306.049,
-    drs_zones: 2,
-    tyre_stress: 3,
-    lap_record: { time: '1:43.009', driver: 'Charles Leclerc', team: 'Ferrari', year: 2019 },
-    map_image: '/circuits/Baku_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Baku_Circuit.webp',
-    drs_details: '2 DRS Zones (2.2km Neftchilar Avenue Main Straight, T2-T3)',
-    drs_detection: 'Turn 2 exit & Turn 20 final corner exit',
-    speed_trap: 'Main straight 300m before Turn 1 90-degree left',
-    // Baku: Narrow medieval Old City castle section contrasted with a 2.2km wide-open full throttle straight
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,95 L 290,95 L 300,180 C 290,205 250,215 215,190 L 155,190 C 130,215 155,250 180,275 L 215,295 L 60,295 C 35,260 35,165 50,95 Z',
-    finish_line: { x: 170, y: 295 },
-    past_winners: [
-      { year: 2024, winner: 'Oscar Piastri', team: 'McLaren', time: '1:32:58.007', laps: 51 },
-      { year: 2023, winner: 'Sergio Perez', team: 'Red Bull Racing', time: '1:32:42.436', laps: 51 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:34:05.941', laps: 51 },
-      { year: 2021, winner: 'Sergio Perez', team: 'Red Bull Racing', time: '2:13:36.410', laps: 51 },
-    ],
-  },
-  {
-    circuit_id: 'marina_bay',
-    round_2026: 18,
-    date_2026: '18 Oct 2026',
-    circuit_name: 'Marina Bay Street Circuit',
-    locality: 'Singapore',
-    country: 'Singapore',
-    flag: '🇸🇬',
-    region: 'Asia & Pacific',
-    length_km: 4.940,
-    turns: 19,
-    laps: 62,
-    race_distance_km: 306.143,
-    drs_zones: 4,
-    tyre_stress: 4,
-    lap_record: { time: '1:34.486', driver: 'Daniel Ricciardo', team: 'RB', year: 2024 },
-    map_image: '/circuits/Singapore_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Singapore_Circuit.webp',
-    drs_details: '4 DRS Zones (Pit Straight, T5-T7, T13-T14, Raffles Boulevard)',
-    drs_detection: 'Turn 4, Turn 13 exit, Turn 17 exit, Turn 19',
-    speed_trap: 'Raffles Boulevard before Turn 7 braking zone',
-    // Singapore: The original F1 night race under stadium floodlights along the Singapore harbor
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 60,85 L 230,70 C 265,70 300,95 290,140 L 250,190 L 290,225 C 300,260 265,295 215,285 L 85,295 C 50,285 35,225 50,175 Z',
-    finish_line: { x: 80, y: 85 },
-    past_winners: [
-      { year: 2024, winner: 'Lando Norris', team: 'McLaren', time: '1:44:42.534', laps: 62 },
-      { year: 2023, winner: 'Carlos Sainz', team: 'Ferrari', time: '1:46:37.418', laps: 62 },
-      { year: 2022, winner: 'Sergio Perez', team: 'Red Bull Racing', time: '2:02:20.238', laps: 59 },
-      { year: 2019, winner: 'Sebastian Vettel', team: 'Ferrari', time: '1:58:33.667', laps: 61 },
-    ],
-  },
-  {
-    circuit_id: 'americas',
-    round_2026: 19,
-    date_2026: '01 Nov 2026',
-    circuit_name: 'Circuit of the Americas (COTA)',
-    locality: 'Austin',
-    country: 'United States',
-    flag: '🇺🇸',
-    region: 'Americas',
-    length_km: 5.513,
-    turns: 20,
-    laps: 56,
-    race_distance_km: 308.405,
-    drs_zones: 2,
-    tyre_stress: 4,
-    lap_record: { time: '1:36.169', driver: 'Charles Leclerc', team: 'Ferrari', year: 2019 },
-    map_image: '/circuits/USA_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/USA_Circuit.webp',
-    drs_details: '2 DRS Zones (1.0km Back Straight T11-T12, Main Straight uphill into T1)',
-    drs_detection: 'Turn 10 exit & Turn 18 carousel exit',
-    speed_trap: 'Back straight approaching Turn 12 sharp left-hander',
-    // COTA: Steep 133-foot blind uphill Turn 1, Maggotts-inspired Esses, and multi-apex stadium complex
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,165 L 120,60 C 145,35 180,45 205,85 L 265,155 C 300,180 290,225 240,240 L 170,265 L 95,300 C 60,310 35,250 50,165 Z',
-    finish_line: { x: 75, y: 165 },
-    past_winners: [
-      { year: 2024, winner: 'Charles Leclerc', team: 'Ferrari', time: '1:35:09.639', laps: 56 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:35:21.362', laps: 56 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:42:11.687', laps: 56 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:34:36.552', laps: 56 },
-    ],
-  },
-  {
-    circuit_id: 'rodriguez',
-    round_2026: 20,
-    date_2026: '08 Nov 2026',
-    circuit_name: 'Autódromo Hermanos Rodríguez',
-    locality: 'Mexico City',
-    country: 'Mexico',
-    flag: '🇲🇽',
-    region: 'Americas',
-    length_km: 4.304,
-    turns: 17,
-    laps: 71,
-    race_distance_km: 305.354,
-    drs_zones: 3,
-    tyre_stress: 3,
-    lap_record: { time: '1:17.774', driver: 'Valtteri Bottas', team: 'Mercedes', year: 2021 },
-    map_image: '/circuits/Mexico_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Mexico_Circuit.webp',
-    drs_details: '3 DRS Zones (1.2km Main Straight, T3-T4, T11-T12)',
-    drs_detection: 'Turn 15 Peraltada exit, Turn 3, Turn 11',
-    speed_trap: 'Main straight approaching Turn 1 heavy braking zone',
-    // Mexico: High-altitude 2,285m thin air with 1.3km front straight and baseball stadium stadium section
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,95 L 275,85 C 310,85 310,130 290,155 L 215,190 C 250,215 275,260 240,295 L 85,295 C 50,295 35,225 50,155 Z',
-    finish_line: { x: 75, y: 95 },
-    past_winners: [
-      { year: 2024, winner: 'Carlos Sainz', team: 'Ferrari', time: '1:40:55.800', laps: 71 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '2:02:30.814', laps: 71 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:38:36.729', laps: 71 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:38:39.086', laps: 71 },
-    ],
-  },
-  {
-    circuit_id: 'interlagos',
-    round_2026: 21,
-    date_2026: '15 Nov 2026',
-    circuit_name: 'Autódromo José Carlos Pace (Interlagos)',
-    locality: 'São Paulo',
-    country: 'Brazil',
-    flag: '🇧🇷',
-    region: 'Americas',
-    length_km: 4.309,
-    turns: 15,
-    laps: 71,
-    race_distance_km: 305.879,
-    drs_zones: 2,
-    tyre_stress: 4,
-    lap_record: { time: '1:10.540', driver: 'Valtteri Bottas', team: 'Mercedes', year: 2018 },
-    map_image: '/circuits/Brazil_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Brazil_Circuit.webp',
-    drs_details: '2 DRS Zones (Reta Oposta T3-T4, Subida dos Boxes Main Straight)',
-    drs_detection: 'Turn 2 (Senna S exit) & Turn 13 (Junção exit)',
-    speed_trap: 'Reta Oposta approaching Descida do Lago (Turn 4)',
-    // Interlagos: Anti-clockwise natural bowl amphitheatre with Senna S and uphill Junção drag to the line
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 60,130 C 70,70 140,45 200,60 L 275,95 C 300,120 290,165 250,190 L 180,215 C 215,250 230,295 180,305 L 85,295 C 50,270 35,200 60,130 Z',
-    finish_line: { x: 95, y: 70 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '2:06:54.430', laps: 69 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:56:48.894', laps: 71 },
-      { year: 2022, winner: 'George Russell', team: 'Mercedes', time: '1:38:34.044', laps: 71 },
-      { year: 2021, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:32:22.851', laps: 71 },
-    ],
-  },
-  {
-    circuit_id: 'vegas',
-    round_2026: 22,
-    date_2026: '22 Nov 2026',
-    circuit_name: 'Las Vegas Strip Circuit',
-    locality: 'Las Vegas',
-    country: 'United States',
-    flag: '🇺🇸',
-    region: 'Americas',
-    length_km: 6.201,
-    turns: 17,
-    laps: 50,
-    race_distance_km: 309.958,
-    drs_zones: 2,
-    tyre_stress: 3,
-    lap_record: { time: '1:34.876', driver: 'Lando Norris', team: 'McLaren', year: 2024 },
-    map_image: '/circuits/Las_Vegas_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Las_Vegas_Circuit.webp',
-    drs_details: '2 DRS Zones (1.9km Strip Straight T12-T14, Koval Lane T4-T5)',
-    drs_detection: 'Turn 4 exit & Turn 12 exit',
-    speed_trap: 'Las Vegas Boulevard before Turn 14 sharp left',
-    // Las Vegas: High-speed night blast directly along the neon Las Vegas Boulevard Strip and MSG Sphere
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,95 L 290,95 C 310,95 325,130 300,165 L 230,190 L 290,250 C 300,275 275,305 240,305 L 70,305 C 50,305 35,260 50,205 Z',
-    finish_line: { x: 100, y: 95 },
-    past_winners: [
-      { year: 2024, winner: 'George Russell', team: 'Mercedes', time: '1:22:05.969', laps: 50 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:29:08.289', laps: 50 },
-    ],
-  },
-  {
-    circuit_id: 'losail',
-    round_2026: 23,
-    date_2026: '29 Nov 2026',
-    circuit_name: 'Lusail International Circuit',
-    locality: 'Lusail',
-    country: 'Qatar',
-    flag: '🇶🇦',
-    region: 'Middle East',
-    length_km: 5.419,
-    turns: 16,
-    laps: 57,
-    race_distance_km: 308.611,
-    drs_zones: 1,
-    tyre_stress: 5,
-    lap_record: { time: '1:24.319', driver: 'Max Verstappen', team: 'Red Bull Racing', year: 2023 },
-    map_image: '/circuits/Qatar_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Qatar_Circuit.webp',
-    drs_details: '1 DRS Zone (1.068km Main Straight)',
-    drs_detection: 'Turn 15 apex timing loop',
-    speed_trap: 'Main straight approaching Turn 1 high-speed entry',
-    // Lusail: Fast, flowing moto-inspired layout demanding immense sustained high-G neck loads
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 50,95 L 260,70 C 300,70 310,120 285,155 L 225,180 C 250,215 285,250 250,285 L 70,295 C 35,285 35,200 50,130 Z',
-    finish_line: { x: 75, y: 95 },
-    past_winners: [
-      { year: 2024, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:31:05.323', laps: 57 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:27:39.168', laps: 57 },
-      { year: 2021, winner: 'Lewis Hamilton', team: 'Mercedes', time: '1:24:28.471', laps: 57 },
-    ],
-  },
-  {
-    circuit_id: 'yas_marina',
-    round_2026: 24,
-    date_2026: '06 Dec 2026',
-    circuit_name: 'Yas Marina Circuit',
-    locality: 'Abu Dhabi',
-    country: 'United Arab Emirates',
-    flag: '🇦🇪',
-    region: 'Middle East',
-    length_km: 5.281,
-    turns: 16,
-    laps: 58,
-    race_distance_km: 306.183,
-    drs_zones: 2,
-    tyre_stress: 3,
-    lap_record: { time: '1:26.103', driver: 'Max Verstappen', team: 'Red Bull Racing', year: 2021 },
-    map_image: '/circuits/Abu_Dhabi_Circuit.webp',
-    cdn_fallback: 'https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.webp',
-    drs_details: '2 DRS Zones (1.2km Back Straight T5-T6, T8-T9)',
-    drs_detection: 'Turn 5 entry & Turn 7 hairpin exit',
-    speed_trap: 'Back straight approaching Turn 6 chicane',
-    // Yas Marina: Sunset twilight season finale under the glowing W Hotel canopy
-    svg_viewBox: '0 0 400 300',
-    svg_path: 'M 60,85 L 250,70 C 285,70 300,120 275,155 L 205,180 C 230,215 275,240 250,275 L 70,285 C 35,275 35,190 60,120 Z',
-    finish_line: { x: 80, y: 85 },
-    past_winners: [
-      { year: 2024, winner: 'Lando Norris', team: 'McLaren', time: '1:27:43.204', laps: 58 },
-      { year: 2023, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:27:02.624', laps: 58 },
-      { year: 2022, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:27:45.914', laps: 58 },
-      { year: 2021, winner: 'Max Verstappen', team: 'Red Bull Racing', time: '1:30:17.345', laps: 58 },
-    ],
-  },
-];
-
-export default function CircuitsPage() {
+export default function CircuitsPage({ onNavigate, theme = 'dark' }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('ALL');
-  const [selectedCircuit, setSelectedCircuit] = useState(null);
+  const [viewMode, setViewMode] = useState('blueprint'); // 'blueprint' | 'grid'
+  const [activeCircuitId, setActiveCircuitId] = useState('albert_park');
+  const [modalCircuit, setModalCircuit] = useState(null);
+  const [showAllWinners, setShowAllWinners] = useState(false);
 
+  // Filter circuits by region & search query
   const filteredCircuits = useMemo(() => {
     return OFFICIAL_CIRCUITS.filter((c) => {
       if (selectedRegion !== 'ALL' && c.region !== selectedRegion) return false;
@@ -802,246 +52,837 @@ export default function CircuitsPage() {
           c.circuit_name.toLowerCase().includes(q) ||
           c.locality.toLowerCase().includes(q) ||
           c.country.toLowerCase().includes(q) ||
-          c.lap_record.driver.toLowerCase().includes(q)
+          c.lap_record.driver.toLowerCase().includes(q) ||
+          c.official_title?.toLowerCase().includes(q)
         );
       }
       return true;
     });
   }, [selectedRegion, searchQuery]);
 
+  // Selected spotlight circuit for blueprint view
+  const activeCircuit = useMemo(() => {
+    const found = OFFICIAL_CIRCUITS.find((c) => c.circuit_id === activeCircuitId);
+    return found || filteredCircuits[0] || OFFICIAL_CIRCUITS[0];
+  }, [activeCircuitId, filteredCircuits]);
+
+  // Active circuit index in calendar order for Prev/Next navigation
+  const currentIndex = useMemo(() => {
+    return OFFICIAL_CIRCUITS.findIndex((c) => c.circuit_id === activeCircuit.circuit_id);
+  }, [activeCircuit]);
+
+  const prevCircuit = OFFICIAL_CIRCUITS[(currentIndex - 1 + OFFICIAL_CIRCUITS.length) % OFFICIAL_CIRCUITS.length];
+  const nextCircuit = OFFICIAL_CIRCUITS[(currentIndex + 1) % OFFICIAL_CIRCUITS.length];
+
   return (
     <div className="space-y-6">
-      {/* 1. Header Toolbar */}
-      <div className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-xl p-5 space-y-4 shadow-sm dark:shadow-xl transition-colors">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      {/* =========================================================================
+          1. HEADER TOOLBAR & TELEMETRY CONTROLS (FORMULA-TIMER STYLE)
+          ========================================================================= */}
+      <div className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-2xl p-5 sm:p-6 shadow-sm dark:shadow-xl transition-colors">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600]/20 text-[#E10600] border border-[#E10600]/40 uppercase tracking-wider">
-                Official FIA Venues
+            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+              <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600]/15 text-[#E10600] border border-[#E10600]/30 uppercase tracking-wider flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E10600] animate-pulse" />
+                Formula 1 Circuits 2026
               </span>
-              <span className="text-xs font-mono text-[#64748B]">Authentic Track Layouts & Specs (2021–2026)</span>
+              <span className="text-xs font-mono text-slate-500 dark:text-[#64748B]">
+                24 Championship Venues • Technical Layouts, Lap Records & Sector Analysis
+              </span>
             </div>
-            <h2 className="text-xl lg:text-2xl font-display font-black text-slate-900 dark:text-white tracking-wide uppercase">
-              Formula 1 Grand Prix Circuits Directory
-            </h2>
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-slate-900 dark:text-white tracking-wide uppercase">
+              Championship Circuits Directory
+            </h1>
+            {/* Formula-Timer signature red accent bar */}
+            <div className="h-1 w-20 bg-[#E10600] rounded-full mt-2" />
           </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-80">
-            <Search className="w-3.5 h-3.5 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search circuit, country, driver record..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#1C2230] border border-slate-200 dark:border-[#2A3245] rounded-lg pl-9 pr-3 py-2 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-[#64748B] focus:outline-none focus:border-[#E10600] transition-colors"
-            />
+          {/* Right Toolbar Controls: Search & View Mode Switcher */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Search Box */}
+            <div className="relative w-full sm:w-72">
+              <Search className="w-4 h-4 text-slate-400 dark:text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Search circuit, country, record..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-50 dark:bg-[#1C2230] border border-slate-200 dark:border-[#2A3245] rounded-xl pl-9 pr-3 py-2 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-[#64748B] focus:outline-none focus:border-[#E10600] transition-colors"
+              />
+            </div>
+
+            {/* View Mode Toggle (Blueprint vs Grid) */}
+            <div className="flex items-center bg-slate-100 dark:bg-[#1C2230] p-1 rounded-xl border border-slate-200 dark:border-[#2A3245] shrink-0">
+              <button
+                onClick={() => setViewMode('blueprint')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                  viewMode === 'blueprint'
+                    ? 'bg-[#E10600] text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white'
+                }`}
+                title="Interactive Telemetry Blueprint"
+              >
+                <Columns className="w-3.5 h-3.5" />
+                <span>Blueprint</span>
+              </button>
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                  viewMode === 'grid'
+                    ? 'bg-[#E10600] text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white'
+                }`}
+                title="Full Grid Directory"
+              >
+                <Grid className="w-3.5 h-3.5" />
+                <span>Grid Atlas</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Region Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-200 dark:border-[#2A3245]">
+        {/* Region Filter Chips */}
+        <div className="flex flex-wrap items-center gap-2 pt-4 mt-4 border-t border-slate-100 dark:border-[#2A3245]">
           {['ALL', 'Europe', 'Americas', 'Middle East', 'Asia & Pacific'].map((reg) => (
             <button
               key={reg}
               onClick={() => setSelectedRegion(reg)}
               className={`px-3 py-1 rounded-lg text-xs font-mono transition-all ${
                 selectedRegion === reg
-                  ? 'bg-[#E10600] text-white font-bold shadow-md shadow-red-950/40'
+                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold shadow-sm'
                   : 'bg-slate-100 dark:bg-[#1C2230] text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-[#2A3245]'
               }`}
             >
               {reg.toUpperCase()}
             </button>
           ))}
-          <span className="ml-auto text-xs font-mono text-[#64748B]">
-            Showing {filteredCircuits.length} of {OFFICIAL_CIRCUITS.length} Championship Tracks
+          <span className="ml-auto text-xs font-mono text-slate-500 dark:text-[#64748B] hidden sm:inline">
+            Showing {filteredCircuits.length} of {OFFICIAL_CIRCUITS.length} Grand Prix Circuits
           </span>
         </div>
       </div>
 
-      {/* 2. Responsive Circuits Grid (Cards with Authentic FIA Layout Diagrams) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {filteredCircuits.map((circuit) => {
-          const latestWinner = circuit.past_winners[0];
+      {/* =========================================================================
+          2. VIEW MODE A: FORMULA-TIMER SPOTLIGHT TELEMETRY BLUEPRINT
+          ========================================================================= */}
+      {viewMode === 'blueprint' && (
+        <div className="space-y-6">
+          {/* Horizontal Circuit Ribbon Selector */}
+          <div className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-2xl p-3 shadow-sm dark:shadow-xl transition-colors">
+            <div className="text-[10px] font-mono text-slate-500 dark:text-[#64748B] mb-2 px-1 uppercase tracking-wider flex items-center justify-between">
+              <span>Select Grand Prix Weekend Venue</span>
+              <span className="text-[#E10600] font-bold">2026 Calendar Order (Rounds 01–24)</span>
+            </div>
 
-          return (
-            <div
-              key={circuit.circuit_id}
-              onClick={() => setSelectedCircuit(circuit)}
-              className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-xl p-5 hover:border-[#E10600] transition-all cursor-pointer group shadow-sm hover:shadow-md flex flex-col justify-between"
-            >
-              <div>
-                {/* Header: Flag, Country & Round */}
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">{circuit.flag}</span>
-                    <span className="text-xs font-mono font-bold text-slate-500 dark:text-[#94A3B8] uppercase">
-                      {circuit.country}
-                    </span>
-                  </div>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600]/15 text-[#E10600] border border-[#E10600]/30">
-                    Round {circuit.round_2026}
-                  </span>
-                </div>
-
-                {/* Circuit Name & Locality */}
-                <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#E10600] transition-colors leading-snug mb-1">
-                  {circuit.circuit_name}
-                </h3>
-                <p className="text-xs font-mono text-[#64748B] mb-3 flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-[#E10600]" />
-                  <span>{circuit.locality}</span>
-                </p>
-
-                {/* Authentic FIA Technical Track Diagram Preview */}
-                <div className="h-44 rounded-xl bg-[#F4F4F6] border border-slate-200 flex items-center justify-center p-3 mb-4 relative overflow-hidden group-hover:border-[#E10600]/60 transition-all shadow-inner group/track">
-                  <img
-                    src={circuit.map_image}
-                    alt={`${circuit.circuit_name} Official Track Layout & DRS Zones`}
-                    className="w-full h-full max-h-36 object-contain filter contrast-105 transition-transform duration-300 group-hover:scale-105 select-none"
-                    loading="lazy"
-                    onError={(e) => {
-                      if (circuit.cdn_fallback && e.currentTarget.src !== circuit.cdn_fallback) {
-                        e.currentTarget.src = circuit.cdn_fallback;
-                      }
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-[#2A3245]">
+              {filteredCircuits.map((c) => {
+                const isSelected = activeCircuit?.circuit_id === c.circuit_id;
+                return (
+                  <button
+                    key={c.circuit_id}
+                    onClick={() => {
+                      setActiveCircuitId(c.circuit_id);
+                      setShowAllWinners(false);
                     }}
-                  />
+                    className={`shrink-0 flex items-center gap-2.5 px-3 py-2 rounded-xl border text-left transition-all ${
+                      isSelected
+                        ? 'bg-red-50 dark:bg-[#1C2230] border-[#E10600] ring-1 ring-[#E10600] shadow-sm'
+                        : 'bg-slate-50 dark:bg-[#151922] border-slate-200 dark:border-[#2A3245] hover:border-slate-300 dark:hover:border-[#64748B]'
+                    }`}
+                  >
+                    <span className="text-base">{c.flag}</span>
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-[#E10600]' : 'text-slate-500 dark:text-[#64748B]'}`}>
+                          R{String(c.round_2026).padStart(2, '0')}
+                        </span>
+                        <span className={`text-xs font-bold truncate max-w-[110px] ${isSelected ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'}`}>
+                          {c.locality}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono text-slate-500 dark:text-[#64748B] block truncate max-w-[110px]">
+                        {c.length_km} km • {c.turns} Turns
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-                  {/* Top Badge: DRS Zones Count */}
-                  <div className="absolute top-2 right-2 flex items-center gap-1.5">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#00D26A] text-black shadow-sm flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
-                      {circuit.drs_zones} DRS {circuit.drs_zones > 1 ? 'ZONES' : 'ZONE'}
+          {/* Main Active Circuit Telemetry Blueprint Hub */}
+          {activeCircuit && (
+            <div className="space-y-6">
+              {/* Circuit Header Card */}
+              <div className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-2xl p-6 shadow-sm dark:shadow-xl transition-colors">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-100 dark:border-[#2A3245]">
+                  <div className="flex items-start sm:items-center gap-4">
+                    <span className="text-4xl sm:text-5xl p-2 rounded-2xl bg-slate-100 dark:bg-[#1C2230] border border-slate-200 dark:border-[#2A3245] shrink-0 shadow-sm">
+                      {activeCircuit.flag}
                     </span>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600] text-white">
+                          On 2026 Calendar • Round {activeCircuit.round_2026}
+                        </span>
+                        <span className="text-xs font-mono font-bold text-slate-500 dark:text-[#94A3B8] uppercase">
+                          {activeCircuit.country} • {activeCircuit.region}
+                        </span>
+                        <span className="text-xs font-mono text-[#00D26A] font-bold">
+                          {activeCircuit.direction}
+                        </span>
+                      </div>
+                      <h2 className="text-2xl sm:text-3xl font-display font-black text-slate-900 dark:text-white tracking-tight">
+                        {activeCircuit.circuit_name}
+                      </h2>
+                      <p className="text-xs font-mono text-slate-500 dark:text-[#64748B] mt-0.5">
+                        {activeCircuit.official_title}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Bottom Overlay: Sectors & Speed Trap Indicator */}
-                  <div className="absolute bottom-2 left-2 flex items-center gap-1 bg-[#12161F]/90 backdrop-blur-md px-2 py-0.5 rounded text-[9px] font-mono text-slate-200 border border-[#2A3245]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" title="Sector 1" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF]" title="Sector 2" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" title="Sector 3" />
-                    <span className="ml-1 text-[9px] text-[#00F0FF] font-bold">SECTORS</span>
-                    <span className="mx-1 text-slate-600">•</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E6007A]" />
-                    <span className="text-[9px] text-fuchsia-400 font-bold">SPEED TRAP</span>
+                  <div className="flex items-center gap-3 self-start lg:self-auto font-mono text-xs">
+                    <div className="bg-slate-50 dark:bg-[#151922] p-3 rounded-xl border border-slate-200 dark:border-[#2A3245] text-right">
+                      <span className="block text-slate-500 dark:text-[#64748B] text-[10px]">2026 RACE WEEKEND</span>
+                      <span className="text-slate-900 dark:text-[#00F0FF] font-black text-sm">{activeCircuit.date_2026}</span>
+                    </div>
+                    <button
+                      onClick={() => setModalCircuit(activeCircuit)}
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-100 dark:bg-[#1C2230] hover:bg-[#E10600] hover:text-white dark:hover:bg-[#E10600] border border-slate-200 dark:border-[#2A3245] text-slate-700 dark:text-slate-200 font-bold transition-all shadow-sm"
+                      title="Expand Technical Blueprint"
+                    >
+                      <Maximize2 className="w-4 h-4" />
+                      <span className="hidden sm:inline">Inspect Full Screen</span>
+                    </button>
                   </div>
                 </div>
 
-                {/* Key Technical Metrics Grid */}
-                <div className="grid grid-cols-3 gap-2 py-2.5 border-t border-b border-slate-200 dark:border-[#2A3245]/60 text-center font-mono text-xs">
-                  <div>
-                    <span className="block text-[10px] text-[#64748B]">LENGTH</span>
-                    <span className="text-slate-900 dark:text-white font-bold">{circuit.length_km} km</span>
+                {/* ==================== TECHNICAL TRACK LAYOUT CANVAS (FORMULA-TIMER / FIA STYLE) ==================== */}
+                <div className="mt-6 rounded-2xl bg-slate-50 dark:bg-[#0D1117] border border-slate-200 dark:border-[#2A3245] p-5 sm:p-7 relative shadow-inner overflow-hidden transition-colors">
+                  {/* Top Canvas Bar */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-4 border-b border-slate-200 dark:border-[#2A3245]/80 text-xs font-mono gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-1 rounded bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-[10px] font-bold uppercase tracking-wider">
+                        FIA Technical Circuit Geometry
+                      </span>
+                      <span className="text-slate-600 dark:text-slate-300 font-semibold">
+                        Turns 01 – {String(activeCircuit.turns).padStart(2, '0')} ({activeCircuit.turns_breakdown?.right || 0} Right, {activeCircuit.turns_breakdown?.left || 0} Left)
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="px-2.5 py-1 rounded text-[10px] font-mono font-bold bg-[#00D26A] text-black shadow-sm flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                        {activeCircuit.drs_zones} DRS {activeCircuit.drs_zones > 1 ? 'ZONES' : 'ZONE'}
+                      </span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 border border-fuchsia-500/30 font-bold">
+                        V-MAX RADAR: {activeCircuit.top_speed_kmh} KM/H
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="block text-[10px] text-[#64748B]">TURNS</span>
-                    <span className="text-slate-900 dark:text-white font-bold">{circuit.turns}</span>
+
+                  {/* Main Authentic High-Resolution Circuit Diagram Image */}
+                  <div className="w-full h-80 sm:h-[420px] flex items-center justify-center py-2 relative">
+                    <img
+                      src={activeCircuit.map_image}
+                      alt={`${activeCircuit.circuit_name} Official Track Layout, Sectors, Corners & DRS Zones`}
+                      className="max-h-full max-w-full object-contain filter contrast-105 drop-shadow-md select-none transition-transform duration-300 hover:scale-[1.02]"
+                      onError={(e) => {
+                        if (activeCircuit.cdn_fallback && e.currentTarget.src !== activeCircuit.cdn_fallback) {
+                          e.currentTarget.src = activeCircuit.cdn_fallback;
+                        }
+                      }}
+                    />
                   </div>
-                  <div>
-                    <span className="block text-[10px] text-[#64748B]">RACE LAPS</span>
-                    <span className="text-[#00F0FF] font-bold">{circuit.laps}</span>
+
+                  {/* Formula-Timer Track Legend Bar */}
+                  <div className="mt-4 pt-3 border-t border-slate-200 dark:border-[#2A3245]/80 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3.5 h-3.5 rounded bg-[#00D26A] flex items-center justify-center text-[9px] font-bold text-black shrink-0">
+                        ✓
+                      </span>
+                      <div>
+                        <span className="font-bold block text-slate-900 dark:text-white">
+                          {activeCircuit.drs_zones} DRS Zones
+                        </span>
+                        <span className="text-[10px] text-slate-500 dark:text-[#64748B]">Green dashed lines</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="w-3.5 h-3.5 rounded-full bg-[#E6007A] shrink-0" />
+                      <div>
+                        <span className="font-bold block text-slate-900 dark:text-white">Speed Trap</span>
+                        <span className="text-[10px] text-slate-500 dark:text-[#64748B]">Magenta radar point</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 shrink-0">
+                        <span className="w-2 h-2 rounded-full bg-[#E10600]" />
+                        <span className="w-2 h-2 rounded-full bg-[#00D2FF]" />
+                        <span className="w-2 h-2 rounded-full bg-[#FFD700]" />
+                      </div>
+                      <div>
+                        <span className="font-bold block text-slate-900 dark:text-white">Sectors 1, 2, 3</span>
+                        <span className="text-[10px] text-slate-500 dark:text-[#64748B]">Timing split boundaries</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="text-base shrink-0">🏁</span>
+                      <div>
+                        <span className="font-bold block text-slate-900 dark:text-white">Start / Finish Line</span>
+                        <span className="text-[10px] text-slate-500 dark:text-[#64748B]">Sector boundary loop</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ==================== 8-POINT PERFORMANCE TELEMETRY MATRIX ==================== */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+                  {/* Metric 1: Track Length */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      Circuit Length
+                    </span>
+                    <span className="text-slate-900 dark:text-white font-black text-lg font-mono">
+                      {activeCircuit.length_km} <span className="text-xs font-normal text-slate-500">km</span>
+                    </span>
+                  </div>
+
+                  {/* Metric 2: Race Distance & Laps */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      Race Distance
+                    </span>
+                    <span className="text-[#00D26A] font-black text-lg font-mono">
+                      {activeCircuit.laps} <span className="text-xs font-normal text-slate-500">Laps</span>
+                    </span>
+                    <span className="block text-[10px] font-mono text-slate-500 dark:text-[#64748B]">
+                      {activeCircuit.race_distance_km} km
+                    </span>
+                  </div>
+
+                  {/* Metric 3: Total Corners & Breakdown */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      Total Turns
+                    </span>
+                    <span className="text-slate-900 dark:text-white font-black text-lg font-mono">
+                      {activeCircuit.turns} <span className="text-xs font-normal text-slate-500">Corners</span>
+                    </span>
+                    <span className="block text-[10px] font-mono text-slate-500 dark:text-[#64748B]">
+                      {activeCircuit.turns_breakdown?.right} Right • {activeCircuit.turns_breakdown?.left} Left
+                    </span>
+                  </div>
+
+                  {/* Metric 4: DRS Zones */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      DRS Deployment
+                    </span>
+                    <span className="text-emerald-600 dark:text-[#00D26A] font-black text-lg font-mono">
+                      {activeCircuit.drs_zones} <span className="text-xs font-normal text-slate-500">Zones</span>
+                    </span>
+                    <span className="block text-[10px] font-mono text-slate-500 dark:text-[#64748B]">
+                      Straight mode loops: {activeCircuit.drs_zones}
+                    </span>
+                  </div>
+
+                  {/* Metric 5: Downforce Setup */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      Aero Downforce
+                    </span>
+                    <span className="text-indigo-600 dark:text-indigo-400 font-black text-base font-mono">
+                      {activeCircuit.downforce}
+                    </span>
+                    <span className="block text-[10px] font-mono text-slate-500 dark:text-[#64748B]">
+                      Wing package setup
+                    </span>
+                  </div>
+
+                  {/* Metric 6: Full Throttle % */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      Full Throttle
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#E10600] font-black text-lg font-mono">
+                        {activeCircuit.full_throttle_pct}%
+                      </span>
+                      <div className="w-12 bg-slate-200 dark:bg-[#0B0E14] h-2 rounded-full overflow-hidden">
+                        <div
+                          className="bg-[#E10600] h-full rounded-full"
+                          style={{ width: `${activeCircuit.full_throttle_pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Metric 7: Tyre Abrasion / Stress */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      Tyre Abrasion Stress
+                    </span>
+                    <span className="text-amber-500 font-bold text-sm tracking-widest block font-mono">
+                      {'★'.repeat(activeCircuit.tyre_stress)}
+                      {'☆'.repeat(5 - activeCircuit.tyre_stress)}
+                    </span>
+                    <span className="block text-[10px] font-mono text-slate-500 dark:text-[#64748B]">
+                      Level {activeCircuit.tyre_stress} of 5
+                    </span>
+                  </div>
+
+                  {/* Metric 8: Gear Shifts per Lap */}
+                  <div className="bg-slate-50 dark:bg-[#1C2230] p-4 rounded-xl border border-slate-200 dark:border-[#2A3245] transition-colors">
+                    <span className="block text-slate-500 dark:text-[#64748B] text-[10px] font-mono uppercase mb-1">
+                      Gear Changes / Lap
+                    </span>
+                    <span className="text-purple-600 dark:text-purple-400 font-black text-lg font-mono">
+                      ~{activeCircuit.gear_changes}
+                    </span>
+                    <span className="block text-[10px] font-mono text-slate-500 dark:text-[#64748B]">
+                      Sequential shifts
+                    </span>
+                  </div>
+                </div>
+
+                {/* ==================== OFFICIAL RACE LAP RECORD CHRONOMETER ==================== */}
+                <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="p-3 rounded-xl bg-amber-500/20 text-amber-500 border border-amber-500/40 shrink-0">
+                      <Clock className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-amber-600 dark:text-amber-400 uppercase font-bold tracking-wider">
+                        Official Grand Prix Race Lap Record
+                      </span>
+                      <div className="text-2xl sm:text-3xl font-mono font-black text-slate-900 dark:text-white tracking-wide">
+                        {activeCircuit.lap_record.time}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="sm:text-right font-mono text-xs">
+                    <span className="text-slate-900 dark:text-white font-bold text-sm block">
+                      {activeCircuit.lap_record.driver}
+                    </span>
+                    <span className="text-slate-500 dark:text-[#94A3B8] text-xs">
+                      {activeCircuit.lap_record.team} • {activeCircuit.lap_record.year}
+                    </span>
+                    {activeCircuit.lap_record.avg_speed && (
+                      <span className="block text-[10px] text-amber-600 dark:text-amber-400 font-bold mt-0.5">
+                        Avg Lap Speed: {activeCircuit.lap_record.avg_speed}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
 
-              {/* Latest Verified Winner Footer */}
-              <div className="pt-3 mt-3 flex items-center justify-between text-xs font-mono border-t border-slate-100 dark:border-transparent">
-                <div className="flex items-center gap-1.5 truncate">
-                  <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                  <span className="text-slate-600 dark:text-[#94A3B8] truncate">
-                    {latestWinner ? `${latestWinner.year}: ${latestWinner.winner}` : 'TBD'}
+              {/* ==================== SECTOR-BY-SECTOR IN-DEPTH ENGINEERING DOSSIER ==================== */}
+              <div className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-2xl p-6 shadow-sm dark:shadow-xl transition-colors space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#2A3245]">
+                  <div className="flex items-center gap-2">
+                    <Layers className="w-5 h-5 text-[#E10600]" />
+                    <h3 className="font-bold text-sm sm:text-base uppercase tracking-wider text-slate-900 dark:text-white">
+                      Track Sectors & Aerodynamic Analysis
+                    </h3>
+                  </div>
+                  <span className="text-xs font-mono text-slate-500 dark:text-[#64748B]">
+                    Formula-Timer Signature Sector Breakdown
                   </span>
                 </div>
-                <div className="flex items-center gap-1 text-[11px] text-[#64748B] group-hover:text-slate-900 dark:group-hover:text-white transition-colors shrink-0">
-                  <span>Track Specs</span>
-                  <ChevronRight className="w-4 h-4" />
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+                  {/* Sector 1 */}
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#151922] border-t-4 border-[#E10600] border-x border-b border-slate-200 dark:border-x-[#2A3245] dark:border-b-[#2A3245] space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#E10600]/15 text-[#E10600]">
+                        SECTOR 1
+                      </span>
+                      <span className="text-slate-500 text-[11px] font-bold">
+                        {activeCircuit.sectors?.s1?.distance_km} km
+                      </span>
+                    </div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-xs">
+                      {activeCircuit.sectors?.s1?.turns}
+                    </h4>
+                    <span className="text-[11px] text-slate-700 dark:text-slate-300 font-semibold block">
+                      {activeCircuit.sectors?.s1?.focus}
+                    </span>
+                    <p className="text-[11px] text-slate-500 dark:text-[#94A3B8] leading-relaxed">
+                      {activeCircuit.sectors?.s1?.description}
+                    </p>
+                  </div>
+
+                  {/* Sector 2 */}
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#151922] border-t-4 border-[#00D2FF] border-x border-b border-slate-200 dark:border-x-[#2A3245] dark:border-b-[#2A3245] space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#00D2FF]/15 text-[#00D2FF]">
+                        SECTOR 2
+                      </span>
+                      <span className="text-slate-500 text-[11px] font-bold">
+                        {activeCircuit.sectors?.s2?.distance_km} km
+                      </span>
+                    </div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-xs">
+                      {activeCircuit.sectors?.s2?.turns}
+                    </h4>
+                    <span className="text-[11px] text-slate-700 dark:text-slate-300 font-semibold block">
+                      {activeCircuit.sectors?.s2?.focus}
+                    </span>
+                    <p className="text-[11px] text-slate-500 dark:text-[#94A3B8] leading-relaxed">
+                      {activeCircuit.sectors?.s2?.description}
+                    </p>
+                  </div>
+
+                  {/* Sector 3 */}
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#151922] border-t-4 border-[#FFD700] border-x border-b border-slate-200 dark:border-x-[#2A3245] dark:border-b-[#2A3245] space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/15 text-amber-500">
+                        SECTOR 3
+                      </span>
+                      <span className="text-slate-500 text-[11px] font-bold">
+                        {activeCircuit.sectors?.s3?.distance_km} km
+                      </span>
+                    </div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-xs">
+                      {activeCircuit.sectors?.s3?.turns}
+                    </h4>
+                    <span className="text-[11px] text-slate-700 dark:text-slate-300 font-semibold block">
+                      {activeCircuit.sectors?.s3?.focus}
+                    </span>
+                    <p className="text-[11px] text-slate-500 dark:text-[#94A3B8] leading-relaxed">
+                      {activeCircuit.sectors?.s3?.description}
+                    </p>
+                  </div>
                 </div>
+
+                {/* DRS Activation & Speed Trap Telemetry Card */}
+                <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#151922] border border-slate-200 dark:border-[#2A3245] space-y-2.5 font-mono text-xs">
+                  <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold pb-2 border-b border-slate-200 dark:border-[#2A3245]">
+                    <Zap className="w-4 h-4 text-[#00D26A]" />
+                    <span>Telemetry Sensors & Detection Coordinates</span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div className="bg-white dark:bg-[#1C2230] p-3 rounded-lg border border-slate-200 dark:border-[#2A3245]">
+                      <span className="text-[10px] text-[#00D26A] font-bold block mb-1">DRS ACTIVATION ZONES</span>
+                      <span className="text-slate-700 dark:text-slate-200 text-xs block leading-relaxed">{activeCircuit.drs_details}</span>
+                    </div>
+                    <div className="bg-white dark:bg-[#1C2230] p-3 rounded-lg border border-slate-200 dark:border-[#2A3245]">
+                      <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold block mb-1">DETECTION RADAR POINTS</span>
+                      <span className="text-slate-700 dark:text-slate-200 text-xs block leading-relaxed">{activeCircuit.drs_detection}</span>
+                    </div>
+                    <div className="bg-white dark:bg-[#1C2230] p-3 rounded-lg border border-slate-200 dark:border-[#2A3245]">
+                      <span className="text-[10px] text-fuchsia-600 dark:text-fuchsia-400 font-bold block mb-1">SPEED TRAP LOCATION</span>
+                      <span className="text-slate-700 dark:text-slate-200 text-xs block leading-relaxed">{activeCircuit.speed_trap}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ==================== HISTORICAL HONOR ROLL & RECENT WINNERS ==================== */}
+              <div className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-2xl p-6 shadow-sm dark:shadow-xl transition-colors space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 dark:border-[#2A3245] gap-2">
+                  <div className="flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-amber-500" />
+                    <h3 className="font-bold text-sm sm:text-base uppercase tracking-wider text-slate-900 dark:text-white">
+                      Grand Prix History & Honor Roll
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs font-mono text-slate-500 dark:text-[#64748B]">
+                    <span>Inaugural GP: <strong className="text-slate-900 dark:text-white">{activeCircuit.first_grand_prix}</strong></span>
+                    <span>•</span>
+                    <span>Most Wins: <strong className="text-[#00F0FF]">{activeCircuit.most_successful_driver}</strong></span>
+                  </div>
+                </div>
+
+                {/* Winners Table */}
+                <div className="space-y-2">
+                  {(showAllWinners ? activeCircuit.past_winners : activeCircuit.past_winners.slice(0, 3)).map((w) => (
+                    <div
+                      key={w.year}
+                      className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#151922] border border-slate-200 dark:border-[#2A3245] flex items-center justify-between text-xs font-mono hover:border-slate-300 dark:hover:border-[#64748B] transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="px-2.5 py-1 rounded bg-slate-200 dark:bg-[#1C2230] text-slate-900 dark:text-[#00F0FF] font-black text-xs">
+                          {w.year}
+                        </span>
+                        <div>
+                          <span className="font-bold text-slate-900 dark:text-white text-sm block">{w.winner}</span>
+                          <span className="text-[11px] text-slate-500 dark:text-[#94A3B8]">{w.team}</span>
+                        </div>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="text-slate-700 dark:text-slate-300 font-bold block">{w.time}</span>
+                        <span className="text-[10px] text-slate-400 dark:text-[#64748B]">{w.laps} race laps completed</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Formula-Timer "Show all winners" toggle */}
+                {activeCircuit.past_winners.length > 3 && (
+                  <div className="pt-2 text-center">
+                    <button
+                      onClick={() => setShowAllWinners(!showAllWinners)}
+                      className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-[#1C2230] hover:bg-slate-200 dark:hover:bg-[#2A3245] border border-slate-200 dark:border-[#2A3245] text-xs font-mono font-bold text-slate-700 dark:text-slate-200 transition-colors"
+                    >
+                      {showAllWinners
+                        ? 'Show Recent Winners (Collapse)'
+                        : `Show All ${activeCircuit.past_winners.length} Verified Winners`}
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* ==================== FORMULA-TIMER PREV / NEXT CIRCUIT NAVIGATION ==================== */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                {/* Previous Circuit */}
+                <button
+                  onClick={() => {
+                    setActiveCircuitId(prevCircuit.circuit_id);
+                    setShowAllWinners(false);
+                    window.scrollTo({ top: 180, behavior: 'smooth' });
+                  }}
+                  className="p-4 rounded-2xl bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] hover:border-[#E10600] flex items-center justify-between text-left group shadow-sm transition-all"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#1C2230] group-hover:bg-[#E10600] group-hover:text-white transition-colors text-slate-600 dark:text-slate-300">
+                      <ArrowLeft className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-slate-500 dark:text-[#64748B] uppercase block">
+                        Previous Round {prevCircuit.round_2026}
+                      </span>
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-[#E10600] transition-colors">
+                        {prevCircuit.flag} {prevCircuit.circuit_name}
+                      </h4>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Next Circuit */}
+                <button
+                  onClick={() => {
+                    setActiveCircuitId(nextCircuit.circuit_id);
+                    setShowAllWinners(false);
+                    window.scrollTo({ top: 180, behavior: 'smooth' });
+                  }}
+                  className="p-4 rounded-2xl bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] hover:border-[#E10600] flex items-center justify-between text-right group shadow-sm transition-all"
+                >
+                  <div className="ml-auto flex items-center gap-3 flex-row-reverse">
+                    <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#1C2230] group-hover:bg-[#E10600] group-hover:text-white transition-colors text-slate-600 dark:text-slate-300">
+                      <ArrowRight className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-slate-500 dark:text-[#64748B] uppercase block">
+                        Next Round {nextCircuit.round_2026}
+                      </span>
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-[#E10600] transition-colors">
+                        {nextCircuit.circuit_name} {nextCircuit.flag}
+                      </h4>
+                    </div>
+                  </div>
+                </button>
               </div>
             </div>
-          );
-        })}
-      </div>
+          )}
+        </div>
+      )}
 
-      {/* 3. Detailed Circuit Dossier Modal (PORTALED TO DOCUMENT.BODY: ZERO BACKDROP CLIPPING) */}
+      {/* =========================================================================
+          3. VIEW MODE B: FULL PADDOCK GRID DIRECTORY (FORMULA-TIMER 3-COLUMN CARDS)
+          ========================================================================= */}
+      {viewMode === 'grid' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredCircuits.map((circuit) => {
+            const latestWinner = circuit.past_winners[0];
+
+            return (
+              <div
+                key={circuit.circuit_id}
+                onClick={() => setModalCircuit(circuit)}
+                className="bg-white dark:bg-[#12161F] border border-slate-200 dark:border-[#2A3245] rounded-2xl p-5 hover:border-[#E10600] transition-all cursor-pointer group shadow-sm hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  {/* Track Diagram Header Area */}
+                  <div className="h-48 rounded-xl bg-slate-50 dark:bg-[#0D1117] border border-slate-200 dark:border-[#2A3245] flex items-center justify-center p-3 mb-4 relative overflow-hidden group-hover:border-[#E10600]/60 transition-all shadow-inner">
+                    <img
+                      src={circuit.map_image}
+                      alt={`${circuit.circuit_name} Official Track Layout & DRS Zones`}
+                      className="w-full h-full max-h-40 object-contain filter contrast-105 transition-transform duration-300 group-hover:scale-105 select-none"
+                      loading="lazy"
+                      onError={(e) => {
+                        if (circuit.cdn_fallback && e.currentTarget.src !== circuit.cdn_fallback) {
+                          e.currentTarget.src = circuit.cdn_fallback;
+                        }
+                      }}
+                    />
+
+                    {/* Formula-Timer Top Badges: "On 2026 Calendar" pill & Flag */}
+                    <div className="absolute top-2.5 left-2.5">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#E10600] text-white shadow-sm">
+                        On 2026 calendar
+                      </span>
+                    </div>
+
+                    <div className="absolute top-2.5 right-2.5">
+                      <span className="text-xl p-1 rounded-lg bg-white/90 dark:bg-[#12161F]/90 backdrop-blur-sm border border-slate-200 dark:border-[#2A3245]">
+                        {circuit.flag}
+                      </span>
+                    </div>
+
+                    {/* Sectors overlay */}
+                    <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1 bg-white/90 dark:bg-[#12161F]/90 backdrop-blur-md px-2 py-0.5 rounded text-[9px] font-mono text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-[#2A3245]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" />
+                      <span className="ml-1 font-bold">SECTORS</span>
+                    </div>
+
+                    {/* DRS pill */}
+                    <div className="absolute bottom-2.5 right-2.5">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#00D26A] text-black shadow-sm flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                        {circuit.drs_zones} DRS
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Circuit Title & Location */}
+                  <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#E10600] transition-colors leading-snug mb-1">
+                    {circuit.circuit_name}
+                  </h3>
+                  <p className="text-xs font-mono text-slate-500 dark:text-[#64748B] mb-3 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-[#E10600]" />
+                    <span>{circuit.locality}, {circuit.country}</span>
+                  </p>
+
+                  {/* Key Stats Row (Length, Corners, First GP) */}
+                  <div className="grid grid-cols-3 gap-2 py-2.5 border-t border-b border-slate-100 dark:border-[#2A3245]/60 text-center font-mono text-xs">
+                    <div>
+                      <span className="block text-[10px] text-slate-500 dark:text-[#64748B]">LENGTH</span>
+                      <span className="text-slate-900 dark:text-white font-bold">{circuit.length_km} km</span>
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 dark:text-[#64748B]">CORNERS</span>
+                      <span className="text-slate-900 dark:text-white font-bold">{circuit.turns}</span>
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 dark:text-[#64748B]">FIRST GP</span>
+                      <span className="text-slate-900 dark:text-[#00F0FF] font-bold">{circuit.first_grand_prix}</span>
+                    </div>
+                  </div>
+
+                  {/* Description Snippet */}
+                  <p className="text-[11px] font-mono text-slate-500 dark:text-[#94A3B8] mt-3 line-clamp-2 leading-relaxed">
+                    {circuit.sectors?.s1?.description || `${circuit.circuit_name} features ${circuit.turns} corners and ${circuit.drs_zones} DRS zones.`}
+                  </p>
+                </div>
+
+                {/* Footer with latest winner */}
+                <div className="pt-3 mt-3 flex items-center justify-between text-xs font-mono border-t border-slate-100 dark:border-transparent">
+                  <div className="flex items-center gap-1.5 truncate">
+                    <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                    <span className="text-slate-600 dark:text-[#94A3B8] truncate">
+                      {latestWinner ? `${latestWinner.year}: ${latestWinner.winner}` : 'TBD'}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-[#64748B] group-hover:text-slate-900 dark:group-hover:text-white transition-colors shrink-0">
+                    <span>Blueprint</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* =========================================================================
+          4. DETAILED CIRCUIT DOSSIER MODAL (FULL TELEMETRY BLUEPRINT)
+          ========================================================================= */}
       <Modal
-        isOpen={Boolean(selectedCircuit)}
-        onClose={() => setSelectedCircuit(null)}
-        title={selectedCircuit?.circuit_name}
+        isOpen={Boolean(modalCircuit)}
+        onClose={() => setModalCircuit(null)}
+        title={modalCircuit?.circuit_name}
         icon={MapPin}
-        maxWidth="max-w-4xl"
+        maxWidth="max-w-5xl"
       >
-        {selectedCircuit && (
+        {modalCircuit && (
           <div className="space-y-6">
-            {/* Header Meta */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#2A3245] gap-3">
+            {/* Modal Header Meta */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-[#2A3245] gap-3">
               <div className="flex items-center gap-3">
-                <span className="text-4xl p-2 rounded-xl bg-[#1C2230] border border-[#2A3245]">
-                  {selectedCircuit.flag}
+                <span className="text-4xl p-2 rounded-xl bg-slate-100 dark:bg-[#1C2230] border border-slate-200 dark:border-[#2A3245]">
+                  {modalCircuit.flag}
                 </span>
                 <div>
-                  <h4 className="font-bold text-white text-lg sm:text-xl">
-                    {selectedCircuit.locality}, {selectedCircuit.country}
+                  <h4 className="font-bold text-slate-900 dark:text-white text-lg sm:text-xl">
+                    {modalCircuit.locality}, {modalCircuit.country}
                   </h4>
-                  <span className="text-xs font-mono text-[#64748B]">
-                    Region: <span className="text-slate-300 font-semibold">{selectedCircuit.region}</span> • 2026 Season Round {selectedCircuit.round_2026}
+                  <span className="text-xs font-mono text-slate-500 dark:text-[#64748B]">
+                    Region: <span className="text-slate-800 dark:text-slate-300 font-semibold">{modalCircuit.region}</span> • 2026 Season Round {modalCircuit.round_2026}
                   </span>
                 </div>
               </div>
-              <div className="sm:text-right font-mono text-xs bg-[#151922] p-2.5 rounded-lg border border-[#2A3245] self-start sm:self-auto">
-                <span className="block text-[#64748B] text-[10px]">2026 GP RACE DATE</span>
-                <span className="text-[#00F0FF] font-bold text-sm">{selectedCircuit.date_2026}</span>
+              <div className="sm:text-right font-mono text-xs bg-slate-50 dark:bg-[#151922] p-2.5 rounded-xl border border-slate-200 dark:border-[#2A3245] self-start sm:self-auto">
+                <span className="block text-slate-500 dark:text-[#64748B] text-[10px]">2026 GP RACE DATE</span>
+                <span className="text-slate-900 dark:text-[#00F0FF] font-bold text-sm">{modalCircuit.date_2026}</span>
               </div>
             </div>
 
-            {/* Official FIA Technical Layout Canvas (Matching Broadcast Specifications) */}
-            <div className="rounded-2xl bg-[#F4F4F6] border border-slate-300/80 p-5 sm:p-6 flex flex-col items-center justify-center relative shadow-xl overflow-hidden">
-              <div className="w-full flex items-center justify-between pb-3 mb-2 border-b border-slate-300/60 text-xs font-mono">
+            {/* Official Technical Layout Canvas */}
+            <div className="rounded-2xl bg-slate-50 dark:bg-[#0D1117] border border-slate-200 dark:border-[#2A3245] p-5 sm:p-6 flex flex-col items-center justify-center relative shadow-inner overflow-hidden">
+              <div className="w-full flex items-center justify-between pb-3 mb-2 border-b border-slate-200 dark:border-[#2A3245]/80 text-xs font-mono">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 rounded bg-[#15151E] text-white text-[10px] font-bold tracking-wider uppercase">
-                    FIA Technical Circuit Layout
+                  <span className="px-2.5 py-1 rounded bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-[10px] font-bold uppercase tracking-wider">
+                    FIA Technical Layout
                   </span>
-                  <span className="font-semibold text-slate-800">
-                    Turns 01 – {String(selectedCircuit.turns).padStart(2, '0')}
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">
+                    Turns 01 – {String(modalCircuit.turns).padStart(2, '0')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-0.5 rounded bg-[#00D26A] text-black text-[10px] font-bold shadow-sm">
-                    {selectedCircuit.drs_zones} DRS {selectedCircuit.drs_zones > 1 ? 'ZONES' : 'ZONE'}
+                    {modalCircuit.drs_zones} DRS {modalCircuit.drs_zones > 1 ? 'ZONES' : 'ZONE'}
                   </span>
                 </div>
               </div>
 
-              {/* Large Authentic High-Res Circuit Diagram */}
+              {/* Large Image */}
               <div className="w-full h-72 sm:h-[380px] flex items-center justify-center py-2">
                 <img
-                  src={selectedCircuit.map_image}
-                  alt={`${selectedCircuit.circuit_name} Official Track Layout, Sectors, Corners & DRS Zones`}
-                  className="max-h-full max-w-full object-contain filter contrast-105 drop-shadow-md select-none transition-transform duration-300"
+                  src={modalCircuit.map_image}
+                  alt={`${modalCircuit.circuit_name} Official Track Layout, Sectors, Corners & DRS Zones`}
+                  className="max-h-full max-w-full object-contain filter contrast-105 drop-shadow-md select-none"
                   onError={(e) => {
-                    if (selectedCircuit.cdn_fallback && e.currentTarget.src !== selectedCircuit.cdn_fallback) {
-                      e.currentTarget.src = selectedCircuit.cdn_fallback;
+                    if (modalCircuit.cdn_fallback && e.currentTarget.src !== modalCircuit.cdn_fallback) {
+                      e.currentTarget.src = modalCircuit.cdn_fallback;
                     }
                   }}
                 />
               </div>
 
-              {/* Technical Diagram Legend */}
-              <div className="w-full mt-3 pt-3 border-t border-slate-300/70 grid grid-cols-2 sm:grid-cols-4 gap-3 text-[11px] font-mono">
+              {/* Legend */}
+              <div className="w-full mt-3 pt-3 border-t border-slate-200 dark:border-[#2A3245]/70 grid grid-cols-2 sm:grid-cols-4 gap-3 text-[11px] font-mono">
                 <div className="flex items-center gap-2">
-                  <span className="w-3.5 h-3.5 rounded bg-[#00D26A] flex items-center justify-center text-[9px] font-bold text-black shrink-0">
-                    ✓
-                  </span>
+                  <span className="w-3.5 h-3.5 rounded bg-[#00D26A] flex items-center justify-center text-[9px] font-bold text-black shrink-0">✓</span>
                   <div>
-                    <span className="font-bold block text-slate-900">{selectedCircuit.drs_zones} DRS Zones</span>
-                    <span className="text-[10px] text-slate-600">Green dashed lines</span>
+                    <span className="font-bold block text-slate-900 dark:text-white">{modalCircuit.drs_zones} DRS Zones</span>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">Green dashed lines</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-3.5 h-3.5 rounded-full bg-[#E6007A] shrink-0" />
                   <div>
-                    <span className="font-bold block text-slate-900">Speed Trap</span>
-                    <span className="text-[10px] text-slate-600">Magenta radar point</span>
+                    <span className="font-bold block text-slate-900 dark:text-white">Speed Trap</span>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">Magenta radar point</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -1051,108 +892,86 @@ export default function CircuitsPage() {
                     <span className="w-2 h-2 rounded-full bg-[#FFD700]" />
                   </div>
                   <div>
-                    <span className="font-bold block text-slate-900">Sectors 1, 2, 3</span>
-                    <span className="text-[10px] text-slate-600">Timing split lines</span>
+                    <span className="font-bold block text-slate-900 dark:text-white">Sectors 1, 2, 3</span>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">Timing split lines</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-base shrink-0">🏁</span>
                   <div>
-                    <span className="font-bold block text-slate-900">Start / Finish</span>
-                    <span className="text-[10px] text-slate-600">Sector boundary loop</span>
+                    <span className="font-bold block text-slate-900 dark:text-white">Start / Finish</span>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">Sector boundary loop</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* DRS & Telemetry Breakdown Card */}
-            <div className="p-4 rounded-xl bg-[#151922] border border-[#2A3245] space-y-3 font-mono text-xs">
-              <h5 className="font-bold text-white uppercase text-xs tracking-wider flex items-center gap-2 pb-2 border-b border-[#2A3245]">
-                <Zap className="w-4 h-4 text-[#00D26A]" />
-                <span>DRS Deployment & Telemetry Specifications</span>
-              </h5>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="bg-[#1C2230] p-3 rounded-lg border border-[#2A3245]/70">
-                  <span className="text-[10px] text-[#00D26A] font-bold block mb-1">DRS ACTIVATION ZONES</span>
-                  <span className="text-white text-xs leading-relaxed block">{selectedCircuit.drs_details}</span>
-                </div>
-                <div className="bg-[#1C2230] p-3 rounded-lg border border-[#2A3245]/70">
-                  <span className="text-[10px] text-emerald-400 font-bold block mb-1">DETECTION POINTS (1s GAP)</span>
-                  <span className="text-white text-xs leading-relaxed block">{selectedCircuit.drs_detection}</span>
-                </div>
-                <div className="bg-[#1C2230] p-3 rounded-lg border border-[#2A3245]/70">
-                  <span className="text-[10px] text-fuchsia-400 font-bold block mb-1">SPEED TRAP RADAR (V-MAX)</span>
-                  <span className="text-white text-xs leading-relaxed block">{selectedCircuit.speed_trap}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Track Spec Highlights */}
+            {/* Performance Metrics Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center font-mono text-xs">
-              <div className="bg-[#1C2230] p-3 rounded-lg border border-[#2A3245]">
-                <span className="block text-[#64748B] text-[10px]">TRACK LENGTH</span>
-                <span className="text-white font-bold text-sm">{selectedCircuit.length_km} km</span>
+              <div className="bg-slate-50 dark:bg-[#1C2230] p-3 rounded-xl border border-slate-200 dark:border-[#2A3245]">
+                <span className="block text-slate-500 dark:text-[#64748B] text-[10px]">TRACK LENGTH</span>
+                <span className="text-slate-900 dark:text-white font-bold text-sm">{modalCircuit.length_km} km</span>
               </div>
-              <div className="bg-[#1C2230] p-3 rounded-lg border border-[#2A3245]">
-                <span className="block text-[#64748B] text-[10px]">TOTAL CORNERS</span>
-                <span className="text-white font-bold text-sm">{selectedCircuit.turns} Turns</span>
+              <div className="bg-slate-50 dark:bg-[#1C2230] p-3 rounded-xl border border-slate-200 dark:border-[#2A3245]">
+                <span className="block text-slate-500 dark:text-[#64748B] text-[10px]">TOTAL CORNERS</span>
+                <span className="text-slate-900 dark:text-white font-bold text-sm">{modalCircuit.turns} Turns</span>
               </div>
-              <div className="bg-[#1C2230] p-3 rounded-lg border border-[#2A3245]">
-                <span className="block text-[#64748B] text-[10px]">RACE DISTANCE</span>
-                <span className="text-[#00F0FF] font-bold text-sm">{selectedCircuit.laps} Laps</span>
-                <span className="block text-[9px] text-[#64748B]">({selectedCircuit.race_distance_km} km)</span>
+              <div className="bg-slate-50 dark:bg-[#1C2230] p-3 rounded-xl border border-slate-200 dark:border-[#2A3245]">
+                <span className="block text-slate-500 dark:text-[#64748B] text-[10px]">RACE DISTANCE</span>
+                <span className="text-slate-900 dark:text-[#00F0FF] font-bold text-sm">{modalCircuit.laps} Laps</span>
+                <span className="block text-[9px] text-slate-500 dark:text-[#64748B]">({modalCircuit.race_distance_km} km)</span>
               </div>
-              <div className="bg-[#1C2230] p-3 rounded-lg border border-[#2A3245]">
-                <span className="block text-[#64748B] text-[10px]">TYRE ABRASION</span>
-                <span className="text-amber-400 font-bold text-sm">
-                  {'★'.repeat(selectedCircuit.tyre_stress)}{'☆'.repeat(5 - selectedCircuit.tyre_stress)}
+              <div className="bg-slate-50 dark:bg-[#1C2230] p-3 rounded-xl border border-slate-200 dark:border-[#2A3245]">
+                <span className="block text-slate-500 dark:text-[#64748B] text-[10px]">TYRE ABRASION</span>
+                <span className="text-amber-500 font-bold text-sm">
+                  {'★'.repeat(modalCircuit.tyre_stress)}{'☆'.repeat(5 - modalCircuit.tyre_stress)}
                 </span>
-                <span className="block text-[9px] text-[#64748B]">Level {selectedCircuit.tyre_stress}/5</span>
+                <span className="block text-[9px] text-slate-500 dark:text-[#64748B]">Level {modalCircuit.tyre_stress}/5</span>
               </div>
             </div>
 
             {/* Official Lap Record Card */}
-            <div className="p-4 rounded-xl bg-[#1C2230] border border-[#2A3245] flex items-center justify-between">
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#1C2230] border border-slate-200 dark:border-[#2A3245] flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40">
+                <div className="p-2.5 rounded-lg bg-amber-500/15 text-amber-500 border border-amber-500/30">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono text-[#64748B] uppercase">Official Race Lap Record</span>
-                  <div className="text-lg font-mono font-black text-white tracking-wide">
-                    {selectedCircuit.lap_record.time}
+                  <span className="text-[10px] font-mono text-slate-500 dark:text-[#64748B] uppercase">Official Race Lap Record</span>
+                  <div className="text-lg font-mono font-black text-slate-900 dark:text-white tracking-wide">
+                    {modalCircuit.lap_record.time}
                   </div>
                 </div>
               </div>
               <div className="text-right font-mono text-xs">
-                <span className="text-white font-bold block">{selectedCircuit.lap_record.driver}</span>
-                <span className="text-[#64748B] text-[11px]">
-                  {selectedCircuit.lap_record.team} ({selectedCircuit.lap_record.year})
+                <span className="text-slate-900 dark:text-white font-bold block">{modalCircuit.lap_record.driver}</span>
+                <span className="text-slate-500 dark:text-[#64748B] text-[11px]">
+                  {modalCircuit.lap_record.team} ({modalCircuit.lap_record.year})
                 </span>
               </div>
             </div>
 
             {/* Verified Race Winners */}
             <div>
-              <h5 className="font-bold text-white uppercase text-xs tracking-wider mb-3 flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-amber-400" />
-                <span>Recent Grand Prix Winners (Verified History)</span>
+              <h5 className="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-3 flex items-center gap-2">
+                <Trophy className="w-4 h-4 text-amber-500" />
+                <span>Recent Grand Prix Winners</span>
               </h5>
 
               <div className="space-y-2">
-                {selectedCircuit.past_winners.map((w) => (
+                {modalCircuit.past_winners.map((w) => (
                   <div
                     key={w.year}
-                    className="p-3 rounded-lg bg-[#151922] border border-[#2A3245] flex items-center justify-between text-xs font-mono"
+                    className="p-3 rounded-lg bg-slate-50 dark:bg-[#151922] border border-slate-200 dark:border-[#2A3245] flex items-center justify-between text-xs font-mono"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="px-2 py-0.5 rounded bg-[#1C2230] text-[#00F0FF] font-bold">
+                      <span className="px-2 py-0.5 rounded bg-slate-200 dark:bg-[#1C2230] text-slate-900 dark:text-[#00F0FF] font-bold">
                         {w.year}
                       </span>
-                      <span className="font-bold text-white">{w.winner}</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{w.winner}</span>
                     </div>
-                    <span className="text-[#94A3B8]">{w.team}</span>
-                    <span className="text-[#64748B] hidden sm:inline">{w.time} ({w.laps} laps)</span>
+                    <span className="text-slate-600 dark:text-[#94A3B8]">{w.team}</span>
+                    <span className="text-slate-400 dark:text-[#64748B] hidden sm:inline">{w.time} ({w.laps} laps)</span>
                   </div>
                 ))}
               </div>

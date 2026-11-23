@@ -91,7 +91,7 @@ export default function App() {
       case 'news':
         return <NewsPage onNavigate={handleNavigate} />;
       case 'circuits':
-        return <CircuitsPage onNavigate={handleNavigate} />;
+        return <CircuitsPage onNavigate={handleNavigate} theme={theme} />;
       case 'settings':
         return (
           <SettingsPage
