@@ -401,16 +401,16 @@ export default function StatsPage({ theme = 'dark' }) {
               </div>
             </div>
 
-            {/* Quick Era Milestone Chips */}
-            <div className={`pt-3 border-t flex flex-wrap items-center gap-1.5 text-xs font-mono ${
+            {/* Quick Era Milestone Chips (Horizontally swipeable on mobile) */}
+            <div className={`pt-3 border-t flex items-center gap-1.5 text-xs font-mono overflow-x-auto no-scrollbar py-1 ${
               isLight ? 'border-slate-100' : 'border-[#2A3245]/60'
             }`}>
-              <span className={`mr-1 ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>Milestones:</span>
+              <span className={`mr-1 shrink-0 ${isLight ? 'text-slate-500' : 'text-[#64748B]'}`}>Milestones:</span>
               {MILESTONE_YEARS.map((m) => (
                 <button
                   key={m.year}
                   onClick={() => setSelectedYear(m.year)}
-                  className={`px-2.5 py-1 rounded-md text-[11px] transition-all font-semibold ${
+                  className={`px-2.5 py-1 rounded-md text-[11px] transition-all font-semibold shrink-0 ${
                     selectedYear === m.year
                       ? 'bg-[#E10600] text-white shadow-sm'
                       : isLight
@@ -645,43 +645,43 @@ export default function StatsPage({ theme = 'dark' }) {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2.5 sm:gap-3">
             {filteredChampions.map((champ) => (
               <div
                 key={champ.year}
                 onClick={() => handleDriverClick(champ.code || champ.driver)}
-                className={`border rounded-xl p-4 transition-all shadow-sm group flex flex-col justify-between cursor-pointer ${
+                className={`border rounded-xl p-3 sm:p-4 transition-all shadow-sm group flex flex-col justify-between cursor-pointer ${
                   isLight
                     ? 'bg-white border-slate-200 hover:border-[#E10600] hover:shadow-md'
                     : 'bg-[#12161F] border-[#2A3245] hover:border-[#E10600]/60 shadow-md'
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`text-base font-mono font-black px-2 py-0.5 rounded border ${
+                  <div className="flex items-center justify-between mb-2 sm:mb-3">
+                    <span className={`text-xs sm:text-base font-racing px-1.5 sm:px-2 py-0.5 rounded border ${
                       isLight ? 'bg-slate-100 border-slate-200 text-slate-900' : 'bg-[#1C2230] border-[#2A3245] text-white'
                     }`}>
                       {champ.year}
                     </span>
-                    <Trophy className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+                    <Trophy className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500 group-hover:scale-110 transition-transform" />
                   </div>
 
-                  <div className="flex items-center gap-3 mb-3">
-                    <DriverAvatar code={champ.code} name={champ.driver} size="md" />
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                    <DriverAvatar code={champ.code} name={champ.driver} size="sm" />
                     <div className="min-w-0">
-                      <h4 className={`font-bold text-sm truncate leading-snug group-hover:text-[#E10600] transition-colors ${
+                      <h4 className={`font-racing uppercase text-xs sm:text-sm truncate leading-snug group-hover:text-[#E10600] transition-colors ${
                         isLight ? 'text-slate-900' : 'text-white'
                       }`}>
                         {champ.driver}
                       </h4>
-                      <p className={`text-[11px] font-mono truncate ${isLight ? 'text-slate-500' : 'text-[#94A3B8]'}`}>
+                      <p className={`text-[10px] sm:text-[11px] font-mono truncate ${isLight ? 'text-slate-500' : 'text-[#94A3B8]'}`}>
                         {champ.team}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className={`pt-2 border-t flex items-center justify-between text-xs font-mono ${
+                <div className={`pt-2 border-t flex items-center justify-between text-[10px] sm:text-xs font-mono ${
                   isLight ? 'border-slate-100 text-slate-600' : 'border-[#2A3245]/60 text-[#64748B]'
                 }`}>
                   <span className={`${isLight ? 'text-sky-600' : 'text-[#00F0FF]'} font-bold`}>{champ.wins} Wins</span>

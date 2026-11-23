@@ -24,7 +24,6 @@ export default {
           hard: '#F8FAFC',
           intermediate: '#10B981',
           wet: '#3B82F6',
-          // Aliases
           s: '#EF4444',
           m: '#F59E0B',
           h: '#F8FAFC',
@@ -44,6 +43,8 @@ export default {
           rb: '#6692FF',
           sauber: '#52E252',
           haas: '#B6BABD',
+          cadillac: '#C0C0C0',
+          audi: '#52E252',
         },
 
         // Telemetry traces
@@ -69,9 +70,11 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        display: ['Titillium Web', 'Orbitron', 'sans-serif'],
+        display: ['"Titillium Web"', 'Orbitron', 'sans-serif'],
+        tech: ['"Chakra Petch"', 'monospace'],
+        racing: ['"Titillium Web"', 'sans-serif'],
         mono: [
-          'JetBrains Mono',
+          '"JetBrains Mono"',
           'Roboto Mono',
           'ui-monospace',
           'SFMono-Regular',
@@ -80,6 +83,9 @@ export default {
           'Consolas',
           'monospace',
         ],
+      },
+      screens: {
+        'xs': '400px',
       },
       animation: {
         'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',

@@ -12,6 +12,8 @@
     color: #F8FAFC;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -26,41 +28,94 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* Motorsport Editorial Typography */
+  .font-racing {
+    font-family: 'Titillium Web', 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+
+  .font-tech {
+    font-family: 'Chakra Petch', 'JetBrains Mono', monospace;
+  }
+
   /* Custom racing scrollbars */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0B0E14;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
     background: #2A3245;
-    border-radius: 3px;
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #64748B;
+    background: #E10600;
   }
 
   /* F1 Red subtle glow */
   .f1-glow {
-    box-shadow: 0 0 15px rgba(225, 6, 0, 0.35);
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.4);
   }
 
-  /* Carbon fiber background texture */
+  .f1-glow-sm {
+    box-shadow: 0 0 10px rgba(225, 6, 0, 0.25);
+  }
+
+  /* Telemetry Cyan glow */
+  .cyan-glow {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+  }
+
+  /* Authentic carbon fiber / asphalt pattern */
   .carbon-bg {
-    background-color: #151922;
-    background-image: radial-gradient(#2A3245 0.75px, transparent 0.75px);
-    background-size: 12px 12px;
+    background-color: #12161F;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.05) 0%, transparent 60%),
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 24px 24px, 24px 24px;
+  }
+
+  /* Racing Chamfer Angled Cut (Replaces generic rounded rectangles) */
+  .racing-chamfer {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+
+  .racing-chamfer-both {
+    clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+  }
+
+  .racing-chamfer-reverse {
+    clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);
   }
 
   /* Glassmorphism racing surface */
   .racing-glass {
-    background: rgba(18, 22, 31, 0.75);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(42, 50, 69, 0.7);
+    background: rgba(18, 22, 31, 0.85);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(42, 50, 69, 0.8);
+  }
+
+  /* Speed stripes accent pattern */
+  .speed-stripes {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(225, 6, 0, 0.08) 8px,
+      rgba(225, 6, 0, 0.08) 16px
+    );
+  }
+
+  /* Safe padding for mobile bottom bar */
+  .pb-safe-nav {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
   }
 }

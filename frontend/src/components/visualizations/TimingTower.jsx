@@ -42,16 +42,16 @@ export default function TimingTower({
         <table className="w-full text-left border-collapse font-mono text-xs">
           <thead>
             <tr className="bg-[#151922] text-[#64748B] border-b border-[#2A3245] text-[11px] uppercase tracking-wider select-none">
-              <th className="py-2.5 px-3 w-12 text-center">POS</th>
-              <th className="py-2.5 px-2 w-10 text-center">NO</th>
-              <th className="py-2.5 px-3 min-w-[130px]">DRIVER</th>
-              <th className="py-2.5 px-3 text-right">GAP</th>
-              <th className="py-2.5 px-3 text-right">INT</th>
-              <th className="py-2.5 px-3 text-center">TYRE</th>
-              <th className="py-2.5 px-3 text-right">LAST LAP</th>
-              <th className="py-2.5 px-3 text-right hidden sm:table-cell">BEST LAP</th>
-              <th className="py-2.5 px-3 text-center hidden md:table-cell">SECTORS</th>
-              <th className="py-2.5 px-3 text-center w-14">PIT</th>
+              <th className="py-2.5 px-2.5 sm:px-3 w-10 sm:w-12 text-center">POS</th>
+              <th className="py-2.5 px-1.5 sm:px-2 w-8 sm:w-10 text-center">NO</th>
+              <th className="py-2.5 px-2.5 sm:px-3 min-w-[100px] sm:min-w-[130px]">DRIVER</th>
+              <th className="py-2.5 px-2.5 sm:px-3 text-right">GAP</th>
+              <th className="py-2.5 px-3 text-right hidden sm:table-cell">INT</th>
+              <th className="py-2.5 px-2 sm:px-3 text-center">TYRE</th>
+              <th className="py-2.5 px-2.5 sm:px-3 text-right">LAST LAP</th>
+              <th className="py-2.5 px-3 text-right hidden md:table-cell">BEST LAP</th>
+              <th className="py-2.5 px-3 text-center hidden lg:table-cell">SECTORS</th>
+              <th className="py-2.5 px-2 sm:px-3 text-center w-12 sm:w-14 hidden xs:table-cell">PIT</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#2A3245]/50">
@@ -138,7 +138,7 @@ export default function TimingTower({
                   </td>
 
                   {/* Interval Ahead */}
-                  <td className="py-2.5 px-3 text-right tabular-nums">
+                  <td className="py-2.5 px-3 text-right tabular-nums hidden sm:table-cell">
                     {isLeader ? (
                       <span className="text-[#64748B]">-</span>
                     ) : (
@@ -161,7 +161,7 @@ export default function TimingTower({
                   </td>
 
                   {/* Tyre Badge & Age */}
-                  <td className="py-2.5 px-3 text-center">
+                  <td className="py-2.5 px-2 sm:px-3 text-center">
                     <TyreBadge
                       compound={driver.tyre_compound || 'M'}
                       age={driver.tyre_age}
@@ -170,7 +170,7 @@ export default function TimingTower({
                   </td>
 
                   {/* Last Lap Time */}
-                  <td className="py-2.5 px-3 text-right font-bold tabular-nums">
+                  <td className="py-2.5 px-2.5 sm:px-3 text-right font-bold tabular-nums">
                     <span
                       className={
                         isFastestInSession
@@ -183,14 +183,14 @@ export default function TimingTower({
                   </td>
 
                   {/* Best Lap Time */}
-                  <td className="py-2.5 px-3 text-right font-medium text-[#94A3B8] tabular-nums hidden sm:table-cell">
+                  <td className="py-2.5 px-3 text-right font-medium text-[#94A3B8] tabular-nums hidden md:table-cell">
                     <span className={isFastestInSession ? 'text-purple-400 font-bold' : ''}>
                       {formatLapTime(driver.best_lap_time)}
                     </span>
                   </td>
 
                   {/* Mini Sectors S1, S2, S3 */}
-                  <td className="py-2.5 px-3 text-center hidden md:table-cell">
+                  <td className="py-2.5 px-3 text-center hidden lg:table-cell">
                     <div className="inline-flex items-center gap-1">
                       <span
                         className="w-2 h-2 rounded-full bg-emerald-500"
@@ -210,7 +210,7 @@ export default function TimingTower({
                   </td>
 
                   {/* Pit Stop Count */}
-                  <td className="py-2.5 px-3 text-center font-bold text-[#94A3B8] tabular-nums">
+                  <td className="py-2.5 px-2 sm:px-3 text-center font-bold text-[#94A3B8] tabular-nums hidden xs:table-cell">
                     {driver.pit_stop_count !== undefined && driver.pit_stop_count !== null
                       ? driver.pit_stop_count
                       : '-'}
